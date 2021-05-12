@@ -109,7 +109,7 @@ public class MainPablo {
                             System.out.println(pizza.getPreis());
                         }
                     } else {
-                        System.out.println("Noch keine fertige Pizza bestellt.");
+                        System.out.println("Noch keine Pizza im Warenkorb. 'Fertig' bringt die Pizza in den Warenkorb");
                     }
                     break;
                 case "bestellen":
@@ -120,16 +120,19 @@ public class MainPablo {
                         }
                         System.out.print("Das kostet insgesamt ");
                         System.out.println(currency.format(gesamtpreis));
-                        System.out.println("Auf Wiedersehen!");
                     } else {
                         System.out.println("Nichts bestellt? Dann beim nächsten Mal! :-)");
                     }
-                    dowhile = false;
+                    System.out.println("Gehe auf 'Ende', um die Bestellung abzuschließen.");
                     break;
                 case "ende":
-                    System.out.println("Tschüüüüs!");
+                    System.out.println("Verlauf gelöscht! Ciao!");
                     pizzen = new ArrayList<>();
+
+                    belagindex = -1;
+                    count = -1;
                     pizzaindex = -1;
+
                     dowhile = false;
                     break;
                 default:
