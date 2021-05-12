@@ -106,7 +106,7 @@ public class MainPablo {
                         for (Pizza pizza : pizzen) {
                             System.out.print(pizza.getName());
                             System.out.print(": ");
-                            System.out.println(pizza.getPreis());
+                            System.out.println(currency.format(pizza.getPreis()));
                         }
                     } else {
                         System.out.println("Noch keine Pizza im Warenkorb. 'Fertig' bringt die Pizza in den Warenkorb");
@@ -127,12 +127,11 @@ public class MainPablo {
                     break;
                 case "ende":
                     System.out.println("Verlauf gelöscht! Ciao!");
-                    pizzen = new ArrayList<>();
 
+                    pizzen = new ArrayList<>();
                     belagindex = -1;
                     count = -1;
                     pizzaindex = -1;
-
                     dowhile = false;
                     break;
                 default:
