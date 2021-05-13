@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class AlleBelaege {
-    private NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+    private final NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
     protected ArrayList<Belag> liste = new ArrayList<>();
 
     public ArrayList<Belag> getListe() {

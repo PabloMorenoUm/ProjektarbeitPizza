@@ -1,7 +1,5 @@
 package de.karrieretutor.LydiaHolmPablo.Pizza;
 
-import java.util.ArrayList;
-
 public class AlleZutaten extends AlleBelaege {
 
     public AlleZutaten() {
