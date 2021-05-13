@@ -8,40 +8,26 @@ public class Bestellsystem {
     private static final NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
 
     // Warenkorb:
-    private ArrayList<Pizza> pizzen = new ArrayList<>();
+    private static ArrayList<Pizza> pizzen = new ArrayList<>();
     // Einzelne Pizza:
-    private Pizza meinePizza = new Pizza();
+    private static Pizza meinePizza = new Pizza();
     // Zutaten für eine einzelne Pizza:
-    private ArrayList<Zutat> meineZutaten = new ArrayList<>();
-    // Sauce/Zutat:
-    private Belag belag;
-    private String pizzaname;
+    private static ArrayList<Zutat> meineZutaten = new ArrayList<>();
 
     // Daten von allen Saucen:
-    private final AlleSaucen alleSaucen = new AlleSaucen();
+    private static final AlleSaucen alleSaucen = new AlleSaucen();
     // Daten von allen Zutaten:
-    private final AlleZutaten alleZutaten = new AlleZutaten();
+    private static final AlleZutaten alleZutaten = new AlleZutaten();
 
-    private int belagindex = -1;
-    private int count = -1;
-    private int pizzaindex = -1;
+    private static int belagindex = -1;
+    private static int anzahlBelaegeProPizza = -1;
+    private static int pizzaindex = -1;
 
     // Konstanten:
     private static final int zutatshift = 11;
     private static final int maxbelag = 8;
 
-    private boolean dowhile = true;
-
-    // Singleton-Pattern:
-    private static final Bestellsystem bestellsystem = new Bestellsystem();
-    private Bestellsystem() {
-    }
-    // Fabrikmethode:
-    public static Bestellsystem getInstance(){
-        return bestellsystem;
-    }
-
-    public void nutzeBestellsystem() {
+    public static void nutzeBestellsystem() {
         Scanner keyboard = new Scanner(System.in);
 
         do {
@@ -52,7 +38,7 @@ public class Bestellsystem {
                 try {
                     belagindex = Integer.parseInt(mystring.substring(5));
                     mystring = "zutat";
-                } catch (Exception myexception){
+                } catch (Exception ignored){
                 }
             }
 
@@ -69,8 +55,9 @@ public class Bestellsystem {
                 case "neuepizza":
                     System.out.println("Neue Pizza wird erstellt.");
                     meinePizza = new Pizza();
+                    meineZutaten = new ArrayList<>();
                     pizzaindex++;
-                    count = 0;
+                    anzahlBelaegeProPizza = 0;
                     break;
                 case "zutat":
                     if(pizzaindex < 0){
@@ -83,17 +70,14 @@ public class Bestellsystem {
                 case "fertig":
                     if(pizzaindex >= 0){
                         System.out.print("Wie soll die Pizza heißen? ");
-                        pizzaname = keyboard.nextLine();
+                        String pizzaname = keyboard.nextLine();
                         meinePizza.setName(pizzaname);
                         pizzen.add(meinePizza);
                         System.out.print(meinePizza.getName());
                         System.out.print(" kostet ");
                         System.out.println(currency.format(meinePizza.getPreis()));
 
-                        meinePizza = new Pizza();
-                        belagindex = -1;
-                        count = -1;
-                        pizzaindex = -1;
+                        initialisieren();
 
                         System.out.println("'Neue Pizza' oder 'Bestellen'?");
                     } else {
@@ -113,35 +97,36 @@ public class Bestellsystem {
                     break;
                 case "bestellen":
                     if(pizzen.size() > 0){
-                        double gesamtpreis = 0.0;
-                        for(Pizza pizza: pizzen){
-                            gesamtpreis += pizza.getPreis();
-                        }
                         System.out.print("Das kostet insgesamt ");
-                        System.out.println(currency.format(gesamtpreis));
+                        System.out.println(currency.format(zahlen(pizzen)));
                     } else {
                         System.out.println("Nichts bestellt? Dann beim nächsten Mal! :-)");
                     }
                     System.out.println("Gehe auf 'Ende', um die Bestellung abzuschließen.");
                     break;
                 case "ende":
-                    System.out.println("Verlauf gelöscht! Ciao!");
+                    System.out.println("Verlauf gelöscht!");
 
                     pizzen = new ArrayList<>();
-                    belagindex = -1;
-                    count = -1;
-                    pizzaindex = -1;
-                    dowhile = false;
+                    initialisieren();
                     break;
                 default:
                     System.out.println("Keine gültige Eingabe.");
             }
-        } while (dowhile);
-
-        keyboard.close();
+        } while (true);
     }
 
-    private void belegePizza(int nummer){
+    private static void initialisieren(){
+        meinePizza = new Pizza();
+        meineZutaten = new ArrayList<>();
+        belagindex = -1;
+        anzahlBelaegeProPizza = -1;
+        pizzaindex = -1;
+    }
+
+    private static void belegePizza(int nummer){
+        Belag belag;
+
         if(nummer > 0 && nummer <= alleSaucen.getListe().size()){
             if(Objects.isNull(meinePizza.getSauce())){
                 belag = alleSaucen.getListe().get(nummer - 1);
@@ -152,11 +137,11 @@ public class Bestellsystem {
             }
         } else if (nummer >= zutatshift &&
                 nummer < alleZutaten.getListe().size() + zutatshift) {
-            if(count <= maxbelag){
+            if(anzahlBelaegeProPizza <= maxbelag){
                 belag = alleZutaten.getListe().get(nummer - zutatshift);
                 meineZutaten.add((Zutat) belag);
                 meinePizza.setZutaten(meineZutaten);
-                count++;
+                anzahlBelaegeProPizza++;
                 System.out.println(belag.getName() + " hinzugefügt");
             } else{
                 System.out.println("Nicht mehr als " + maxbelag + " Zutaten");
@@ -164,5 +149,13 @@ public class Bestellsystem {
         } else {
             System.out.println("Keine zulässige Nummer");
         }
+    }
+
+    protected static double zahlen(ArrayList<Pizza> pizzaliste){
+        double gesamtpreis = 0.0;
+        for(Pizza pizza: pizzaliste){
+            gesamtpreis += pizza.getPreis();
+        }
+        return gesamtpreis;
     }
 }
