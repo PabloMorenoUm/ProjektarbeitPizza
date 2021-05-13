@@ -3,30 +3,46 @@ package de.karrieretutor.LydiaHolmPablo.Pizza;
 import java.text.NumberFormat;
 import java.util.*;
 
-public class MainPablo {
-    public static void main(String[] args) {
+public class Bestellsystem {
+    // Währungsformat:
+    private static final NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+
+    // Warenkorb:
+    private ArrayList<Pizza> pizzen = new ArrayList<>();
+    // Einzelne Pizza:
+    private Pizza meinePizza = new Pizza();
+    // Zutaten für eine einzelne Pizza:
+    private ArrayList<Zutat> meineZutaten = new ArrayList<>();
+    // Sauce/Zutat:
+    private Belag belag;
+    private String pizzaname;
+
+    // Daten von allen Saucen:
+    private final AlleSaucen alleSaucen = new AlleSaucen();
+    // Daten von allen Zutaten:
+    private final AlleZutaten alleZutaten = new AlleZutaten();
+
+    private int belagindex = -1;
+    private int count = -1;
+    private int pizzaindex = -1;
+
+    // Konstanten:
+    private static final int zutatshift = 11;
+    private static final int maxbelag = 8;
+
+    private boolean dowhile = true;
+
+    // Singleton-Pattern:
+    private static final Bestellsystem bestellsystem = new Bestellsystem();
+    private Bestellsystem() {
+    }
+    // Fabrikmethode:
+    public static Bestellsystem getInstance(){
+        return bestellsystem;
+    }
+
+    public void nutzeBestellsystem() {
         Scanner keyboard = new Scanner(System.in);
-        NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
-
-        ArrayList<Pizza> pizzen = new ArrayList<>();
-        Pizza meinePizza = new Pizza();
-
-        ArrayList<Zutat> meineZutaten = new ArrayList<>();
-        Belag belag;
-
-        AlleSaucen alleSaucen = new AlleSaucen();
-        AlleZutaten alleZutaten = new AlleZutaten();
-
-        int belagindex = -1;
-        int count = -1;
-        int pizzaindex = -1;
-
-        int zutatshift = 11;
-        int maxbelag = 8;
-
-        String pizzaname;
-
-        boolean dowhile = true;
 
         do {
             System.out.print("Wähle aus: ");
@@ -61,28 +77,7 @@ public class MainPablo {
                         System.out.println("Erst eine neue Pizza auswählen!");
                         break;
                     } else{
-                        if(belagindex > 0 && belagindex <= alleSaucen.getListe().size()){
-                            if(Objects.isNull(meinePizza.getSauce())){
-                                belag = alleSaucen.getListe().get(belagindex - 1);
-                                meinePizza.setSauce((Sauce) belag);
-                                System.out.println(belag.getName() + " hinzugefügt");
-                            } else{
-                                System.out.println("Sauce ist schon vorhanden.");
-                            }
-                        } else if (belagindex >= zutatshift &&
-                                belagindex < alleZutaten.getListe().size() + zutatshift) {
-                            if(count <= maxbelag){
-                                belag = alleZutaten.getListe().get(belagindex - zutatshift);
-                                meineZutaten.add((Zutat) belag);
-                                meinePizza.setZutaten(meineZutaten);
-                                count++;
-                                System.out.println(belag.getName() + " hinzugefügt");
-                            } else{
-                                System.out.println("Nicht mehr als " + maxbelag + " Zutaten");
-                            }
-                        } else {
-                            System.out.println("Keine zulässige Nummer");
-                        }
+                        belegePizza(belagindex);
                     }
                     break;
                 case "fertig":
@@ -96,6 +91,10 @@ public class MainPablo {
                         System.out.println(currency.format(meinePizza.getPreis()));
 
                         meinePizza = new Pizza();
+                        belagindex = -1;
+                        count = -1;
+                        pizzaindex = -1;
+
                         System.out.println("'Neue Pizza' oder 'Bestellen'?");
                     } else {
                         System.out.println("Erst 'Neue Pizza' auswählen!");
@@ -140,5 +139,30 @@ public class MainPablo {
         } while (dowhile);
 
         keyboard.close();
+    }
+
+    private void belegePizza(int nummer){
+        if(nummer > 0 && nummer <= alleSaucen.getListe().size()){
+            if(Objects.isNull(meinePizza.getSauce())){
+                belag = alleSaucen.getListe().get(nummer - 1);
+                meinePizza.setSauce((Sauce) belag);
+                System.out.println(belag.getName() + " hinzugefügt");
+            } else{
+                System.out.println("Sauce ist schon vorhanden.");
+            }
+        } else if (nummer >= zutatshift &&
+                nummer < alleZutaten.getListe().size() + zutatshift) {
+            if(count <= maxbelag){
+                belag = alleZutaten.getListe().get(nummer - zutatshift);
+                meineZutaten.add((Zutat) belag);
+                meinePizza.setZutaten(meineZutaten);
+                count++;
+                System.out.println(belag.getName() + " hinzugefügt");
+            } else{
+                System.out.println("Nicht mehr als " + maxbelag + " Zutaten");
+            }
+        } else {
+            System.out.println("Keine zulässige Nummer");
+        }
     }
 }
