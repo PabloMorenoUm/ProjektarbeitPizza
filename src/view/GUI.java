@@ -30,31 +30,16 @@ public class GUI {
         frame.add(centerPanel, BorderLayout.CENTER);
         frame.add(bottomPanel, BorderLayout.SOUTH);
 
-
-
-
+        // --------------------- top ---------------------
         try {
             ImageIcon icon = new ImageIcon("testbild2.jpg");
             JLabel background = new JLabel();
             background.setIcon(icon);
-            //JLabel background = new JLabel(new ImageIcon("./testbild.jpg"));
             topPanel.add(background);
-
-            //topPanel.add(background);
 
         } catch (Exception e){
             e.printStackTrace();
         }
-
-
-
-
-
-
-
-
-
-
 
 
         // ------------ center ------------------------
@@ -85,11 +70,27 @@ public class GUI {
         this.addZutat("Paprika", preis059, c, 1,3);
         this.addZutat("Tomaten", preis059, c, 2,3);
         this.addZutat("Champignons", preis059, c, 3,3);
-        //this.addZutat("Artischocken", preis139, c, 4,3);
 
+
+        ZutatenPanel zutat17 = new ZutatenPanel("Artischocken", preis139);
+        this.addZutat(zutat17, c, 5, 3);
+
+        // ------------------- bottom -----------------------
+        GridBagLayout bottomLayout = new GridBagLayout();
+        bottomPanel.setLayout(bottomLayout);
+
+        JLabel gesamtPreisLabel = new JLabel("Gesamtpreis");
+        bottomPanel.add(gesamtPreisLabel);
+
+        StatusScreen currentStatus = new StatusScreen();
+        bottomPanel.add(currentStatus);
+
+        JButton finishButton = new JButton("Bestellung abschicken");
+        bottomPanel.add(finishButton);
+
+        // ---------------- Show ! --------------------------
         frame.pack();
         frame.repaint();
-
         frame.setVisible(true);
 
     }
@@ -102,4 +103,14 @@ public class GUI {
         c.gridy = yPos;
         centerPanel.add(zutat, c);
     }
+
+    public void addZutat(ZutatenPanel zutat, GridBagConstraints c, int xPos, int yPos){
+        //zutat = new ZutatenPanel(zutatenName, preis);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = xPos;
+        c.gridy = yPos;
+        centerPanel.add(zutat, c);
+    }
+
+
 }

@@ -1,14 +1,17 @@
 package view;
 
+import control.ZutatenButtonListener;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyListener;
 
 public class ZutatenPanel extends JPanel {
 
     private String zutatenName;
     private String preisName;
     private int buttonBreite;
+    private JButton plusButton;
+    private JButton minusButton;
 
 
 
@@ -36,7 +39,7 @@ public class ZutatenPanel extends JPanel {
         c.gridy = 0;
         this.add(preisLabel, c);
 
-        JButton plusButton = new JButton("   +   ");
+        plusButton = new JButton("   +   ");
         c.fill = GridBagConstraints.HORIZONTAL;
         c.ipady = 8;      //make this component tall
         c.ipadx = 5;
@@ -45,8 +48,9 @@ public class ZutatenPanel extends JPanel {
         c.gridx = 0;
         c.gridy = 1;
         this.add(plusButton, c);
+        plusButton.addActionListener(new ZutatenButtonListener());
 
-        JButton minusButton = new JButton("   -   ");
+        minusButton = new JButton("   -   ");
         c.fill = GridBagConstraints.HORIZONTAL;
         c.ipady = 8;      //make this component tall
         c.ipadx = 5;
@@ -55,10 +59,23 @@ public class ZutatenPanel extends JPanel {
         c.gridx = 1;
         c.gridy = 1;
         this.add(minusButton, c);
+        minusButton.addActionListener(new ZutatenButtonListener());
 
     }
 
+    public String getZutatenName() {
+        return zutatenName;
+    }
 
+    public String getPreisName() {
+        return preisName;
+    }
 
+    public JButton getPlusButton() {
+        return plusButton;
+    }
 
+    public JButton getMinusButton() {
+        return minusButton;
+    }
 }
