@@ -27,6 +27,9 @@ public class Bestellsystem {
     private static final int zutatshift = 11;
     private static final int maxbelag = 8;
 
+    private Bestellsystem() {
+    }
+
     public static void nutzeBestellsystem() {
         Scanner keyboard = new Scanner(System.in);
 
