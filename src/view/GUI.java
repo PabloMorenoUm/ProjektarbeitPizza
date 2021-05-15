@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class GUI {
     private JFrame frame = new JFrame("Luigi's Pizza");
@@ -19,7 +20,7 @@ public class GUI {
     private String preis139 = " 1,39 €";
 
     public GUI(){
-        frame.setSize(800,800);
+        frame.setSize(1300,1300);
         frame.setLayout(new BorderLayout());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -27,9 +28,32 @@ public class GUI {
         frame.add(centerPanel, BorderLayout.CENTER);
         frame.add(bottomPanel, BorderLayout.SOUTH);
 
-        ImageIcon icon = new ImageIcon("./testbild.jpg");
-        JLabel background = new JLabel();
-        background.setIcon(icon);
+
+
+
+        try {
+            ImageIcon icon = new ImageIcon("testbild2.jpg");
+            JLabel background = new JLabel();
+            background.setIcon(icon);
+            //JLabel background = new JLabel(new ImageIcon("./testbild.jpg"));
+            topPanel.add(background);
+
+            //topPanel.add(background);
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+
+
+
+
+
+
+
+
+
 
         // ------------ center ------------------------
         GridBagLayout centerLayout = new GridBagLayout();
@@ -92,27 +116,27 @@ public class GUI {
 
         ZutatenPanel neueZutat9 = new ZutatenPanel("Ananas", preis000);
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 0;
-        c.gridy = 3;
+        c.gridx = 1;
+        c.gridy = 2;
         centerPanel.add(neueZutat9, c);
 
 
         ZutatenPanel neueZutat10 = new ZutatenPanel("Mais", preis000);
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 0;
-        c.gridy = 4;
+        c.gridx = 2;
+        c.gridy = 2;
         centerPanel.add(neueZutat10, c);
 
         ZutatenPanel neueZutat11 = new ZutatenPanel("Zwiebeln", preis000);
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 0;
-        c.gridy = 3;
+        c.gridx = 3;
+        c.gridy = 2;
         centerPanel.add(neueZutat11, c);
 
         ZutatenPanel neueZutat12 = new ZutatenPanel("Oliven", preis000);
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 0;
-        c.gridy = 3;
+        c.gridx = 4;
+        c.gridy = 2;
         centerPanel.add(neueZutat12, c);
 
         ZutatenPanel neueZutat13 = new ZutatenPanel("Ei", preis000);
@@ -123,21 +147,24 @@ public class GUI {
 
         ZutatenPanel neueZutat14 = new ZutatenPanel("Paprika", preis000);
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 0;
+        c.gridx = 1;
         c.gridy = 3;
         centerPanel.add(neueZutat14, c);
 
         ZutatenPanel neueZutat15 = new ZutatenPanel("Tomaten", preis000);
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 0;
+        c.gridx = 2;
         c.gridy = 3;
         centerPanel.add(neueZutat15, c);
 
         ZutatenPanel neueZutat16 = new ZutatenPanel("Champignons", preis000);
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 0;
+        c.gridx = 3;
         c.gridy = 3;
         centerPanel.add(neueZutat16, c);
+
+        frame.pack();
+        frame.repaint();
 
         frame.setVisible(true);
 
