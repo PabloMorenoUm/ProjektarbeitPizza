@@ -5,7 +5,7 @@ import javax.swing.*;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
 import java.awt.*;
 
-public class GUI {
+public class GUI_old {
 
     private JFrame frame = new JFrame("Luigi's Pizza");
     private JPanel topPanel = new JPanel();
@@ -16,7 +16,7 @@ public class GUI {
     private String[] saucenListe= {"Tomatensauce","BBQ-Sauce"};
     private String[] zutatenListe= {"Gouda","Mozzarella","Salami","Schinken","Thunfisch","Peperoni","Ananas"};
 
-    public GUI(){
+    public GUI_old(){
         frame.setSize(300,800);
         frame.setLayout(new BorderLayout());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
