@@ -19,6 +19,8 @@ public class GUI {
     private String preis099 = " 0,99 €";
     private String preis139 = " 1,39 €";
 
+    private ZutatenPanel zutat;
+
     public GUI(){
         frame.setSize(1300,1300);
         frame.setLayout(new BorderLayout());
@@ -63,110 +65,41 @@ public class GUI {
         c.weighty = 0.5;
         c.weightx = 0.5;
 
-        ZutatenPanel neueZutat1 = new ZutatenPanel("Tomatensauce", preis000);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 0;
-        c.gridy = 0;
-        centerPanel.add(neueZutat1, c);
 
+        this.addZutat("Tomatensauce", preis000, c, 0,0);
+        this.addZutat("BBQ-Sauce", preis000, c, 1,0);
 
-        ZutatenPanel neueZutat2 = new ZutatenPanel("BBQ-Sauce", preis000);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 1;
-        c.gridy = 0;
-        centerPanel.add(neueZutat2, c);
+        this.addZutat("Gouda", preis099, c, 0,1);
+        this.addZutat("Mozzarella", preis099, c, 1,1);
+        this.addZutat("Salami", preis139, c, 2,1);
+        this.addZutat("Schinken", preis139, c, 3,1);
+        this.addZutat("Thunfisch", preis099, c, 4,1);
 
+        this.addZutat("Peperoni", preis059, c, 0,2);
+        this.addZutat("Ananas", preis059, c, 1,2);
+        this.addZutat("Mais", preis059, c, 2,2);
+        this.addZutat("Zwiebeln", preis059, c, 3,2);
+        this.addZutat("Oliven", preis099, c, 4,2);
 
-        ZutatenPanel neueZutat3 = new ZutatenPanel("Gouda ", preis099);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 0;
-        c.gridy = 1;
-        centerPanel.add(neueZutat3, c);
-
-        ZutatenPanel neueZutat4 = new ZutatenPanel("Mozzarella", preis099);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 1;
-        c.gridy = 1;
-        centerPanel.add(neueZutat4, c);
-
-        ZutatenPanel neueZutat5 = new ZutatenPanel("Salami ", preis139);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 2;
-        c.gridy = 1;
-        centerPanel.add(neueZutat5, c);
-
-        ZutatenPanel neueZutat6 = new ZutatenPanel("Schinken", preis099);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 3;
-        c.gridy = 1;
-        centerPanel.add(neueZutat6, c);
-
-        ZutatenPanel neueZutat7 = new ZutatenPanel("Thunfisch", preis099);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 4;
-        c.gridy = 1;
-        centerPanel.add(neueZutat7, c);
-
-        ZutatenPanel neueZutat8 = new ZutatenPanel("Peperoni", preis099);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 0;
-        c.gridy = 2;
-        centerPanel.add(neueZutat8, c);
-
-
-        ZutatenPanel neueZutat9 = new ZutatenPanel("Ananas", preis000);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 1;
-        c.gridy = 2;
-        centerPanel.add(neueZutat9, c);
-
-
-        ZutatenPanel neueZutat10 = new ZutatenPanel("Mais", preis000);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 2;
-        c.gridy = 2;
-        centerPanel.add(neueZutat10, c);
-
-        ZutatenPanel neueZutat11 = new ZutatenPanel("Zwiebeln", preis000);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 3;
-        c.gridy = 2;
-        centerPanel.add(neueZutat11, c);
-
-        ZutatenPanel neueZutat12 = new ZutatenPanel("Oliven", preis000);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 4;
-        c.gridy = 2;
-        centerPanel.add(neueZutat12, c);
-
-        ZutatenPanel neueZutat13 = new ZutatenPanel("Ei", preis000);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 0;
-        c.gridy = 3;
-        centerPanel.add(neueZutat13, c);
-
-        ZutatenPanel neueZutat14 = new ZutatenPanel("Paprika", preis000);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 1;
-        c.gridy = 3;
-        centerPanel.add(neueZutat14, c);
-
-        ZutatenPanel neueZutat15 = new ZutatenPanel("Tomaten", preis000);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 2;
-        c.gridy = 3;
-        centerPanel.add(neueZutat15, c);
-
-        ZutatenPanel neueZutat16 = new ZutatenPanel("Champignons", preis000);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 3;
-        c.gridy = 3;
-        centerPanel.add(neueZutat16, c);
+        this.addZutat("Ei", preis059, c, 0,3);
+        this.addZutat("Paprika", preis059, c, 1,3);
+        this.addZutat("Tomaten", preis059, c, 2,3);
+        this.addZutat("Champignons", preis059, c, 3,3);
+        //this.addZutat("Artischocken", preis139, c, 4,3);
 
         frame.pack();
         frame.repaint();
 
         frame.setVisible(true);
 
+    }
+
+
+    public void addZutat(String zutatenName, String preis, GridBagConstraints c, int xPos, int yPos){
+        zutat = new ZutatenPanel(zutatenName, preis);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = xPos;
+        c.gridy = yPos;
+        centerPanel.add(zutat, c);
     }
 }
