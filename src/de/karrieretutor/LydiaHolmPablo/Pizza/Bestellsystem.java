@@ -140,7 +140,7 @@ public class Bestellsystem {
             }
         } else if (nummer >= zutatshift &&
                 nummer < alleZutaten.getListe().size() + zutatshift) {
-            if(anzahlBelaegeProPizza <= maxbelag){
+            if(anzahlBelaegeProPizza < maxbelag){
                 belag = alleZutaten.getListe().get(nummer - zutatshift);
                 meineZutaten.add((Zutat) belag);
                 meinePizza.setZutaten(meineZutaten);
