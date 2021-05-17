@@ -77,17 +77,22 @@ public class Bestellsystem {
                 case "fertig":
                 case "4":
                     if(pizzaindex >= 0){
-                        System.out.print("Wie soll die Pizza heißen? ");
-                        String pizzaname = keyboard.nextLine();
-                        meinePizza.setName(pizzaname);
-                        pizzen.add(meinePizza);
-                        System.out.print(meinePizza.getName());
-                        System.out.print(" kostet ");
-                        System.out.println(currency.format(meinePizza.getPreis()));
+                        if(meinePizza.getZutaten().size() > maxbelag){
+                            System.out.println("Diese Pizza hat mehr als acht Zutaten!!! Das ist böse.");
+                        } else {
+                            System.out.print("Wie soll die Pizza heißen? ");
+                            String pizzaname = keyboard.nextLine();
+                            meinePizza.setName(pizzaname);
+                            pizzen.add(meinePizza);
+                            System.out.print(meinePizza.getName());
+                            System.out.print(" kostet ");
+                            System.out.println(currency.format(meinePizza.getPreis()));
 
-                        initialisieren();
+                            initialisieren();
 
-                        System.out.println("'Neue Pizza' oder 'Bestellen'?");
+                            System.out.println("'Neue Pizza' oder 'Bestellen'?");
+                        }
+
                     } else {
                         System.out.println("Erst 'Neue Pizza' auswählen!");
                     }
