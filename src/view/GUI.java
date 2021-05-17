@@ -28,7 +28,7 @@ public class GUI {
 
         frame.add(topPanel, BorderLayout.NORTH);
         frame.add(centerPanel, BorderLayout.CENTER);
-        frame.add(bottomPanel, BorderLayout.SOUTH);
+        frame.add(bottomPanel, BorderLayout.EAST);
 
         // --------------------- top ---------------------
         try {
@@ -76,6 +76,17 @@ public class GUI {
         this.addZutat(zutat17, c, 5, 3);
 
         // ------------------- bottom -----------------------
+        JButton neuePizzaButton = new JButton("Neue Pizza");
+        bottomPanel.add(neuePizzaButton);
+
+        JLabel pizzaNameLabel = new JLabel("Pizzaname");
+        bottomPanel.add(pizzaNameLabel);
+
+        JTextField pizzaNameText = new JTextField(10);
+        bottomPanel.add(pizzaNameText);
+
+
+
         GridBagLayout bottomLayout = new GridBagLayout();
         bottomPanel.setLayout(bottomLayout);
 
