@@ -10,6 +10,17 @@ public class GUI {
     private JPanel centerPanel = new JPanel();
     private JPanel bottomPanel = new JPanel();
 
+    private JButton finishButton;
+    private JButton neuePizzaButton;
+
+    public JButton getFinishButton() {
+        return finishButton;
+    }
+
+    public JButton getNeuePizzaButton() {
+        return neuePizzaButton;
+    }
+
     // später von woanders her?
     private String[] saucenListe= {"Tomatensauce","BBQ-Sauce"};
     private String[] zutatenListe= {"Gouda","Mozzarella","Salami","Schinken","Thunfisch","Peperoni","Ananas"};
@@ -122,6 +133,8 @@ public class GUI {
         c.gridy = yPos;
         centerPanel.add(zutat, c);
     }
+
+
 
 
 }
