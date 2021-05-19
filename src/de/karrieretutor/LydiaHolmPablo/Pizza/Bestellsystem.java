@@ -33,6 +33,7 @@ public class Bestellsystem {
     public static void nutzeBestellsystem() {
         Scanner keyboard = new Scanner(System.in);
 
+
         do {
             System.out.print("Wähle aus: ");
             String mystring = keyboard.nextLine().toLowerCase(Locale.ROOT).replaceAll("\\s", "");
@@ -47,6 +48,7 @@ public class Bestellsystem {
 
             switch (mystring) {
                 case "zutatenliste":
+                case "1":
                     System.out.println("-----------------------------");
                     System.out.println("Saucen:");
                     alleSaucen.print();
@@ -56,6 +58,7 @@ public class Bestellsystem {
                     System.out.println("-----------------------------");
                     break;
                 case "neuepizza":
+                case "2":
                     System.out.println("Neue Pizza wird erstellt.");
                     meinePizza = new Pizza();
                     meineZutaten = new ArrayList<>();
@@ -63,6 +66,7 @@ public class Bestellsystem {
                     anzahlBelaegeProPizza = 0;
                     break;
                 case "zutat":
+                case "3":
                     if(pizzaindex < 0){
                         System.out.println("Erst eine neue Pizza auswählen!");
                         break;
@@ -71,23 +75,30 @@ public class Bestellsystem {
                     }
                     break;
                 case "fertig":
+                case "4":
                     if(pizzaindex >= 0){
-                        System.out.print("Wie soll die Pizza heißen? ");
-                        String pizzaname = keyboard.nextLine();
-                        meinePizza.setName(pizzaname);
-                        pizzen.add(meinePizza);
-                        System.out.print(meinePizza.getName());
-                        System.out.print(" kostet ");
-                        System.out.println(currency.format(meinePizza.getPreis()));
+                        if(meinePizza.getZutaten().size() > maxbelag){
+                            System.out.println("Diese Pizza hat mehr als acht Zutaten!!! Das ist böse.");
+                        } else {
+                            System.out.print("Wie soll die Pizza heißen? ");
+                            String pizzaname = keyboard.nextLine();
+                            meinePizza.setName(pizzaname);
+                            pizzen.add(meinePizza);
+                            System.out.print(meinePizza.getName());
+                            System.out.print(" kostet ");
+                            System.out.println(currency.format(meinePizza.getPreis()));
 
-                        initialisieren();
+                            initialisieren();
 
-                        System.out.println("'Neue Pizza' oder 'Bestellen'?");
+                            System.out.println("'Neue Pizza' oder 'Bestellen'?");
+                        }
+
                     } else {
                         System.out.println("Erst 'Neue Pizza' auswählen!");
                     }
                     break;
                 case "bestellunginfo":
+                case "5":
                     if(pizzen.size() > 0){
                         for (Pizza pizza : pizzen) {
                             System.out.print(pizza.getName());
@@ -99,6 +110,7 @@ public class Bestellsystem {
                     }
                     break;
                 case "bestellen":
+                case "6":
                     if(pizzen.size() > 0){
                         System.out.print("Das kostet insgesamt ");
                         System.out.println(currency.format(zahlen(pizzen)));
@@ -108,6 +120,7 @@ public class Bestellsystem {
                     System.out.println("Gehe auf 'Ende', um die Bestellung abzuschließen.");
                     break;
                 case "ende":
+                case "7":
                     System.out.println("Verlauf gelöscht!");
 
                     pizzen = new ArrayList<>();
