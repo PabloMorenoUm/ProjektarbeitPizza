@@ -1,5 +1,7 @@
 package view;
 
+import control.ZutatenButtonListener;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -93,12 +95,13 @@ public class GUI {
         this.addZutat("Champignons", preis059, c, 3,3);
 
 
-        ZutatenPanel zutat17 = new ZutatenPanel("Artischocken", preis139);
-        this.addZutat(zutat17, c, 5, 3);
+        /*ZutatenPanel zutat17 = new ZutatenPanel("Artischocken", preis139);
+        this.addZutat(zutat17, c, 5, 3);*/
 
         // ------------------- bottom -----------------------
         JButton neuePizzaButton = new JButton("Neue Pizza");
         bottomPanel.add(neuePizzaButton);
+        neuePizzaButton.addActionListener(new ZutatenButtonListener());
 
         JLabel pizzaNameLabel = new JLabel("Pizzaname");
         bottomPanel.add(pizzaNameLabel);
@@ -106,6 +109,9 @@ public class GUI {
         JTextField pizzaNameText = new JTextField(10);
         bottomPanel.add(pizzaNameText);
 
+        JButton pizzaFertig = new JButton("Pizza abschließen");
+        bottomPanel.add(pizzaFertig);
+        pizzaFertig.addActionListener(new ZutatenButtonListener());
 
 
         GridBagLayout bottomLayout = new GridBagLayout();
@@ -117,8 +123,17 @@ public class GUI {
         StatusScreen currentStatus = new StatusScreen();
         bottomPanel.add(currentStatus);
 
+        JButton orderedButton = new JButton("Bestellung Info");
+        bottomPanel.add(orderedButton);
+        orderedButton.addActionListener(new ZutatenButtonListener());
+
         JButton finishButton = new JButton("Bestellung abschicken");
         bottomPanel.add(finishButton);
+        finishButton.addActionListener(new ZutatenButtonListener());
+
+        JButton deleteButton = new JButton("Warenkorb löschen");
+        bottomPanel.add(deleteButton);
+        deleteButton.addActionListener(new ZutatenButtonListener());
 
         // ---------------- Show ! --------------------------
         frame.pack();
