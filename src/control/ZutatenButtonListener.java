@@ -147,6 +147,7 @@ public class ZutatenButtonListener implements ActionListener {
         }
     }
 
+    // Pizzainstanz, Zutatenkorb und Indizes resetten:
     private static void initialisieren(){
         meinePizza = new Pizza();
         meineZutaten = new ArrayList<>();
