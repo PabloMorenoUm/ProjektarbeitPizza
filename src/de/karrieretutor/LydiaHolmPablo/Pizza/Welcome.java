@@ -6,7 +6,11 @@ public class Welcome {
     //private String selection;
     public static void main(String[] args) {
 
-
+        /*
+        Willkommensnachricht mit Menüübersicht und konsolenbasiertem Bestellsystem.
+        Als Eingabe ist die Groß- und Kleinschreibung egal, ebenso wie die Anzahl der Leerzeichen.
+        Auch die Nummern anstelle der Wörter sind als Eingabe möglich.
+         */
 
         System.out.println("""
                  Willkommen in bei Luigis Pizza:
@@ -20,10 +24,10 @@ public class Welcome {
                 '7) ENDE' - Löscht aktuelle Zusammensetzung.
                 +++++++++++ LUIGI'S PIZZA +++++++++++\s""");
 
-        Bestellsystem.nutzeBestellsystem();
+        Bestellsystem bestellsystem = new Bestellsystem();
+        bestellsystem.nutzeBestellsystem();
 
         /*
-
         do {
             Scanner scan = new Scanner(System.in);
             System.out.print("Ihre Auswahl bitte: ");

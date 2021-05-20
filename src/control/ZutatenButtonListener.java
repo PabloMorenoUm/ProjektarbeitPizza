@@ -12,6 +12,11 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class ZutatenButtonListener implements ActionListener {
+    /*
+    Diese Klasse enthält das GUI-basierte Pizzabestellsystem.
+    Hierfür notwendig ist eine Pizzainstanz, die nach Wunsch der Nutzer belegt wird.
+    Diese Klasse behandelt die Funktionalitäten aller GUI-Knöpfe.
+     */
 
     private String zutatenName;
     //private ZutatenPanel panel;
@@ -31,15 +36,24 @@ public class ZutatenButtonListener implements ActionListener {
     // Daten von allen Zutaten:
     private static final AlleZutaten alleZutaten = new AlleZutaten();
 
+    // Zählvariable, die für eine Pizza die Anzahl der Zutaten zählt:
     private static int anzahlBelaegeProPizza = -1;
+    /*
+    Index für eine Pizza im jeweiligen Bestellvorgang.
+    Eigentlich ist nur entscheidend, ob dieser Index negativ ist oder nicht.
+    Ein negativer Index bedeutet, dass es noch keine Pizza im Warenkorb gibt.
+     */
     private static int pizzaindex = -1;
 
     // Konstanten:
     private static final int maxbelag = 8;
 
+    // Eigentliches Bestellsystem:
     @Override
     public void actionPerformed(ActionEvent e) {
         // (JButton)e.getComponent()).getParent()
+
+        // Extrahiere den Belagnamen, falls + oder - angeklickt wurde:
         if(e.getActionCommand().equals("   +   ") || e.getActionCommand().equals("   -   ")){
             JButton button = (JButton) e.getSource();
             ZutatenPanel panel = (ZutatenPanel) button.getParent();
@@ -54,6 +68,7 @@ public class ZutatenButtonListener implements ActionListener {
             System.out.println("Plus and Minus ButtonListener Not working like you think!");
         }*/
 
+        // Bestellsystem als großer switch-Ausdruck:
         switch (e.getActionCommand()) {
             case "Neue Pizza":
                 System.out.println("Neue Pizza wird erstellt.");
@@ -81,7 +96,7 @@ public class ZutatenButtonListener implements ActionListener {
             case "Pizza abschließen":
                 if(pizzaindex >= 0){
                     if(meinePizza.getZutaten().size() > maxbelag){
-                        System.out.println("Diese Pizza hat mehr als acht Zutaten!!! Das ist böse.");
+                        System.out.println("Diese Pizza hat mehr als acht Zutaten!!!");
                     } else {
                         /*System.out.print("Wie soll die Pizza heißen? ");
                         String pizzaname = keyboard.nextLine();
@@ -139,6 +154,7 @@ public class ZutatenButtonListener implements ActionListener {
         pizzaindex = -1;
     }
 
+    // Sauce oder Zutat auf die Pizza setzen:
     private static void belegePizza(String name){
         if(name.toLowerCase(Locale.ROOT).contains("sauce")){
             if(Objects.isNull(meinePizza.getSauce())){
@@ -169,6 +185,7 @@ public class ZutatenButtonListener implements ActionListener {
         }
     }
 
+    // Sauce oder Zutat aus der Pizza entfernen:
     private static void entferneZutat(String name){
         if(name.toLowerCase(Locale.ROOT).contains("sauce")){
             if(Objects.isNull(meinePizza.getSauce())){

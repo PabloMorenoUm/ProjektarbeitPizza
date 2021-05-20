@@ -4,36 +4,37 @@ import java.text.NumberFormat;
 import java.util.*;
 
 public class Bestellsystem {
+    /*
+    Konsolenbasiertes Bestellsystem nach Vorlage der .docx-Datei.
+     */
+
     // Währungsformat:
-    private static final NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+    private final NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
 
     // Warenkorb:
-    private static ArrayList<Pizza> pizzen = new ArrayList<>();
+    private ArrayList<Pizza> pizzen = new ArrayList<>();
     // Einzelne Pizza:
-    private static Pizza meinePizza = new Pizza();
+    private Pizza meinePizza = new Pizza();
     // Zutaten für eine einzelne Pizza:
-    private static ArrayList<Zutat> meineZutaten = new ArrayList<>();
+    private ArrayList<Zutat> meineZutaten = new ArrayList<>();
 
     // Daten von allen Saucen:
-    private static final AlleSaucen alleSaucen = new AlleSaucen();
+    private final AlleSaucen alleSaucen = new AlleSaucen();
     // Daten von allen Zutaten:
-    private static final AlleZutaten alleZutaten = new AlleZutaten();
+    private final AlleZutaten alleZutaten = new AlleZutaten();
 
-    private static int belagindex = -1;
-    private static int anzahlBelaegeProPizza = -1;
-    private static int pizzaindex = -1;
+    private int belagindex = -1;
+    private int anzahlBelaegeProPizza = -1;
+    private int pizzaindex = -1;
 
     // Konstanten:
     private static final int zutatshift = 11;
     private static final int maxbelag = 8;
 
-    private Bestellsystem() {
-    }
-
-    public static void nutzeBestellsystem() {
+    public void nutzeBestellsystem() {
         Scanner keyboard = new Scanner(System.in);
 
-
+        // Bestellsystem als riesige do-while-Schleife mit switch-Ausdruck:
         do {
             System.out.print("Wähle aus: ");
             String mystring = keyboard.nextLine().toLowerCase(Locale.ROOT).replaceAll("\\s", "");
@@ -132,7 +133,7 @@ public class Bestellsystem {
         } while (true);
     }
 
-    private static void initialisieren(){
+    private void initialisieren(){
         meinePizza = new Pizza();
         meineZutaten = new ArrayList<>();
         belagindex = -1;
@@ -140,7 +141,7 @@ public class Bestellsystem {
         pizzaindex = -1;
     }
 
-    private static void belegePizza(int nummer){
+    private void belegePizza(int nummer){
         Belag belag;
 
         if(nummer > 0 && nummer <= alleSaucen.getListe().size()){

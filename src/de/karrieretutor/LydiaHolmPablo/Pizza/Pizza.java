@@ -3,6 +3,9 @@ package de.karrieretutor.LydiaHolmPablo.Pizza;
 import java.util.ArrayList;
 
 public class Pizza {
+    /*
+    Pizzaklasse. Zutaten bitte niemals über pizza.getZutaten().add(), sondern über setZutaten() hinzufügen!
+     */
     private String name = "unbenannt";
     private double preis = 4.99;
     private Sauce sauce;

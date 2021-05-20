@@ -1,9 +1,13 @@
 package de.karrieretutor.LydiaHolmPablo.Pizza;
 
 public class Belag {
-    private int id;
-    private String name;
-    private double preis;
+    /*
+    Elternklasse für die Klassen "Sauce" und "Zutat".
+    Setter sind nicht nötig, weil Attributzuweisungen durch den Konstruktor erzwungen werden.
+     */
+    private final int id;
+    private final String name;
+    private final double preis;
 
     public Belag(int id, String name, double preis) {
         this.id = id;
@@ -15,23 +19,11 @@ public class Belag {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public double getPreis() {
         return preis;
-    }
-
-    public void setPreis(double preis) {
-        this.preis = preis;
     }
 }

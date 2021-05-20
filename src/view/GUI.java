@@ -109,7 +109,7 @@ public class GUI {
         JTextField pizzaNameText = new JTextField(10);
         bottomPanel.add(pizzaNameText);
 
-        JButton pizzaFertig = new JButton("Pizza abschließen");
+        /*JButton pizzaFertig = new JButton("Pizza abschließen");
         bottomPanel.add(pizzaFertig);
         pizzaFertig.addActionListener(new ZutatenButtonListener());
 
@@ -134,7 +134,7 @@ public class GUI {
         JButton deleteButton = new JButton("Warenkorb löschen");
         bottomPanel.add(deleteButton);
         deleteButton.addActionListener(new ZutatenButtonListener());
-
+*/
         // ---------------- Show ! --------------------------
         frame.pack();
         frame.repaint();

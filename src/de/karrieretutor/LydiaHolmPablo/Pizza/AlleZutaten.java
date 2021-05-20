@@ -1,7 +1,7 @@
 package de.karrieretutor.LydiaHolmPablo.Pizza;
 
 public class AlleZutaten extends AlleBelaege {
-
+    // Daten aller vorhandenen Zutaten:
     public AlleZutaten() {
         super.liste.add(new Zutat(11, "Gouda", 0.99));
         super.liste.add(new Zutat(12, "Mozzarella", 0.99));
