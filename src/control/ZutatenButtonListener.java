@@ -31,7 +31,6 @@ public class ZutatenButtonListener implements ActionListener {
     // Daten von allen Zutaten:
     private static final AlleZutaten alleZutaten = new AlleZutaten();
 
-    //private static int belagindex = -1;
     private static int anzahlBelaegeProPizza = -1;
     private static int pizzaindex = -1;
 
@@ -147,6 +146,7 @@ public class ZutatenButtonListener implements ActionListener {
                     if(sauce.getName().equals(name)){
                         meinePizza.setSauce((Sauce) sauce);
                         System.out.println(sauce.getName() + " hinzugefügt");
+                        break;
                     }
                 }
             } else{
@@ -160,6 +160,7 @@ public class ZutatenButtonListener implements ActionListener {
                         meinePizza.setZutaten(meineZutaten);
                         anzahlBelaegeProPizza++;
                         System.out.println(zutat.getName() + " hinzugefügt");
+                        break;
                     }
                 }
             } else{
