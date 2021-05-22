@@ -15,9 +15,6 @@ public class BottomPanel extends JPanel {
     this.setLayout(bottomLayout);
     GridBagConstraints b = new GridBagConstraints();
 
-    //b.fill = GridBagConstraints.HORIZONTAL;
-
-
     JButton neuePizzaButton = new JButton("Neue Pizza");
     b.fill = GridBagConstraints.HORIZONTAL;
     //b.anchor = GridBagConstraints.FIRST_LINE_END;

@@ -1,14 +1,10 @@
 package control;
 
 import de.karrieretutor.LydiaHolmPablo.Pizza.*;
-import jdk.jshell.Snippet;
 import view.BottomPanel;
 import view.ZutatenPanel;
-import view.StatusScreen;
-import view.GUI;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
@@ -33,7 +29,8 @@ public class ZutatenButtonListener implements ActionListener {
     private static final NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
 
     // Warenkorb:
-    private static ArrayList<Pizza> pizzen = new ArrayList<>();
+    private static ArrayList<Pizza> pizzen = new PizzenList();
+    private static ArrayList<Pizza> pizzen1 = new ArrayList<>();
     // Einzelne Pizza:
     private static Pizza meinePizza = new Pizza();
     // Zutaten für eine einzelne Pizza:

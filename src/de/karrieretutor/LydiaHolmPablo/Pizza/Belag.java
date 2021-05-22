@@ -26,4 +26,5 @@ public class Belag {
     public double getPreis() {
         return preis;
     }
+
 }
