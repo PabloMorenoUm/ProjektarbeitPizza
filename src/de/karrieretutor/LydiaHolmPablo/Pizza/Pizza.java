@@ -43,8 +43,10 @@ public class Pizza {
     }
 
     public String toString(){
-
         String gesamtString = "";
+        // Name der Pizza
+        gesamtString = gesamtString + name;
+
         // Füge zuerst die Sauce hinzu
         if (sauce != null){
             gesamtString = gesamtString + sauce.getName();
@@ -53,7 +55,7 @@ public class Pizza {
         for (int i = 0; i < zutaten.size(); i++){
             Zutat zutat =  (Zutat) zutaten.get(i);
             String zutatenName = zutat.getName();
-            gesamtString = gesamtString + "\n"
+            gesamtString = gesamtString + " \n "
                     + zutatenName;
         }
         return gesamtString;
