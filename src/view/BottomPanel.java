@@ -78,4 +78,11 @@ public class BottomPanel extends JPanel {
         this.add(finishButton,b);
         finishButton.addActionListener(new ZutatenButtonListener());
     }
+
+    public StatusScreen getCurrentStatus() {
+        return currentStatus;
+    }
+
+
+
 }

@@ -114,7 +114,5 @@ public class GUI {
     }
 
 
-    public StatusScreen getCurrentStatus() {
-        return currentStatus;
-    }
+
 }

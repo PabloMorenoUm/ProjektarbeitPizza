@@ -2,11 +2,13 @@ package control;
 
 import de.karrieretutor.LydiaHolmPablo.Pizza.*;
 import jdk.jshell.Snippet;
+import view.BottomPanel;
 import view.ZutatenPanel;
 import view.StatusScreen;
 import view.GUI;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
@@ -113,8 +115,8 @@ public class ZutatenButtonListener implements ActionListener {
                         System.out.println(currency.format(meinePizza.getPreis()));
 
                         JButton abschlussButton = (JButton) e.getSource();
-                        JPanel panel = (JPanel) abschlussButton.getParent();
-                        //panel.get
+                        BottomPanel panel = (BottomPanel) abschlussButton.getParent();
+                        panel.getCurrentStatus().setText(pizzen.toString());
 
                         // Static ? sinnvoll?
                         initialisieren();
