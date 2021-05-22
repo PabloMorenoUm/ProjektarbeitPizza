@@ -1,7 +1,10 @@
 package control;
 
 import de.karrieretutor.LydiaHolmPablo.Pizza.*;
+import jdk.jshell.Snippet;
 import view.ZutatenPanel;
+import view.StatusScreen;
+import view.GUI;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -11,6 +14,9 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Objects;
 
+/**
+ * ActionListener für die JButtons der GUI
+ */
 public class ZutatenButtonListener implements ActionListener {
     /*
     Diese Klasse enthält das GUI-basierte Pizzabestellsystem.
@@ -36,7 +42,7 @@ public class ZutatenButtonListener implements ActionListener {
     // Daten von allen Zutaten:
     private static final AlleZutaten alleZutaten = new AlleZutaten();
 
-    // Zählvariable, die für eine Pizza die Anzahl der Zutaten zählt:
+    /** Zählvariable, die für eine Pizza die Anzahl der Zutaten zählt: */
     private static int anzahlBelaegeProPizza = -1;
     /*
     Index für eine Pizza im jeweiligen Bestellvorgang.
@@ -107,6 +113,7 @@ public class ZutatenButtonListener implements ActionListener {
                         System.out.println(currency.format(meinePizza.getPreis()));
 
                         initialisieren();
+
 
                         System.out.println("'Neue Pizza' oder 'Bestellung abschicken'?");
                     }
@@ -223,4 +230,15 @@ public class ZutatenButtonListener implements ActionListener {
         }
         return gesamtpreis;
     }
+
+    public static ArrayList<Pizza> getPizzen() {
+        return pizzen;
+    }
+
+    public static Pizza getMeinePizza() {
+        return meinePizza;
+    }
+
+
+
 }

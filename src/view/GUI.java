@@ -5,7 +5,9 @@ import control.ZutatenButtonListener;
 import javax.swing.*;
 import java.awt.*;
 
-
+/**
+ * Klasse der grafischen Benutzeroberfläche.
+ */
 public class GUI {
     private final JPanel centerPanel = new JPanel();
 
@@ -31,6 +33,7 @@ public class GUI {
 
     private ZutatenPanel zutat;
     private ImageLabel backgroundImage;
+    private StatusScreen currentStatus;
     //private ImageLabel backgroundImage1;
     //private ImageLabel backgroundImage2;
 
@@ -48,9 +51,6 @@ public class GUI {
 
         // --------------------- top ---------------------
         backgroundImage = new ImageLabel("testbild2.jpg");
-
-
-
         topPanel.add(backgroundImage);
         /*
         try {
@@ -99,41 +99,74 @@ public class GUI {
         this.addZutat(zutat17, c, 5, 3);*/
 
         // ------------------- bottom -----------------------
+        GridBagLayout bottomLayout = new GridBagLayout();
+        bottomPanel.setLayout(bottomLayout);
+        GridBagConstraints b = new GridBagConstraints();
+
+        //b.fill = GridBagConstraints.HORIZONTAL;
+
+
         JButton neuePizzaButton = new JButton("Neue Pizza");
-        bottomPanel.add(neuePizzaButton);
+        b.fill = GridBagConstraints.HORIZONTAL;
+        //b.anchor = GridBagConstraints.FIRST_LINE_END;
+        b.gridx = 0;
+        b.gridy = 0;
+        bottomPanel.add(neuePizzaButton,b);
         neuePizzaButton.addActionListener(new ZutatenButtonListener());
 
         JLabel pizzaNameLabel = new JLabel("Pizzaname");
-        bottomPanel.add(pizzaNameLabel);
+        b.fill = GridBagConstraints.HORIZONTAL;
+        b.gridx = 1;
+        b.gridy = 0;
+        bottomPanel.add(pizzaNameLabel,b);
 
         JTextField pizzaNameText = new JTextField(10);
-        bottomPanel.add(pizzaNameText);
+        b.fill = GridBagConstraints.HORIZONTAL;
+        b.gridx = 1;
+        b.gridy = 0;
+        bottomPanel.add(pizzaNameText,b);
 
-        JButton pizzaFertig = new JButton("Pizza abschließen");
-        bottomPanel.add(pizzaFertig);
-        pizzaFertig.addActionListener(new ZutatenButtonListener());
-
-
-        GridBagLayout bottomLayout = new GridBagLayout();
-        bottomPanel.setLayout(bottomLayout);
+        JButton pizzaAbschlussButton = new JButton("Pizza abschließen");
+        b.fill = GridBagConstraints.HORIZONTAL;
+        b.gridx = 1;
+        b.gridy = 1;
+        bottomPanel.add(pizzaAbschlussButton,b);
+        pizzaAbschlussButton.addActionListener(new ZutatenButtonListener());
 
         JLabel gesamtPreisLabel = new JLabel("Gesamtpreis");
-        bottomPanel.add(gesamtPreisLabel);
+        b.fill = GridBagConstraints.HORIZONTAL;
+        b.gridx = 0;
+        b.gridy = 2;
+        bottomPanel.add(gesamtPreisLabel,b);
 
-        StatusScreen currentStatus = new StatusScreen();
-        bottomPanel.add(currentStatus);
+        currentStatus = new StatusScreen();
+        b.fill = GridBagConstraints.HORIZONTAL;
+        b.gridx = 1;
+        b.gridy = 2;
+        bottomPanel.add(currentStatus,b);
 
         JButton orderedButton = new JButton("Bestellung Info");
-        bottomPanel.add(orderedButton);
+        b.fill = GridBagConstraints.HORIZONTAL;
+        b.gridx = 0;
+        b.gridy = 3;
+        bottomPanel.add(orderedButton,b);
         orderedButton.addActionListener(new ZutatenButtonListener());
 
+        JButton deleteButton = new JButton("Warenkorb löschen");
+        b.fill = GridBagConstraints.HORIZONTAL;
+        b.gridx = 1;
+        b.gridy = 3;
+        bottomPanel.add(deleteButton,b);
+        deleteButton.addActionListener(new ZutatenButtonListener());
+
         JButton finishButton = new JButton("Bestellung abschicken");
-        bottomPanel.add(finishButton);
+        b.fill = GridBagConstraints.HORIZONTAL;
+        b.gridx = 0;
+        b.gridy = 4;
+        bottomPanel.add(finishButton,b);
         finishButton.addActionListener(new ZutatenButtonListener());
 
-        JButton deleteButton = new JButton("Warenkorb löschen");
-        bottomPanel.add(deleteButton);
-        deleteButton.addActionListener(new ZutatenButtonListener());
+
 
         // ---------------- Show ! --------------------------
         frame.pack();
@@ -160,6 +193,7 @@ public class GUI {
     }
 
 
-
-
+    public StatusScreen getCurrentStatus() {
+        return currentStatus;
+    }
 }

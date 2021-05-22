@@ -5,6 +5,13 @@ import control.ZutatenButtonListener;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Jede Zutat wird in der Klasse GUI durch ein ZutatenPanel repräsentiert.
+ * Ein ZutatenPanel besteht stets aus den gleichen Unterkomponenten:
+ * JLabel das den Namen der Zutat anzeigt, JLabel das den Preis anzeigt,
+ * JButton mit der Aufschrift "+" mit dem sich die Zutat zur Pizza hinzufügen lässt,
+ * JButton mit er Aufschrift "-" mit dem sich die Zutat von der Pizza entfernen lässt.
+ */
 public class ZutatenPanel extends JPanel {
 
     private String zutatenName;
@@ -27,7 +34,7 @@ public class ZutatenPanel extends JPanel {
 
         JLabel zutatenLabel = new JLabel(zutatenName);
         //zutatenLabel.setPreferredSize(new Dimension(100, 100));
-        c.fill = GridBagConstraints.HORIZONTAL;
+        //c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
         this.add(zutatenLabel, c);
