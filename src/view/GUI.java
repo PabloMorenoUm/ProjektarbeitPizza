@@ -46,23 +46,12 @@ public class GUI {
         JPanel topPanel = new JPanel();
         frame.add(topPanel, BorderLayout.NORTH);
         frame.add(centerPanel, BorderLayout.CENTER);
-        JPanel bottomPanel = new JPanel();
+        JPanel bottomPanel = new BottomPanel();
         frame.add(bottomPanel, BorderLayout.EAST);
 
         // --------------------- top ---------------------
         backgroundImage = new ImageLabel("testbild2.jpg");
         topPanel.add(backgroundImage);
-        /*
-        try {
-            ImageIcon icon = new ImageIcon("testbild2.jpg");
-            JLabel background = new JLabel();
-            background.setIcon(icon);
-            topPanel.add(background);
-
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-        */
 
 
         // ------------ center ------------------------
@@ -97,74 +86,6 @@ public class GUI {
 
         /*ZutatenPanel zutat17 = new ZutatenPanel("Artischocken", preis139);
         this.addZutat(zutat17, c, 5, 3);*/
-
-        // ------------------- bottom -----------------------
-        GridBagLayout bottomLayout = new GridBagLayout();
-        bottomPanel.setLayout(bottomLayout);
-        GridBagConstraints b = new GridBagConstraints();
-
-        //b.fill = GridBagConstraints.HORIZONTAL;
-
-
-        JButton neuePizzaButton = new JButton("Neue Pizza");
-        b.fill = GridBagConstraints.HORIZONTAL;
-        //b.anchor = GridBagConstraints.FIRST_LINE_END;
-        b.gridx = 0;
-        b.gridy = 0;
-        bottomPanel.add(neuePizzaButton,b);
-        neuePizzaButton.addActionListener(new ZutatenButtonListener());
-
-        JLabel pizzaNameLabel = new JLabel("Pizzaname");
-        b.fill = GridBagConstraints.HORIZONTAL;
-        b.gridx = 1;
-        b.gridy = 0;
-        bottomPanel.add(pizzaNameLabel,b);
-
-        JTextField pizzaNameText = new JTextField(10);
-        b.fill = GridBagConstraints.HORIZONTAL;
-        b.gridx = 1;
-        b.gridy = 0;
-        bottomPanel.add(pizzaNameText,b);
-
-        JButton pizzaAbschlussButton = new JButton("Pizza abschließen");
-        b.fill = GridBagConstraints.HORIZONTAL;
-        b.gridx = 1;
-        b.gridy = 1;
-        bottomPanel.add(pizzaAbschlussButton,b);
-        pizzaAbschlussButton.addActionListener(new ZutatenButtonListener());
-
-        JLabel gesamtPreisLabel = new JLabel("Gesamtpreis");
-        b.fill = GridBagConstraints.HORIZONTAL;
-        b.gridx = 0;
-        b.gridy = 2;
-        bottomPanel.add(gesamtPreisLabel,b);
-
-        currentStatus = new StatusScreen();
-        b.fill = GridBagConstraints.HORIZONTAL;
-        b.gridx = 1;
-        b.gridy = 2;
-        bottomPanel.add(currentStatus,b);
-
-        JButton orderedButton = new JButton("Bestellung Info");
-        b.fill = GridBagConstraints.HORIZONTAL;
-        b.gridx = 0;
-        b.gridy = 3;
-        bottomPanel.add(orderedButton,b);
-        orderedButton.addActionListener(new ZutatenButtonListener());
-
-        JButton deleteButton = new JButton("Warenkorb löschen");
-        b.fill = GridBagConstraints.HORIZONTAL;
-        b.gridx = 1;
-        b.gridy = 3;
-        bottomPanel.add(deleteButton,b);
-        deleteButton.addActionListener(new ZutatenButtonListener());
-
-        JButton finishButton = new JButton("Bestellung abschicken");
-        b.fill = GridBagConstraints.HORIZONTAL;
-        b.gridx = 0;
-        b.gridy = 4;
-        bottomPanel.add(finishButton,b);
-        finishButton.addActionListener(new ZutatenButtonListener());
 
 
 

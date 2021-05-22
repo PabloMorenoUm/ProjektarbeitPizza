@@ -112,7 +112,13 @@ public class ZutatenButtonListener implements ActionListener {
                         System.out.print(" kostet ");
                         System.out.println(currency.format(meinePizza.getPreis()));
 
+                        JButton abschlussButton = (JButton) e.getSource();
+                        JPanel panel = (JPanel) abschlussButton.getParent();
+                        //panel.get
+
+                        // Static ? sinnvoll?
                         initialisieren();
+
 
 
                         System.out.println("'Neue Pizza' oder 'Bestellung abschicken'?");
