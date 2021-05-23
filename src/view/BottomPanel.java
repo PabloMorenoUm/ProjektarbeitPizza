@@ -8,6 +8,7 @@ import java.awt.*;
 public class BottomPanel extends JPanel {
 
     private StatusScreen currentStatus;
+    private JTextArea currentStatusTextArea;
 
     public BottomPanel(){
 
@@ -74,11 +75,19 @@ public class BottomPanel extends JPanel {
     b.gridy = 4;
         this.add(finishButton,b);
         finishButton.addActionListener(new ZutatenButtonListener());
+
+        currentStatusTextArea = new JTextArea();
+        b.fill = GridBagConstraints.HORIZONTAL;
+        b.gridx = 1;
+        b.gridy = 4;
+        this.add(currentStatusTextArea,b);
     }
 
     public StatusScreen getCurrentStatus() {
         return currentStatus;
     }
+
+    public JTextArea getCurrentStatusTextArea() {return currentStatusTextArea;}
 
 
 

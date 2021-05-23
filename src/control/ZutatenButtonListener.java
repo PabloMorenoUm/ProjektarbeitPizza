@@ -114,6 +114,7 @@ public class ZutatenButtonListener implements ActionListener {
                         JButton abschlussButton = (JButton) e.getSource();
                         BottomPanel panel = (BottomPanel) abschlussButton.getParent();
                         panel.getCurrentStatus().setText(pizzen.toString());
+                        panel.getCurrentStatusTextArea().setText(pizzen.toString());
 
                         // Static ? sinnvoll?
                         initialisieren();

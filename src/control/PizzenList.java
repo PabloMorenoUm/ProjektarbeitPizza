@@ -14,7 +14,7 @@ public class PizzenList extends ArrayList {
         for (int i = 0; i < this.size(); i++){
             Pizza pizza =  (Pizza) this.get(i);
             String pizzaString = pizza.toString();
-            gesamtString = gesamtString + "\n" + pizzaString;
+            gesamtString = gesamtString + "\r\n" + pizzaString;
         }
         return gesamtString;
     }

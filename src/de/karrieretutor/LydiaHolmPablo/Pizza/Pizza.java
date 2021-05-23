@@ -45,17 +45,19 @@ public class Pizza {
     public String toString(){
         String gesamtString = "";
         // Name der Pizza
-        gesamtString = gesamtString + name;
+        gesamtString = gesamtString + name + " \r\n";
 
         // Füge zuerst die Sauce hinzu
         if (sauce != null){
             gesamtString = gesamtString + sauce.getName();
+            //gesamtString = String.format("%s%n%s", gesamtString, sauce.getName());
         }
         // Füge nun die Zutaten dazu
         for (int i = 0; i < zutaten.size(); i++){
             Zutat zutat =  (Zutat) zutaten.get(i);
             String zutatenName = zutat.getName();
-            gesamtString = gesamtString + " \n "
+            //gesamtString = String.format("%s%n%s", gesamtString, zutat.getName());
+            gesamtString = gesamtString + " \r\n "
                     + zutatenName;
         }
         return gesamtString;
