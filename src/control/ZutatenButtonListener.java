@@ -2,6 +2,7 @@ package control;
 
 import de.karrieretutor.LydiaHolmPablo.Pizza.*;
 import view.BottomPanel;
+import view.CenterPanel;
 import view.ZutatenPanel;
 
 import javax.swing.*;
@@ -54,22 +55,17 @@ public class ZutatenButtonListener implements ActionListener {
     // Eigentliches Bestellsystem:
     @Override
     public void actionPerformed(ActionEvent e) {
-        // (JButton)e.getComponent()).getParent()
 
         // Extrahiere den Belagnamen, falls + oder - angeklickt wurde:
         if(e.getActionCommand().equals("   +   ") || e.getActionCommand().equals("   -   ")){
             JButton button = (JButton) e.getSource();
-            ZutatenPanel panel = (ZutatenPanel) button.getParent();
-            zutatenName = panel.getZutatenName();
+            ZutatenPanel zutatenPanel = (ZutatenPanel) button.getParent();
+            zutatenName = zutatenPanel.getZutatenName();
+
+            CenterPanel centerpanel = (CenterPanel) zutatenPanel.getParent();
+            centerpanel.getCurrentPizzaTextArea().setText(meinePizza.toString());
         }
-        /*try {
-            JButton button = (JButton) e.getSource();
-            ZutatenPanel panel = (ZutatenPanel) button.getParent();
-            zutatenName = panel.getZutatenName();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            System.out.println("Plus and Minus ButtonListener Not working like you think!");
-        }*/
+
 
         // Bestellsystem als großer switch-Ausdruck:
         switch (e.getActionCommand()) {
@@ -78,6 +74,7 @@ public class ZutatenButtonListener implements ActionListener {
                 meinePizza = new Pizza();
                 meineZutaten = new HashSet<>();
                 pizzaindex++;
+
                 break;
             case "   +   ":
                 if(pizzaindex < 0){
@@ -85,6 +82,10 @@ public class ZutatenButtonListener implements ActionListener {
                     break;
                 } else{
                     belegePizza(zutatenName);
+                    //JButton abschlussButton = (JButton) e.getSource();
+                    //CenterPanel centerpanel = (CenterPanel) zutatenPanel.getParent();
+                    //centerpanel.getCurrentPizzaTextArea().setText(pizza.toString());
+                    //centerpanel.getCurrentPizzaTextArea().setText(meinePizza.toString());
                 }
                 break;
             case "   -   ":
@@ -93,6 +94,9 @@ public class ZutatenButtonListener implements ActionListener {
                     break;
                 } else{
                     entferneZutat(zutatenName);
+                    //JButton abschlussButton = (JButton) e.getSource();
+                    //CenterPanel centerpanel = (CenterPanel) zutatenPanel.getParent();
+                    //centerpanel.getCurrentPizzaTextArea().setText(pizza.toString());
                 }
                 break;
             case "Pizza abschließen":
@@ -110,13 +114,11 @@ public class ZutatenButtonListener implements ActionListener {
 
                         JButton abschlussButton = (JButton) e.getSource();
                         BottomPanel panel = (BottomPanel) abschlussButton.getParent();
-                        panel.getCurrentStatus().setText(pizzen.toString());
+                        //panel.getCurrentStatus().setText(pizzen.toString());
                         panel.getCurrentStatusTextArea().setText(pizzen.toString());
 
                         // Static ? sinnvoll?
                         initialisieren();
-
-
 
                         System.out.println("'Neue Pizza' oder 'Bestellung abschicken'?");
                     }
@@ -140,10 +142,12 @@ public class ZutatenButtonListener implements ActionListener {
                 if(pizzen.size() > 0){
                     System.out.print("Das kostet insgesamt ");
                     System.out.println(currency.format(zahlen(pizzen)));
+                    // Evtl exportieren in Datei ???
                 } else {
                     System.out.println("Nichts bestellt? Dann beim nächsten Mal! :-)");
                 }
                 System.out.println("Gehe auf 'Warenkorb löschen', um die Bestellung abzuschließen.");
+
                 break;
             case "Warenkorb löschen":
                 System.out.println("Verlauf gelöscht!");
