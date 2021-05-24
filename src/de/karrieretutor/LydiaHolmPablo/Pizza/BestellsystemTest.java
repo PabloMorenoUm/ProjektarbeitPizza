@@ -1,6 +1,7 @@
 package de.karrieretutor.LydiaHolmPablo.Pizza;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -10,7 +11,7 @@ class BestellsystemTest {
     @org.junit.jupiter.api.Test
     void checkPreis(){
         Pizza pizza = new Pizza();
-        ArrayList<Zutat> zutaten = new ArrayList<>();
+        HashSet<Zutat> zutaten = new HashSet<>();
         zutaten.add((Zutat) alleZutaten.getListe().get(0));
         zutaten.add((Zutat) alleZutaten.getListe().get(1));
         pizza.setZutaten(zutaten);
@@ -22,13 +23,13 @@ class BestellsystemTest {
         ArrayList<Pizza> pizzen = new ArrayList<>();
 
         Pizza pizza1 = new Pizza();
-        ArrayList<Zutat> zutaten1 = new ArrayList<>();
+        HashSet<Zutat> zutaten1 = new HashSet<>();
         zutaten1.add((Zutat) alleZutaten.getListe().get(1));
         zutaten1.add((Zutat) alleZutaten.getListe().get(2));
         pizza1.setZutaten(zutaten1);
 
         Pizza pizza2 = new Pizza();
-        ArrayList<Zutat> zutaten2 = new ArrayList<>();
+        HashSet<Zutat> zutaten2 = new HashSet<>();
         zutaten2.add((Zutat) alleZutaten.getListe().get(3));
         zutaten2.add((Zutat) alleZutaten.getListe().get(5));
         zutaten2.add((Zutat) alleZutaten.getListe().get(6));

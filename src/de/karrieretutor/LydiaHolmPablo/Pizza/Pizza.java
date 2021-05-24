@@ -1,6 +1,6 @@
 package de.karrieretutor.LydiaHolmPablo.Pizza;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Pizza {
     /*
@@ -9,7 +9,7 @@ public class Pizza {
     private String name = "unbenannt";
     private double preis = 4.99;
     private Sauce sauce;
-    private ArrayList<Zutat> zutaten = new ArrayList<>();
+    private HashSet<Zutat> zutaten = new HashSet<>();
 
     public String getName() {
         return name;
@@ -31,11 +31,11 @@ public class Pizza {
         this.sauce = sauce;
     }
 
-    public ArrayList<Zutat> getZutaten() {
+    public HashSet<Zutat> getZutaten() {
         return zutaten;
     }
 
-    public void setZutaten(ArrayList<Zutat> zutaten) {
+    public void setZutaten(HashSet<Zutat> zutaten) {
         this.zutaten = zutaten;
         for(Zutat zutat: zutaten){
             this.preis += zutat.getPreis();
@@ -54,7 +54,7 @@ public class Pizza {
         }
         // Füge nun die Zutaten dazu
         for (int i = 0; i < zutaten.size(); i++){
-            Zutat zutat =  (Zutat) zutaten.get(i);
+            Zutat zutat =  (Zutat) zutaten.toArray()[i];
             String zutatenName = zutat.getName();
             //gesamtString = String.format("%s%n%s", gesamtString, zutat.getName());
             gesamtString = gesamtString + " \r\n "

@@ -16,7 +16,7 @@ public class Bestellsystem {
     // Einzelne Pizza:
     private Pizza meinePizza = new Pizza();
     // Zutaten für eine einzelne Pizza:
-    private ArrayList<Zutat> meineZutaten = new ArrayList<>();
+    private HashSet<Zutat> meineZutaten = new HashSet<>();
 
     // Daten von allen Saucen:
     private final AlleSaucen alleSaucen = new AlleSaucen();
@@ -24,7 +24,6 @@ public class Bestellsystem {
     private final AlleZutaten alleZutaten = new AlleZutaten();
 
     private int belagindex = -1;
-    private int anzahlBelaegeProPizza = -1;
     private int pizzaindex = -1;
 
     // Konstanten:
@@ -62,9 +61,8 @@ public class Bestellsystem {
                 case "2":
                     System.out.println("Neue Pizza wird erstellt.");
                     meinePizza = new Pizza();
-                    meineZutaten = new ArrayList<>();
+                    meineZutaten = new HashSet<>();
                     pizzaindex++;
-                    anzahlBelaegeProPizza = 0;
                     break;
                 case "zutat":
                 case "3":
@@ -91,11 +89,11 @@ public class Bestellsystem {
 
                             initialisieren();
 
-                            System.out.println("'Neue Pizza' oder 'Bestellen'?");
+                            System.out.println("'NEUE PIZZA' oder 'BESTELLEN'?");
                         }
 
                     } else {
-                        System.out.println("Erst 'Neue Pizza' auswählen!");
+                        System.out.println("Erst 'NEUE PIZZA' auswählen!");
                     }
                     break;
                 case "bestellunginfo":
@@ -107,7 +105,7 @@ public class Bestellsystem {
                             System.out.println(currency.format(pizza.getPreis()));
                         }
                     } else {
-                        System.out.println("Noch keine Pizza im Warenkorb. 'Fertig' bringt die Pizza in den Warenkorb");
+                        System.out.println("Noch keine Pizza im Warenkorb.");
                     }
                     break;
                 case "bestellen":
@@ -115,10 +113,10 @@ public class Bestellsystem {
                     if(pizzen.size() > 0){
                         System.out.print("Das kostet insgesamt ");
                         System.out.println(currency.format(zahlen(pizzen)));
+                        System.out.println("Gehe auf 'Ende', um die Bestellung abzuschließen.");
                     } else {
-                        System.out.println("Nichts bestellt? Dann beim nächsten Mal! :-)");
+                        System.out.println("Es ist noch keine Pizza im Warenkorb.");
                     }
-                    System.out.println("Gehe auf 'Ende', um die Bestellung abzuschließen.");
                     break;
                 case "ende":
                 case "7":
@@ -135,9 +133,8 @@ public class Bestellsystem {
 
     private void initialisieren(){
         meinePizza = new Pizza();
-        meineZutaten = new ArrayList<>();
+        meineZutaten = new HashSet<>();
         belagindex = -1;
-        anzahlBelaegeProPizza = -1;
         pizzaindex = -1;
     }
 
@@ -154,12 +151,15 @@ public class Bestellsystem {
             }
         } else if (nummer >= zutatshift &&
                 nummer < alleZutaten.getListe().size() + zutatshift) {
-            if(anzahlBelaegeProPizza < maxbelag){
+            if(meineZutaten.size() < maxbelag){
                 belag = alleZutaten.getListe().get(nummer - zutatshift);
+                if(meineZutaten.contains((Zutat) belag)){
+                    System.out.println(belag.getName() + " ist schon drauf. Andere Zutat?");
+                } else{
+                    System.out.println(belag.getName() + " hinzugefügt");
+                }
                 meineZutaten.add((Zutat) belag);
                 meinePizza.setZutaten(meineZutaten);
-                anzahlBelaegeProPizza++;
-                System.out.println(belag.getName() + " hinzugefügt");
             } else{
                 System.out.println("Nicht mehr als " + maxbelag + " Zutaten");
             }

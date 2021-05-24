@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -34,15 +35,12 @@ public class ZutatenButtonListener implements ActionListener {
     // Einzelne Pizza:
     private static Pizza meinePizza = new Pizza();
     // Zutaten für eine einzelne Pizza:
-    private static ArrayList<Zutat> meineZutaten = new ArrayList<>();
+    private static HashSet<Zutat> meineZutaten = new HashSet<>();
 
     // Daten von allen Saucen:
     private static final AlleSaucen alleSaucen = new AlleSaucen();
     // Daten von allen Zutaten:
     private static final AlleZutaten alleZutaten = new AlleZutaten();
-
-    /** Zählvariable, die für eine Pizza die Anzahl der Zutaten zählt: */
-    private static int anzahlBelaegeProPizza = -1;
     /*
     Index für eine Pizza im jeweiligen Bestellvorgang.
     Eigentlich ist nur entscheidend, ob dieser Index negativ ist oder nicht.
@@ -78,9 +76,8 @@ public class ZutatenButtonListener implements ActionListener {
             case "Neue Pizza":
                 System.out.println("Neue Pizza wird erstellt.");
                 meinePizza = new Pizza();
-                meineZutaten = new ArrayList<>();
+                meineZutaten = new HashSet<>();
                 pizzaindex++;
-                anzahlBelaegeProPizza = 0;
                 break;
             case "   +   ":
                 if(pizzaindex < 0){
@@ -163,8 +160,7 @@ public class ZutatenButtonListener implements ActionListener {
     // Pizzainstanz, Zutatenkorb und Indizes resetten:
     private static void initialisieren(){
         meinePizza = new Pizza();
-        meineZutaten = new ArrayList<>();
-        anzahlBelaegeProPizza = -1;
+        meineZutaten = new HashSet<>();
         pizzaindex = -1;
     }
 
@@ -183,13 +179,16 @@ public class ZutatenButtonListener implements ActionListener {
                 System.out.println("Sauce ist schon vorhanden.");
             }
         } else{
-            if(anzahlBelaegeProPizza < maxbelag){
+            if(meineZutaten.size() < maxbelag){
                 for(Belag zutat: alleZutaten.getListe()){
                     if(zutat.getName().equals(name)){
+                        if(meineZutaten.contains((Zutat) zutat)){
+                            System.out.println(zutat.getName() + " ist schon drauf. Andere Zutat?");
+                        } else{
+                            System.out.println(zutat.getName() + " hinzugefügt");
+                        }
                         meineZutaten.add((Zutat) zutat);
                         meinePizza.setZutaten(meineZutaten);
-                        anzahlBelaegeProPizza++;
-                        System.out.println(zutat.getName() + " hinzugefügt");
                         break;
                     }
                 }
@@ -221,7 +220,6 @@ public class ZutatenButtonListener implements ActionListener {
                         System.out.println(belagBisher.getName() + " entfernt.");
                         meineZutaten.remove(belagBisher);
                         meinePizza.setZutaten(meineZutaten);
-                        anzahlBelaegeProPizza--;
                         break;
                     }
                 }
