@@ -107,6 +107,7 @@ public class ZutatenButtonListener implements ActionListener {
                         /*System.out.print("Wie soll die Pizza heißen? ");
                         String pizzaname = keyboard.nextLine();
                         meinePizza.setName(pizzaname);*/
+
                         pizzen.add(meinePizza);
                         System.out.print(meinePizza.getName());
                         System.out.print(" kostet ");
@@ -119,6 +120,8 @@ public class ZutatenButtonListener implements ActionListener {
 
                         // Static ? sinnvoll?
                         initialisieren();
+
+
 
                         System.out.println("'Neue Pizza' oder 'Bestellung abschicken'?");
                     }
@@ -154,6 +157,10 @@ public class ZutatenButtonListener implements ActionListener {
 
                 pizzen = new ArrayList<>();
                 initialisieren();
+                JButton loeschButton = (JButton) e.getSource();
+                BottomPanel panel = (BottomPanel) loeschButton.getParent();
+                //panel.getCurrentStatus().setText(pizzen.toString());
+                panel.getCurrentStatusTextArea().setText("");
                 break;
             default:
                 System.out.println("Keine gültige Eingabe.");

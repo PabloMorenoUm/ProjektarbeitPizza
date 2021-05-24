@@ -33,16 +33,16 @@ public class BottomPanel extends JPanel {
     JTextField pizzaNameText = new JTextField(10);
     b.fill = GridBagConstraints.HORIZONTAL;
     b.gridx = 1;
-    b.gridy = 0;
+    b.gridy = 2;
         this.add(pizzaNameText,b);
 
     JButton pizzaAbschlussButton = new JButton("Pizza abschließen");
     b.fill = GridBagConstraints.HORIZONTAL;
     b.gridx = 1;
-    b.gridy = 1;
+    b.gridy = 3;
         this.add(pizzaAbschlussButton,b);
         pizzaAbschlussButton.addActionListener(new ZutatenButtonListener());
-
+/*
     JLabel gesamtPreisLabel = new JLabel("Gesamtpreis");
     b.fill = GridBagConstraints.HORIZONTAL;
     b.gridx = 0;
@@ -58,28 +58,28 @@ public class BottomPanel extends JPanel {
     JButton orderedButton = new JButton("Bestellung Info");
     b.fill = GridBagConstraints.HORIZONTAL;
     b.gridx = 0;
-    b.gridy = 3;
+    b.gridy = 4;
         this.add(orderedButton,b);
         orderedButton.addActionListener(new ZutatenButtonListener());
-
+*/
     JButton deleteButton = new JButton("Warenkorb löschen");
     b.fill = GridBagConstraints.HORIZONTAL;
     b.gridx = 1;
-    b.gridy = 3;
+    b.gridy = 6;
         this.add(deleteButton,b);
         deleteButton.addActionListener(new ZutatenButtonListener());
 
     JButton finishButton = new JButton("Bestellung abschicken");
     b.fill = GridBagConstraints.HORIZONTAL;
     b.gridx = 0;
-    b.gridy = 4;
+    b.gridy = 6;
         this.add(finishButton,b);
         finishButton.addActionListener(new ZutatenButtonListener());
 
-        currentStatusTextArea = new JTextArea();
+        currentStatusTextArea = new JTextArea(10,20);
         b.fill = GridBagConstraints.HORIZONTAL;
         b.gridx = 1;
-        b.gridy = 4;
+        b.gridy = 5;
         this.add(currentStatusTextArea,b);
     }
 
