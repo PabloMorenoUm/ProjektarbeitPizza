@@ -49,7 +49,7 @@ public class Pizza {
 
         // Füge zuerst die Sauce hinzu
         if (sauce != null){
-            gesamtString = gesamtString + sauce.getName();
+            gesamtString = gesamtString + sauce.getName() + " " + String.valueOf(sauce.getPreis()) + " €";
             //gesamtString = String.format("%s%n%s", gesamtString, sauce.getName());
         }
         // Füge nun die Zutaten dazu
@@ -58,7 +58,7 @@ public class Pizza {
             String zutatenName = zutat.getName();
             //gesamtString = String.format("%s%n%s", gesamtString, zutat.getName());
             gesamtString = gesamtString + " \r\n "
-                    + zutatenName;
+                    + zutatenName + " " + String.valueOf(zutat.getPreis()) + " €";
         }
         return gesamtString;
     }

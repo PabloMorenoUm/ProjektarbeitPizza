@@ -96,7 +96,7 @@ public class ZutatenButtonListener implements ActionListener {
 
                 belegePizza(zutatenName);
                 CenterPanel centerpanel = (CenterPanel) zutatenPanel.getParent();
-                centerpanel.getCurrentPizzaTextArea().setText(meinePizza.toString());
+                centerpanel.getCurrentPizzaTextArea().setText(meinePizza.toString() + "\n" + "-------------------- \n" + "Preis:" + String.valueOf(meinePizza.getPreis()));
                 break;
                 }
 
@@ -112,7 +112,7 @@ public class ZutatenButtonListener implements ActionListener {
 
                     entferneZutat(zutatenName);
                     CenterPanel centerpanel = (CenterPanel) zutatenPanel.getParent();
-                    centerpanel.getCurrentPizzaTextArea().setText(meinePizza.toString());
+                    centerpanel.getCurrentPizzaTextArea().setText(meinePizza.toString()  + "\n" + "-------------------- \n" + "Preis:" + String.valueOf(meinePizza.getPreis()));
                     break;
                 }
 
@@ -190,7 +190,8 @@ public class ZutatenButtonListener implements ActionListener {
                         BottomPanel panel = (BottomPanel) abschlussButton.getParent();
                         //JFrame frame = (JFrame)  panel.getParent();
                         //panel.getCurrentStatus().setText(pizzen.toString());
-                        panel.getCurrentStatusTextArea().setText(pizzen.toString());
+
+                        panel.getCurrentStatusTextArea().setText(pizzen.toString() );
 
                         // Static ? sinnvoll?
                         initialisieren();
