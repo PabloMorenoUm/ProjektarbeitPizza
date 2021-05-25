@@ -56,12 +56,27 @@ public class ZutatenButtonListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        // Extrahiere den Belagnamen, falls + oder - angeklickt wurde:
+
+
+
+        //Extrahiere den Belagnamen, falls + oder - angeklickt wurde:
         if(e.getActionCommand().equals("   +   ") || e.getActionCommand().equals("   -   ")){
             JButton button = (JButton) e.getSource();
             ZutatenPanel zutatenPanel = (ZutatenPanel) button.getParent();
             zutatenName = zutatenPanel.getZutatenName();
 
+            if(pizzaindex < 0){
+                System.out.println("Erst eine neue Pizza auswählen!");
+                //reak;
+                 }
+            else {
+                if (e.getActionCommand().equals("   +   ")) {
+                    belegePizza(zutatenName);
+                }
+                else {
+                    entferneZutat(zutatenName);
+                }
+            }
             CenterPanel centerpanel = (CenterPanel) zutatenPanel.getParent();
             centerpanel.getCurrentPizzaTextArea().setText(meinePizza.toString());
         }
@@ -76,12 +91,22 @@ public class ZutatenButtonListener implements ActionListener {
                 pizzaindex++;
 
                 break;
+                /*
+
+
             case "   +   ":
                 if(pizzaindex < 0){
                     System.out.println("Erst eine neue Pizza auswählen!");
                     break;
                 } else{
                     belegePizza(zutatenName);
+
+                    JButton button = (JButton) e.getSource();
+                    ZutatenPanel zutatenPanel = (ZutatenPanel) button.getParent();
+                    zutatenName = zutatenPanel.getZutatenName();
+
+                    CenterPanel centerpanel = (CenterPanel) zutatenPanel.getParent();
+                    centerpanel.getCurrentPizzaTextArea().setText(meinePizza.toString());
                     //JButton abschlussButton = (JButton) e.getSource();
                     //CenterPanel centerpanel = (CenterPanel) zutatenPanel.getParent();
                     //centerpanel.getCurrentPizzaTextArea().setText(pizza.toString());
@@ -93,12 +118,21 @@ public class ZutatenButtonListener implements ActionListener {
                     System.out.println("Erst eine neue Pizza auswählen!");
                     break;
                 } else{
+                    JButton button = (JButton) e.getSource();
+                    ZutatenPanel zutatenPanel = (ZutatenPanel) button.getParent();
+                    zutatenName = zutatenPanel.getZutatenName();
+
+                    CenterPanel centerpanel = (CenterPanel) zutatenPanel.getParent();
+                    centerpanel.getCurrentPizzaTextArea().setText(meinePizza.toString());
+
                     entferneZutat(zutatenName);
                     //JButton abschlussButton = (JButton) e.getSource();
                     //CenterPanel centerpanel = (CenterPanel) zutatenPanel.getParent();
                     //centerpanel.getCurrentPizzaTextArea().setText(pizza.toString());
                 }
                 break;
+
+                 */
             case "Pizza abschließen":
                 if(pizzaindex >= 0){
                     if(meinePizza.getZutaten().size() > maxbelag){
