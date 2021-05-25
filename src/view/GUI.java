@@ -44,9 +44,11 @@ public class GUI {
         JFrame frame = new JFrame("Luigi's Pizza");
         frame.setSize(1300,1300);
         frame.setLayout(new BorderLayout());
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel topPanel = new JPanel();
+//        final JLabel label = new JLabel("LUIGGI'S PIZZA");
+//        frame.getContentPane().add(label);
         frame.add(topPanel, BorderLayout.NORTH);
         // --------------------- top ---------------------
         backgroundImage = new ImageLabel("testbild2.jpg");
