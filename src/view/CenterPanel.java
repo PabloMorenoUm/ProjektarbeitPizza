@@ -1,5 +1,7 @@
 package view;
 
+import control.ZutatenButtonListener;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -21,31 +23,64 @@ public class CenterPanel extends JPanel {
         c.weighty = 0.5;
         c.weightx = 0.5;
 
-        this.addZutat("Tomatensauce", preis000, c, 0,0);
-        this.addZutat("BBQ-Sauce", preis000, c, 1,0);
 
         currentPizzaTextArea = new JTextArea();
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 4;
+        c.gridx = 3;
         c.gridy = 0;
         this.add(currentPizzaTextArea,c);
 
-        this.addZutat("Gouda", preis099, c, 0,1);
-        this.addZutat("Mozzarella", preis099, c, 1,1);
-        this.addZutat("Salami", preis139, c, 2,1);
-        this.addZutat("Schinken", preis139, c, 3,1);
-        this.addZutat("Thunfisch", preis099, c, 4,1);
+        JLabel pizzaNameLabel = new JLabel("Pizzaname");
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 1;
+        c.gridy = 0;
+        this.add(pizzaNameLabel,c);
 
-        this.addZutat("Peperoni", preis059, c, 0,2);
-        this.addZutat("Ananas", preis059, c, 1,2);
-        this.addZutat("Mais", preis059, c, 2,2);
-        this.addZutat("Zwiebeln", preis059, c, 3,2);
-        this.addZutat("Oliven", preis099, c, 4,2);
+        JTextField pizzaNameText = new JTextField(10);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 2;
+        c.gridy = 0;
+        this.add(pizzaNameText,c);
 
-        this.addZutat("Ei", preis059, c, 0,3);
-        this.addZutat("Paprika", preis059, c, 1,3);
-        this.addZutat("Tomaten", preis059, c, 2,3);
-        this.addZutat("Champignons", preis059, c, 3,3);
+
+        JButton neuePizzaButton = new JButton("Neue Pizza");
+        c.fill = GridBagConstraints.HORIZONTAL;
+        //b.anchor = GridBagConstraints.FIRST_LINE_END;
+        c.gridx = 0;
+        c.gridy = 0;
+        this.add(neuePizzaButton,c);
+        neuePizzaButton.addActionListener(new ZutatenButtonListener());
+
+        /*
+
+
+        JButton pizzaAbschlussButton = new JButton("Pizza abschließen");
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 4;
+        c.gridy = 0;
+        this.add(pizzaAbschlussButton,c);
+        pizzaAbschlussButton.addActionListener(new ZutatenButtonListener());
+ */
+
+        this.addZutat("Tomatensauce", preis000, c, 0,1);
+        this.addZutat("BBQ-Sauce", preis000, c, 1,1);
+
+        this.addZutat("Gouda", preis099, c, 0,2);
+        this.addZutat("Mozzarella", preis099, c, 1,2);
+        this.addZutat("Salami", preis139, c, 2,2);
+        this.addZutat("Schinken", preis139, c, 3,2);
+        this.addZutat("Thunfisch", preis099, c, 4,2);
+
+        this.addZutat("Peperoni", preis059, c, 0,3);
+        this.addZutat("Ananas", preis059, c, 1,3);
+        this.addZutat("Mais", preis059, c, 2,3);
+        this.addZutat("Zwiebeln", preis059, c, 3,3);
+        this.addZutat("Oliven", preis099, c, 4,3);
+
+        this.addZutat("Ei", preis059, c, 0,4);
+        this.addZutat("Paprika", preis059, c, 1,4);
+        this.addZutat("Tomaten", preis059, c, 2,4);
+        this.addZutat("Champignons", preis059, c, 3,4);
 
     }
 

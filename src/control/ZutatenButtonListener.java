@@ -48,6 +48,7 @@ public class ZutatenButtonListener implements ActionListener {
     Ein negativer Index bedeutet, dass es noch keine Pizza im Warenkorb gibt.
      */
     private static int pizzaindex = -1;
+    private static int pizzaNummer = 0;
 
     // Konstanten:
     private static final int maxbelag = 8;
@@ -56,9 +57,7 @@ public class ZutatenButtonListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-
-
-
+        /*
         //Extrahiere den Belagnamen, falls + oder - angeklickt wurde:
         if(e.getActionCommand().equals("   +   ") || e.getActionCommand().equals("   -   ")){
             JButton button = (JButton) e.getSource();
@@ -79,16 +78,56 @@ public class ZutatenButtonListener implements ActionListener {
             }
             CenterPanel centerpanel = (CenterPanel) zutatenPanel.getParent();
             centerpanel.getCurrentPizzaTextArea().setText(meinePizza.toString());
+            //break;
         }
-
+*/
 
         // Bestellsystem als großer switch-Ausdruck:
         switch (e.getActionCommand()) {
+            case "   +   " :
+                if(pizzaindex < 0){
+                    System.out.println("Erst eine neue Pizza auswählen!");
+                    break;
+                }
+                else {
+                JButton button = (JButton) e.getSource();
+                ZutatenPanel zutatenPanel = (ZutatenPanel) button.getParent();
+                zutatenName = zutatenPanel.getZutatenName();
+
+                belegePizza(zutatenName);
+                CenterPanel centerpanel = (CenterPanel) zutatenPanel.getParent();
+                centerpanel.getCurrentPizzaTextArea().setText(meinePizza.toString());
+                break;
+                }
+
+            case "   -   " :
+                if(pizzaindex < 0){
+                    System.out.println("Erst eine neue Pizza auswählen!");
+                    break;
+                }
+                else {
+                    JButton button = (JButton) e.getSource();
+                    ZutatenPanel zutatenPanel = (ZutatenPanel) button.getParent();
+                    zutatenName = zutatenPanel.getZutatenName();
+
+                    entferneZutat(zutatenName);
+                    CenterPanel centerpanel = (CenterPanel) zutatenPanel.getParent();
+                    centerpanel.getCurrentPizzaTextArea().setText(meinePizza.toString());
+                    break;
+                }
+
+
             case "Neue Pizza":
                 System.out.println("Neue Pizza wird erstellt.");
                 meinePizza = new Pizza();
                 meineZutaten = new HashSet<>();
                 pizzaindex++;
+                pizzaNummer++;
+                meinePizza.setName("Pizza " + String.valueOf(pizzaNummer));
+
+                JButton button = (JButton) e.getSource();
+                CenterPanel centerpanel = (CenterPanel) button.getParent();
+                centerpanel.getCurrentPizzaTextArea().setText(meinePizza.getName());
 
                 break;
                 /*
@@ -141,7 +180,7 @@ public class ZutatenButtonListener implements ActionListener {
                         /*System.out.print("Wie soll die Pizza heißen? ");
                         String pizzaname = keyboard.nextLine();
                         meinePizza.setName(pizzaname);*/
-
+                        //meinePizza.setName("Pizza " + String.valueOf(pizzaindex + 1));
                         pizzen.add(meinePizza);
                         System.out.print(meinePizza.getName());
                         System.out.print(" kostet ");
@@ -149,14 +188,12 @@ public class ZutatenButtonListener implements ActionListener {
 
                         JButton abschlussButton = (JButton) e.getSource();
                         BottomPanel panel = (BottomPanel) abschlussButton.getParent();
+                        //JFrame frame = (JFrame)  panel.getParent();
                         //panel.getCurrentStatus().setText(pizzen.toString());
                         panel.getCurrentStatusTextArea().setText(pizzen.toString());
 
                         // Static ? sinnvoll?
                         initialisieren();
-
-
-
                         System.out.println("'Neue Pizza' oder 'Bestellung abschicken'?");
                     }
 

@@ -16,6 +16,7 @@ public class BottomPanel extends JPanel {
     this.setLayout(bottomLayout);
     GridBagConstraints b = new GridBagConstraints();
 
+    /*
     JButton neuePizzaButton = new JButton("Neue Pizza");
     b.fill = GridBagConstraints.HORIZONTAL;
     //b.anchor = GridBagConstraints.FIRST_LINE_END;
@@ -23,6 +24,8 @@ public class BottomPanel extends JPanel {
     b.gridy = 0;
     this.add(neuePizzaButton,b);
     neuePizzaButton.addActionListener(new ZutatenButtonListener());
+
+
 
     JLabel pizzaNameLabel = new JLabel("Pizzaname");
     b.fill = GridBagConstraints.HORIZONTAL;
@@ -35,6 +38,7 @@ public class BottomPanel extends JPanel {
     b.gridx = 1;
     b.gridy = 2;
         this.add(pizzaNameText,b);
+*/
 
     JButton pizzaAbschlussButton = new JButton("Pizza abschließen");
     b.fill = GridBagConstraints.HORIZONTAL;
@@ -42,7 +46,10 @@ public class BottomPanel extends JPanel {
     b.gridy = 3;
         this.add(pizzaAbschlussButton,b);
         pizzaAbschlussButton.addActionListener(new ZutatenButtonListener());
-/*
+
+        /*
+
+
     JLabel gesamtPreisLabel = new JLabel("Gesamtpreis");
     b.fill = GridBagConstraints.HORIZONTAL;
     b.gridx = 0;
