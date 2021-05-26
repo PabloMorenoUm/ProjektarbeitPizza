@@ -12,7 +12,7 @@ public class AlleZutaten extends AlleBelaege {
             String[] zeile;
             while(datei.hasNextLine()) {
                 zeile = datei.nextLine().split(", ");
-                super.liste.add(new Sauce(Integer.parseInt(zeile[0]), zeile[1], Double.parseDouble(zeile[2])));
+                super.liste.add(new Zutat(Integer.parseInt(zeile[0]), zeile[1], Double.parseDouble(zeile[2])));
             }
         } catch (FileNotFoundException fileNotFoundException) {
             fileNotFoundException.printStackTrace();
