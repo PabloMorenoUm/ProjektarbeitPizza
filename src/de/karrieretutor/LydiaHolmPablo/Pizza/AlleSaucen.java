@@ -1,9 +1,21 @@
 package de.karrieretutor.LydiaHolmPablo.Pizza;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class AlleSaucen extends AlleBelaege {
     // Daten aller Saucen (werden als "Belag" abgespeichert!!!):
     public AlleSaucen() {
-        super.liste.add(new Sauce(1, "Tomatensauce", 0.0));
-        super.liste.add(new Sauce(2, "BBQ-Sauce", 0.0));
+        try {
+            Scanner datei = new Scanner(new File("Saucen.csv"));
+            String[] zeile;
+            while(datei.hasNextLine()) {
+                zeile = datei.nextLine().split(", ");
+                super.liste.add(new Sauce(Integer.parseInt(zeile[0]), zeile[1], Double.parseDouble(zeile[2])));
+            }
+        } catch (FileNotFoundException fileNotFoundException) {
+            fileNotFoundException.printStackTrace();
+        }
     }
 }
