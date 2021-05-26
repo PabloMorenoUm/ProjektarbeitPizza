@@ -84,7 +84,7 @@ public class ZutatenButtonListener implements ActionListener {
 
         // Bestellsystem als großer switch-Ausdruck:
         switch (e.getActionCommand()) {
-            case "   +   " :
+            case "+" :
                 if(pizzaindex < 0){
                     System.out.println("Erst eine neue Pizza auswählen!");
                     break;
@@ -100,7 +100,7 @@ public class ZutatenButtonListener implements ActionListener {
                 break;
                 }
 
-            case "   -   " :
+            case "-" :
                 if(pizzaindex < 0){
                     System.out.println("Erst eine neue Pizza auswählen!");
                     break;
