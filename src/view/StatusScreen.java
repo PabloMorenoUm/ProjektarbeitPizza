@@ -17,15 +17,17 @@ public class StatusScreen extends JLabel {
         }
 
 
-    public void updateStatus(){
+        /*
+    public void updateStatusScreen(){
 
     }
 
-    public void updateStatus(double zutatenPreis, String zutatenName){
-        this.aktuelleBelaege.add(zutatenName);
-        this.gesamtpreis += zutatenPreis; // kann auch negativ sein, wenn Zutat entfernt wird
-    }
+    public void updateStatusScreen(double zutatenPreis, String zutatenName){
+        //this.aktuelleBelaege.add(zutatenName);
+        //this.gesamtpreis += zutatenPreis; // kann auch negativ sein, wenn Zutat entfernt wird
 
+    }
+*/
 
 
 
