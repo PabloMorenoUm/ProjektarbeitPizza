@@ -1,25 +1,26 @@
 package control;
 
-import de.karrieretutor.LydiaHolmPablo.Pizza.Pizza;
-import de.karrieretutor.LydiaHolmPablo.Pizza.Zutat;
+import model.Pizza;
 
-import javax.swing.*;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class PizzenList extends ArrayList {
+    private final NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
 
     @Override
     public String toString(){
         double gesamtPreis = 0.0;
-        String gesamtString = "";
-        for (int i = 0; i < this.size(); i++){
-            Pizza pizza =  (Pizza) this.get(i);
+        StringBuilder gesamtString = new StringBuilder();
+        for (Object o : this) {
+            Pizza pizza = (Pizza) o;
             String pizzaString = pizza.toString();
             gesamtPreis = gesamtPreis + pizza.getPreis();
-            gesamtString = gesamtString + "\r\n" + pizzaString  + "\n" + "-------------------- \n" + "Preis:" + String.valueOf(pizza.getPreis()) + "\n" + "-------------------- \n";
+            gesamtString.append("\r\n").append(pizzaString).append("\n").append("-------------------- \n").append("Preis:").append(currency.format(pizza.getPreis())).append("\n").append("-------------------- \n");
         }
-        gesamtString = gesamtString + " Gesamtpreis: " + String.valueOf(gesamtPreis);
-        return gesamtString;
+        gesamtString.append(" Gesamtpreis: ").append(currency.format(gesamtPreis));
+        return gesamtString.toString();
     }
 
 }

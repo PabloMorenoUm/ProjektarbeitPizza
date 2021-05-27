@@ -1,6 +1,6 @@
 package control;
 
-import de.karrieretutor.LydiaHolmPablo.Pizza.*;
+import model.*;
 import view.BottomPanel;
 import view.CenterPanel;
 import view.ZutatenPanel;

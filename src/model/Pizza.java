@@ -1,11 +1,14 @@
-package de.karrieretutor.LydiaHolmPablo.Pizza;
+package model;
 
+import java.text.NumberFormat;
 import java.util.HashSet;
+import java.util.Locale;
 
 public class Pizza {
     /*
     Pizzaklasse. Zutaten bitte niemals über pizza.getZutaten().add(), sondern über setZutaten() hinzufügen!
      */
+    private final NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
     private String name = "unbenannt";
     private double preis = 4.99;
     private Sauce sauce;
@@ -43,13 +46,13 @@ public class Pizza {
     }
 
     public String toString(){
-        String gesamtString = "";
+        StringBuilder gesamtString = new StringBuilder();
         // Name der Pizza
-        gesamtString = gesamtString + name + " \r\n";
+        gesamtString.append(name).append(" \r\n");
 
         // Füge zuerst die Sauce hinzu
         if (sauce != null){
-            gesamtString = gesamtString + sauce.getName() + " " + String.valueOf(sauce.getPreis()) + " €";
+            gesamtString.append(sauce.getName()).append(" ").append(currency.format(sauce.getPreis()));
             //gesamtString = String.format("%s%n%s", gesamtString, sauce.getName());
         }
         // Füge nun die Zutaten dazu
@@ -57,9 +60,8 @@ public class Pizza {
             Zutat zutat =  (Zutat) zutaten.toArray()[i];
             String zutatenName = zutat.getName();
             //gesamtString = String.format("%s%n%s", gesamtString, zutat.getName());
-            gesamtString = gesamtString + " \r\n "
-                    + zutatenName + " " + String.valueOf(zutat.getPreis()) + " €";
+            gesamtString.append(" \r\n ").append(zutatenName).append(" ").append(currency.format(zutat.getPreis()));
         }
-        return gesamtString;
+        return gesamtString.toString();
     }
 }

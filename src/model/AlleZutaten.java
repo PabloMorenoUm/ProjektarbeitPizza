@@ -1,4 +1,4 @@
-package de.karrieretutor.LydiaHolmPablo.Pizza;
+package model;
 
 import java.io.File;
 import java.io.FileNotFoundException;

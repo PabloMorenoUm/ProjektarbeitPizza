@@ -1,4 +1,4 @@
-package de.karrieretutor.LydiaHolmPablo.Pizza;
+package model;
 
 public class Belag {
     /*

@@ -1,8 +1,8 @@
-package de.karrieretutor.LydiaHolmPablo.Pizza;
+package model;
 
 
 
-public class Welcome {
+public class MainKonsole {
     //private String selection;
     public static void main(String[] args) {
 
