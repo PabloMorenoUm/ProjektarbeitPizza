@@ -12,7 +12,8 @@ public class BottomPanel extends JPanel {
     private JTextArea currentStatusTextArea;
     private Existenzebene existenzebene;
 
-    public BottomPanel(ZutatenButtonListener zutatenButtonListener){
+    public BottomPanel(Existenzebene existenzebene){
+    this.existenzebene = existenzebene;
 
     GridBagLayout bottomLayout = new GridBagLayout();
     this.setLayout(bottomLayout);
@@ -78,7 +79,7 @@ public class BottomPanel extends JPanel {
     b.gridx = 2;
     b.gridy = 0;
     this.add(deleteButton,b);
-    deleteButton.addActionListener(zutatenButtonListener);
+    deleteButton.addActionListener((new ZutatenButtonListener(existenzebene)));
 
     JLabel bestellListe = new JLabel("Bestellung"); // Label für bestellliste
     //c.fill = GridBagConstraints.HORIZONTAL;
@@ -101,7 +102,7 @@ public class BottomPanel extends JPanel {
     b.gridy = 5;
     b.gridwidth = 2;
     this.add(pizzaAbschlussButton,b);
-    pizzaAbschlussButton.addActionListener(zutatenButtonListener);
+    pizzaAbschlussButton.addActionListener((new ZutatenButtonListener(existenzebene)));
 
     JButton finishButton = new JButton("Bestellung abschicken");
     //b.fill = GridBagConstraints.HORIZONTAL;
@@ -109,7 +110,7 @@ public class BottomPanel extends JPanel {
     b.gridy = 6;
     b.gridwidth = 2;
     this.add(finishButton,b);
-    finishButton.addActionListener(zutatenButtonListener);
+    finishButton.addActionListener(new ZutatenButtonListener(existenzebene));
 
 
     }

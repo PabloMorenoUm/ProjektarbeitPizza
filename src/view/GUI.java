@@ -46,6 +46,8 @@ public class GUI {
     //private ImageLabel backgroundImage2;
 
     public GUI(Existenzebene existenzebene){
+        this.existenzebene = existenzebene;
+
         JFrame frame = new JFrame("Luigi's Pizza");
         frame.setSize(1300,1300);
         frame.setLayout(new BorderLayout());
@@ -60,9 +62,9 @@ public class GUI {
         topPanel.add(backgroundImage);
 
         // --------------------- center and bottom  ---------------------
-        CenterPanel centerPanel = new CenterPanel(zutatenButtonListener);
+        CenterPanel centerPanel = new CenterPanel(existenzebene);
         frame.add(centerPanel, BorderLayout.CENTER);
-        BottomPanel bottomPanel = new BottomPanel(zutatenButtonListener);
+        BottomPanel bottomPanel = new BottomPanel(existenzebene);
         frame.add(bottomPanel, BorderLayout.EAST);
 
         // ---------------- Show ! --------------------------

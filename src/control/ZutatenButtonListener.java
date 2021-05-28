@@ -127,7 +127,7 @@ public class ZutatenButtonListener implements ActionListener {
 
                     entferneZutat(zutatenName);
                     CenterPanel centerpanel = (CenterPanel) zutatenPanel.getParent();
-                    centerpanel.getCurrentPizzaTextArea().setText(meinePizza.toString()  + "\n" + "-------------------- \n" + "Preis:" + String.valueOf(meinePizza.getPreis()));
+                    centerpanel.getCurrentPizzaTextArea().setText(existenzebene.toString());
                     break;
                 }
 
@@ -154,7 +154,7 @@ public class ZutatenButtonListener implements ActionListener {
 
                 JButton button = (JButton) e.getSource();
                 CenterPanel centerpanel = (CenterPanel) button.getParent();
-                centerpanel.getCurrentPizzaTextArea().setText(meinePizza.getName());
+                centerpanel.getCurrentPizzaTextArea().setText(existenzebene.getArbeitsPizza().getName());
                 break;
                 /*
             case "   +   ":
@@ -199,7 +199,7 @@ public class ZutatenButtonListener implements ActionListener {
 
             case "Pizza abschließen":
                 if(existenzebene.getPizzaindex() >= 0){
-                    if(meinePizza.getZutaten().size() > maxbelag){
+                    if(existenzebene.getArbeitsPizza().getZutaten().size() > maxbelag){
                         System.out.println("Diese Pizza hat mehr als acht Zutaten!!!");
                     } else {
                         /*System.out.print("Wie soll die Pizza heißen? ");
@@ -207,9 +207,9 @@ public class ZutatenButtonListener implements ActionListener {
                         meinePizza.setName(pizzaname);*/
                         //meinePizza.setName("Pizza " + String.valueOf(pizzaindex + 1));
                         existenzebene.getAllePizzenliste().add(existenzebene.getArbeitsPizza());
-                        System.out.print(meinePizza.getName());
+                        System.out.print(existenzebene.getArbeitsPizza().getName());
                         System.out.print(" kostet ");
-                        System.out.println(currency.format(meinePizza.getPreis()));
+                        //System.out.println(currency.format(meinePizza.getPreis()));
 
                         JButton abschlussButton = (JButton) e.getSource();
                         BottomPanel panel = (BottomPanel) abschlussButton.getParent();
@@ -267,11 +267,12 @@ public class ZutatenButtonListener implements ActionListener {
 
     // Pizzainstanz, Zutatenkorb und Indizes resetten:
     private void initialisieren(){
-        meinePizza = new Pizza();
+        //meinePizza = new Pizza();
         meineZutaten = new HashSet<>();
         int pizzaindex = existenzebene.getPizzaindex();
         pizzaindex = -1;
         existenzebene.setPizzaindex(pizzaindex);
+        existenzebene.setArbeitsPizza(new Pizza());
         //pizzaindex = -1;
     }
 
@@ -313,14 +314,14 @@ public class ZutatenButtonListener implements ActionListener {
     // Sauce oder Zutat aus der Pizza entfernen:
     private void entferneZutat(String name){
         if(name.toLowerCase(Locale.ROOT).contains("sauce")){
-            if(Objects.isNull(meinePizza.getSauce())){
+            if(Objects.isNull(existenzebene.getArbeitsPizza().getSauce())){
                 System.out.println("Es ist eh keine Sauce drauf.");
             } else{
-                if(meinePizza.getSauce().getName().equals(name)){
-                    System.out.println(meinePizza.getSauce().getName() + " entfernt.");
-                    meinePizza.setSauce(null);
+                if(existenzebene.getArbeitsPizza().getSauce().getName().equals(name)){
+                    System.out.println(existenzebene.getArbeitsPizza().getSauce().getName() + " entfernt.");
+                    existenzebene.getArbeitsPizza().setSauce(null);
                 } else{
-                    System.out.println("Es ist " + meinePizza.getSauce().getName() + " drauf.");
+                    System.out.println("Es ist " + existenzebene.getArbeitsPizza().getSauce().getName() + " drauf.");
                 }
             }
         } else{
@@ -331,7 +332,7 @@ public class ZutatenButtonListener implements ActionListener {
                     if(belagBisher.getName().equals(name)){
                         System.out.println(belagBisher.getName() + " entfernt.");
                         meineZutaten.remove(belagBisher);
-                        meinePizza.setZutaten(meineZutaten);
+                        existenzebene.getArbeitsPizza().setZutaten(meineZutaten);
                         break;
                     }
                 }

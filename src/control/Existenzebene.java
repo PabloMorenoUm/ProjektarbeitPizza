@@ -9,8 +9,8 @@ public class Existenzebene {
     private int pizzaNummer = 0;
 
     private ArrayList<Pizza> arbeitsPizzenliste = new ArrayList<>();
-    private Pizza arbeitsPizza;
 
+    private Pizza arbeitsPizza;
     private ArrayList<Pizza> allePizzenliste = new ArrayList<>();
 
     public Existenzebene(ArrayList<Pizza> arbeitsPizzenliste) {

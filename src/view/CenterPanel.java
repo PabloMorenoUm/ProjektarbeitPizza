@@ -17,7 +17,8 @@ public class CenterPanel extends JPanel {
     private final String preis099 = " 0,99 €";
     private final String preis139 = " 1,39 €";
 
-    public CenterPanel(ZutatenButtonListener zutatenButtonListener) {
+    public CenterPanel(Existenzebene existenzebene) {
+        this.existenzebene = existenzebene;
         GridBagLayout centerLayout = new GridBagLayout();
         this.setLayout(centerLayout);
         GridBagConstraints c = new GridBagConstraints();
@@ -53,7 +54,7 @@ public class CenterPanel extends JPanel {
         c.gridx = 3;
         c.gridy = 1;
         this.add(neuePizzaButton,c);
-        neuePizzaButton.addActionListener(zutatenButtonListener);
+        neuePizzaButton.addActionListener(new ZutatenButtonListener(existenzebene));
 
         /*
 
