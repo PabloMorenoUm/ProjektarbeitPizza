@@ -9,13 +9,15 @@ public class CenterPanel extends JPanel {
 
     private ZutatenPanel zutat;
     private JTextArea currentPizzaTextArea;
+    private ZutatenButtonListener zutatenButtonListener;
 
     private final String preis000 = " 0,00 €";
     private final String preis059 = " 0,59 €";
     private final String preis099 = " 0,99 €";
     private final String preis139 = " 1,39 €";
 
-    public CenterPanel() {
+    public CenterPanel(ZutatenButtonListener zutatenButtonListener) {
+        this.zutatenButtonListener = zutatenButtonListener;
         GridBagLayout centerLayout = new GridBagLayout();
         this.setLayout(centerLayout);
         GridBagConstraints c = new GridBagConstraints();
@@ -51,7 +53,7 @@ public class CenterPanel extends JPanel {
         c.gridx = 3;
         c.gridy = 1;
         this.add(neuePizzaButton,c);
-        neuePizzaButton.addActionListener(new ZutatenButtonListener());
+        neuePizzaButton.addActionListener(zutatenButtonListener);
 
         /*
 
@@ -87,7 +89,7 @@ public class CenterPanel extends JPanel {
     }
 
     public void addZutat(String zutatenName, String preis, GridBagConstraints c, int xPos, int yPos){
-        zutat = new ZutatenPanel(zutatenName, preis);
+        zutat = new ZutatenPanel(zutatenName, preis, zutatenButtonListener);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = xPos;
         c.gridy = yPos;

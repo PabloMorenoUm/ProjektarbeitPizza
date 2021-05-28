@@ -37,6 +37,7 @@ public class GUI {
     private ZutatenPanel zutat;
     private ImageLabel backgroundImage;
     private StatusScreen currentStatus;
+    private ZutatenButtonListener zutatenButtonListener = new ZutatenButtonListener();
     //private ImageLabel backgroundImage1;
     //private ImageLabel backgroundImage2;
 
@@ -55,9 +56,9 @@ public class GUI {
         topPanel.add(backgroundImage);
 
         // --------------------- center and bottom  ---------------------
-        CenterPanel centerPanel = new CenterPanel();
+        CenterPanel centerPanel = new CenterPanel(zutatenButtonListener);
         frame.add(centerPanel, BorderLayout.CENTER);
-        BottomPanel bottomPanel = new BottomPanel();
+        BottomPanel bottomPanel = new BottomPanel(zutatenButtonListener);
         frame.add(bottomPanel, BorderLayout.EAST);
 
         // ---------------- Show ! --------------------------

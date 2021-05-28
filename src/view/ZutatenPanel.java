@@ -23,7 +23,7 @@ public class ZutatenPanel extends JPanel {
 
 
 
-    public ZutatenPanel(String zutatenName, String preisName) {
+    public ZutatenPanel(String zutatenName, String preisName, ZutatenButtonListener zutatenButtonListener) {
         this.zutatenName = zutatenName;
         this.preisName = preisName;
         this.setPreferredSize(new Dimension(160, 100));
@@ -58,7 +58,7 @@ public class ZutatenPanel extends JPanel {
         c.gridx = 0;
         c.gridy = 1;
         this.add(plusButton, c);
-        plusButton.addActionListener(new ZutatenButtonListener());
+        plusButton.addActionListener(zutatenButtonListener);
 
         minusButton = new JButton("-");
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -69,7 +69,7 @@ public class ZutatenPanel extends JPanel {
         c.gridx = 1;
         c.gridy = 1;
         this.add(minusButton, c);
-        minusButton.addActionListener(new ZutatenButtonListener());
+        minusButton.addActionListener(zutatenButtonListener);
 
     }
 
