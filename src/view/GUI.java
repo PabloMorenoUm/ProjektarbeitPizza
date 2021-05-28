@@ -1,5 +1,6 @@
 package view;
 
+import control.Existenzebene;
 import control.ZutatenButtonListener;
 
 import javax.swing.*;
@@ -9,6 +10,8 @@ import java.awt.*;
  * Klasse der grafischen Benutzeroberfläche.
  */
 public class GUI {
+
+    private Existenzebene existenzebene;
 
     private JButton finishButton;
     private JButton neuePizzaButton;
@@ -20,6 +23,8 @@ public class GUI {
     public JButton getNeuePizzaButton() {
         return neuePizzaButton;
     }
+
+    private ZutatenButtonListener zutatenButtonListener = new ZutatenButtonListener(existenzebene);
 
     // später von woanders her?
     //private String[] saucenListe= {"Tomatensauce","BBQ-Sauce"};
@@ -40,7 +45,7 @@ public class GUI {
     //private ImageLabel backgroundImage1;
     //private ImageLabel backgroundImage2;
 
-    public GUI(){
+    public GUI(Existenzebene existenzebene){
         JFrame frame = new JFrame("Luigi's Pizza");
         frame.setSize(1300,1300);
         frame.setLayout(new BorderLayout());
@@ -55,9 +60,9 @@ public class GUI {
         topPanel.add(backgroundImage);
 
         // --------------------- center and bottom  ---------------------
-        CenterPanel centerPanel = new CenterPanel();
+        CenterPanel centerPanel = new CenterPanel(zutatenButtonListener);
         frame.add(centerPanel, BorderLayout.CENTER);
-        BottomPanel bottomPanel = new BottomPanel();
+        BottomPanel bottomPanel = new BottomPanel(zutatenButtonListener);
         frame.add(bottomPanel, BorderLayout.EAST);
 
         // ---------------- Show ! --------------------------

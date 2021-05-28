@@ -1,5 +1,6 @@
 package view;
 
+import control.Existenzebene;
 import control.ZutatenButtonListener;
 
 import javax.swing.*;
@@ -20,10 +21,12 @@ public class ZutatenPanel extends JPanel {
     private JButton plusButton;
     private JButton minusButton;
 
+    private Existenzebene existenzebene;
 
 
 
-    public ZutatenPanel(String zutatenName, String preisName) {
+
+    public ZutatenPanel(String zutatenName, String preisName, Existenzebene existenzebene) {
         this.zutatenName = zutatenName;
         this.preisName = preisName;
         this.setPreferredSize(new Dimension(160, 100));
@@ -58,7 +61,7 @@ public class ZutatenPanel extends JPanel {
         c.gridx = 0;
         c.gridy = 1;
         this.add(plusButton, c);
-        plusButton.addActionListener(new ZutatenButtonListener());
+        plusButton.addActionListener(new ZutatenButtonListener(existenzebene));
 
         minusButton = new JButton("-");
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -69,7 +72,7 @@ public class ZutatenPanel extends JPanel {
         c.gridx = 1;
         c.gridy = 1;
         this.add(minusButton, c);
-        minusButton.addActionListener(new ZutatenButtonListener());
+        minusButton.addActionListener(new ZutatenButtonListener(existenzebene));
 
     }
 
