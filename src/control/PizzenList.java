@@ -6,7 +6,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class PizzenList extends ArrayList {
+public class PizzenList<T> extends ArrayList<T> {
     private final NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
 
     @Override

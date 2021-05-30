@@ -19,4 +19,6 @@ public class AlleSaucen extends AlleBelaege {
             fileNotFoundException.printStackTrace();
         }
     }
+
+
 }

@@ -10,9 +10,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.HashSet;
+
 import java.util.Locale;
-import java.util.Objects;
+
 
 /**
  * ActionListener für die JButtons der GUI
@@ -31,17 +31,17 @@ public class ZutatenButtonListener implements ActionListener {
     private static final NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
 
     // Warenkorb:
-    private ArrayList<Pizza> pizzen = new PizzenList();
-    private ArrayList<Pizza> pizzen1 = new ArrayList<>();
+    private PizzenList<Pizza> pizzen = new PizzenList();
+    //private ArrayList<Pizza> pizzen1 = new ArrayList<>();
     // Einzelne Pizza:
     private Pizza meinePizza = new Pizza();
     // Zutaten für eine einzelne Pizza:
-    private HashSet<Zutat> meineZutaten = new HashSet<>();
+    //private HashSet<Zutat> meineZutaten = new HashSet<>();
 
     // Daten von allen Saucen:
-    private static final AlleSaucen alleSaucen = new AlleSaucen();
+    //private static final AlleSaucen alleSaucen = new AlleSaucen();
     // Daten von allen Zutaten:
-    private static final AlleZutaten alleZutaten = new AlleZutaten();
+    //private static final AlleZutaten alleZutaten = new AlleZutaten();
     /*
     Index für eine Pizza im jeweiligen Bestellvorgang.
     Eigentlich ist nur entscheidend, ob dieser Index negativ ist oder nicht.
@@ -51,7 +51,7 @@ public class ZutatenButtonListener implements ActionListener {
     private int pizzaNummer = 0;
 
     // Konstanten:
-    private static final int maxbelag = 8;
+    //private static final int maxbelag = 8;
 
     public ZutatenButtonListener() {
         //this.meinePizza = meinePizza;
@@ -98,7 +98,7 @@ public class ZutatenButtonListener implements ActionListener {
                 ZutatenPanel zutatenPanel = (ZutatenPanel) button.getParent();
                 zutatenName = zutatenPanel.getZutatenName();
 
-                belegePizza(zutatenName);
+                meinePizza.belegen(zutatenName);
                 CenterPanel centerpanel = (CenterPanel) zutatenPanel.getParent();
                 centerpanel.getCurrentPizzaTextArea().setText(meinePizza.toString() + "\n" + "-------------------- \n" + "Preis:" + String.valueOf(meinePizza.getPreis()));
                 break;
@@ -114,7 +114,7 @@ public class ZutatenButtonListener implements ActionListener {
                     ZutatenPanel zutatenPanel = (ZutatenPanel) button.getParent();
                     zutatenName = zutatenPanel.getZutatenName();
 
-                    entferneZutat(zutatenName);
+                    meinePizza.entfernen(zutatenName);
                     CenterPanel centerpanel = (CenterPanel) zutatenPanel.getParent();
                     centerpanel.getCurrentPizzaTextArea().setText(meinePizza.toString()  + "\n" + "-------------------- \n" + "Preis:" + String.valueOf(meinePizza.getPreis()));
                     break;
@@ -124,7 +124,7 @@ public class ZutatenButtonListener implements ActionListener {
             case "Neue Pizza":
                 System.out.println("Neue Pizza wird erstellt.");
                 meinePizza = new Pizza();
-                meineZutaten = new HashSet<>();
+                //meineZutaten = new HashSet<>();
                 pizzaindex++;
                 pizzaNummer++;
                 meinePizza.setName("Pizza " + String.valueOf(pizzaNummer));
@@ -178,7 +178,7 @@ public class ZutatenButtonListener implements ActionListener {
                  */
             case "Pizza abschließen":
                 if(pizzaindex >= 0){
-                    if(meinePizza.getZutaten().size() > maxbelag){
+                    if(meinePizza.getZutaten().size() > Pizza.getMaxbelag()){
                         System.out.println("Diese Pizza hat mehr als acht Zutaten!!!");
                     } else {
                         /*System.out.print("Wie soll die Pizza heißen? ");
@@ -231,7 +231,7 @@ public class ZutatenButtonListener implements ActionListener {
             case "Warenkorb löschen":
                 System.out.println("Verlauf gelöscht!");
 
-                pizzen = new ArrayList<>();
+                pizzen = new PizzenList<>();
                 initialisieren();
                 JButton loeschButton = (JButton) e.getSource();
                 BottomPanel panel = (BottomPanel) loeschButton.getParent();
@@ -247,11 +247,11 @@ public class ZutatenButtonListener implements ActionListener {
     // Pizzainstanz, Zutatenkorb und Indizes resetten:
     private void initialisieren(){
         this.meinePizza = new Pizza();
-        this.meineZutaten = new HashSet<>();
+        //this.meineZutaten = new HashSet<>();
         this.pizzaindex = -1;
     }
 
-    // Sauce oder Zutat auf die Pizza setzen:
+   /* // Sauce oder Zutat auf die Pizza setzen:
     private void belegePizza(String name){
         if(name.toLowerCase(Locale.ROOT).contains("sauce")){
             if(Objects.isNull(this.meinePizza.getSauce())){
@@ -283,8 +283,9 @@ public class ZutatenButtonListener implements ActionListener {
                 System.out.println("Nicht mehr als " + maxbelag + " Zutaten");
             }
         }
-    }
+    }*/
 
+   /*
     // Sauce oder Zutat aus der Pizza entfernen:
     private void entferneZutat(String name){
         if(name.toLowerCase(Locale.ROOT).contains("sauce")){
@@ -312,9 +313,9 @@ public class ZutatenButtonListener implements ActionListener {
                 }
             }
         }
-    }
+    }*/
 
-    protected static double zahlen(ArrayList<Pizza> pizzaliste){
+    protected double zahlen(ArrayList<Pizza> pizzaliste){
         double gesamtpreis = 0.0;
         for(Pizza pizza: pizzaliste){
             gesamtpreis += pizza.getPreis();
@@ -322,13 +323,7 @@ public class ZutatenButtonListener implements ActionListener {
         return gesamtpreis;
     }
 
-    public ArrayList<Pizza> getPizzen() {
-        return pizzen;
-    }
 
-    public Pizza getMeinePizza() {
-        return meinePizza;
-    }
 
 
 
