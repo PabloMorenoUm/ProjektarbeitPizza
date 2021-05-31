@@ -1,6 +1,7 @@
 package view;
 
 import control.ZutatenButtonListener;
+//import jdk.internal.icu.text.UnicodeSet;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,7 +43,7 @@ public class GUI {
 
     public GUI(){
         JFrame frame = new JFrame("Luigi's Pizza");
-        frame.setSize(1300,1300);
+        frame.setSize(800,600);
         frame.setLayout(new BorderLayout());
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,8 +52,24 @@ public class GUI {
 //        frame.getContentPane().add(label);
         frame.add(topPanel, BorderLayout.NORTH);
         // --------------------- top ---------------------
-        backgroundImage = new ImageLabel("testbild2.jpg");
+        backgroundImage = new ImageLabel("Luigi2.png");
         topPanel.add(backgroundImage);
+
+/*        JPanel panelImg = new JPanel()
+        {
+            public void paintComponent(Graphics g)
+            {
+                Image img = new ImageIcon("Luigi.png").getImage();
+                Dimension size = new Dimension(img.getWidth(null), img.getHeight(null));
+                setPreferredSize(size);
+                setMinimumSize(size);
+                setMaximumSize(size);
+                setSize(size);
+                setLayout(null);
+                g.drawImage(img, 0, 0, null);
+            }
+        };
+        topPanel.add(panelImg);*/
 
         // --------------------- center and bottom  ---------------------
         CenterPanel centerPanel = new CenterPanel();
