@@ -48,24 +48,24 @@ public class Pizza {
 
     public void setZutaten(HashSet<Zutat> meineZutaten) {
         this.meineZutaten = meineZutaten;
-        for(Zutat zutat: meineZutaten){
+        for (Zutat zutat : meineZutaten) {
             this.preis += zutat.getPreis();
         }
     }
 
-    public String toString(){
+    public String toString() {
         StringBuilder gesamtString = new StringBuilder();
         // Name der Pizza
         gesamtString.append(name).append(" \r\n");
 
         // Füge zuerst die Sauce hinzu
-        if (sauce != null){
+        if (sauce != null) {
             gesamtString.append(sauce.getName()).append(" ").append(currency.format(sauce.getPreis()));
             //gesamtString = String.format("%s%n%s", gesamtString, sauce.getName());
         }
         // Füge nun die Zutaten dazu
-        for (int i = 0; i < meineZutaten.size(); i++){
-            Zutat zutat =  (Zutat) meineZutaten.toArray()[i];
+        for (int i = 0; i < meineZutaten.size(); i++) {
+            Zutat zutat = (Zutat) meineZutaten.toArray()[i];
             String zutatenName = zutat.getName();
             //gesamtString = String.format("%s%n%s", gesamtString, zutat.getName());
             gesamtString.append(" \r\n ").append(zutatenName).append(" ").append(currency.format(zutat.getPreis()));
@@ -73,60 +73,58 @@ public class Pizza {
         return gesamtString.toString();
     }
 
-    public void belegen(String ZutatenName){
-        if(ZutatenName.toLowerCase(Locale.ROOT).contains("sauce")){
-            if(Objects.isNull(this.getSauce())){
-                for(Belag sauce: alleSaucen.getListe()){
-                    if(sauce.getName().equals(ZutatenName)){
+    public void belegen(String ZutatenName) {
+        if (ZutatenName.toLowerCase(Locale.ROOT).contains("sauce")) {
+            if (Objects.isNull(this.getSauce())) {
+                for (Belag sauce : alleSaucen.getListe()) {
+                    if (sauce.getName().equals(ZutatenName)) {
                         this.setSauce((Sauce) sauce);
                         System.out.println(sauce.getName() + " hinzugefügt");
                         break;
                     }
                 }
-            } else{
+            } else {
                 System.out.println("Sauce ist schon vorhanden.");
             }
-        } else{
-            if(meineZutaten.size() < maxbelag){
-                for(Belag zutat: alleZutaten.getListe()){
-                    if(zutat.getName().equals(ZutatenName)){
-                        if(meineZutaten.contains((Zutat) zutat)){
+        } else {
+            if (meineZutaten.size() < maxbelag) {
+                for (Belag zutat : alleZutaten.getListe()) {
+                    if (zutat.getName().equals(ZutatenName)) {
+                        if (meineZutaten.contains((Zutat) zutat)) {
                             System.out.println(zutat.getName() + " ist schon drauf. Andere Zutat?");
-                        } else{
+                        } else {
                             System.out.println(zutat.getName() + " hinzugefügt");
                             meineZutaten.add((Zutat) zutat);
                             this.setZutaten(meineZutaten);
                         }
-                        //meineZutaten.add((Zutat) zutat);
-                        //meinePizza.setZutaten(meineZutaten);
                         break;
                     }
                 }
-            } else{
+            } else {
                 System.out.println("Nicht mehr als " + maxbelag + " Zutaten");
             }
         }
     }
 
 
-    public void entfernen(String ZutatenName){
-        if(ZutatenName.toLowerCase(Locale.ROOT).contains("sauce")){
-            if(Objects.isNull(this.getSauce())){
+    public void entfernen(String ZutatenName) {
+        if (ZutatenName.toLowerCase(Locale.ROOT).contains("sauce")) {
+            if (Objects.isNull(this.getSauce())) {
                 System.out.println("Es ist eh keine Sauce drauf.");
-            } else{
-                if(this.getSauce().getName().equals(ZutatenName)){
+            } else {
+                if (this.getSauce().getName().equals(ZutatenName)) {
                     System.out.println(this.getSauce().getName() + " entfernt.");
                     this.setSauce(null);
-                } else{
+                } else {
                     System.out.println("Es ist " + this.getSauce().getName() + " drauf.");
                 }
             }
-        } else{
-            if(meineZutaten.size() == 0){
+        } else {
+            if (meineZutaten.size() == 0) {
                 System.out.println("Es wurden bisher keine Zutaten ausgewählt.");
-            } else{
-                for(Belag belagBisher: meineZutaten){
-                    if(belagBisher.getName().equals(ZutatenName)){
+            } else {
+                for (Belag belagBisher : meineZutaten) {
+                    if (belagBisher.getName().equals(ZutatenName)) {
                         System.out.println(belagBisher.getName() + " entfernt.");
                         meineZutaten.remove(belagBisher);
                         this.setZutaten(meineZutaten);

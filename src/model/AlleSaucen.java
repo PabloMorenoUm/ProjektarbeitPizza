@@ -10,7 +10,7 @@ public class AlleSaucen extends AlleBelaege {
         try {
             Scanner datei = new Scanner(new File("Saucen.csv"));
             String[] zeile;
-            while(datei.hasNextLine()) {
+            while (datei.hasNextLine()) {
                 zeile = datei.nextLine().split(", ");
                 super.liste.add(new Sauce(Integer.parseInt(zeile[0]), zeile[1], Double.parseDouble(zeile[2])));
             }

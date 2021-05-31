@@ -14,13 +14,11 @@ import java.awt.*;
  */
 public class ZutatenPanel extends JPanel {
 
-    private String zutatenName;
-    private String preisName;
+    private final String zutatenName;
+    private final String preisName;
     private int buttonBreite;
-    private JButton plusButton;
-    private JButton minusButton;
-
-
+    private final JButton plusButton;
+    private final JButton minusButton;
 
 
     public ZutatenPanel(String zutatenName, String preisName, ZutatenButtonListener zutatenButtonListener) {
@@ -31,7 +29,7 @@ public class ZutatenPanel extends JPanel {
 
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.insets = new Insets(5,5,5,5); //Padding Elemente 5px alle
+        c.insets = new Insets(5, 5, 5, 5); //Padding Elemente 5px alle
         c.ipady = 8;      //Buttonpadding 8px * 5px
         c.ipadx = 5;
 

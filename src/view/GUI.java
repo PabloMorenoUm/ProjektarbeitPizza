@@ -35,27 +35,28 @@ public class GUI {
  */
 
     private ZutatenPanel zutat;
-    private ImageLabel backgroundImage;
     private StatusScreen currentStatus;
-    private ZutatenButtonListener zutatenButtonListener = new ZutatenButtonListener();
     //private ImageLabel backgroundImage1;
     //private ImageLabel backgroundImage2;
 
-    public GUI(){
+    public GUI() {
         JFrame frame = new JFrame("Luigi's Pizza");
-        frame.setSize(1300,1300);
+        frame.setSize(1300, 1300);
         frame.setLayout(new BorderLayout());
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel topPanel = new JPanel();
+        topPanel.setPreferredSize(new Dimension(200, 200));
 //        final JLabel label = new JLabel("LUIGGI'S PIZZA");
 //        frame.getContentPane().add(label);
         frame.add(topPanel, BorderLayout.NORTH);
         // --------------------- top ---------------------
-        backgroundImage = new ImageLabel("testbild2.jpg");
+        ImageLabel backgroundImage = new ImageLabel("testbild2.jpg");
+        backgroundImage.setSize(new Dimension(150, 150));
         topPanel.add(backgroundImage);
 
         // --------------------- center and bottom  ---------------------
+        ZutatenButtonListener zutatenButtonListener = new ZutatenButtonListener();
         CenterPanel centerPanel = new CenterPanel(zutatenButtonListener);
         frame.add(centerPanel, BorderLayout.CENTER);
         BottomPanel bottomPanel = new BottomPanel(zutatenButtonListener);
@@ -67,7 +68,6 @@ public class GUI {
         frame.setVisible(true);
 
     }
-
 
 
 }
