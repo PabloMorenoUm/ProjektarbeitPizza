@@ -31,11 +31,15 @@ public class CenterPanel extends JPanel {
         this.add(pizzaNameLabel, c);
 
         currentPizzaTextArea = new JTextArea();
+        currentPizzaTextArea.setPreferredSize(new Dimension(100, 2000));
+        JScrollPane scrollCurrentPizza = new JScrollPane(currentPizzaTextArea);
+        scrollCurrentPizza.setPreferredSize(new Dimension(100, 1000));
         c.gridx = 0;
         c.gridy = 1;
-        this.add(currentPizzaTextArea, c);
+        this.add(scrollCurrentPizza, c);
 
         JTextField pizzaNameText = new JTextField();
+        pizzaNameText.setPreferredSize(new Dimension(100, 2000));
         //c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
         c.gridy = 1;

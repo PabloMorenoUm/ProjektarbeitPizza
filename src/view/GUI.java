@@ -46,13 +46,13 @@ public class GUI {
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel topPanel = new JPanel();
-        topPanel.setPreferredSize(new Dimension(200, 200));
+        topPanel.setPreferredSize(new Dimension(200, 150));
 //        final JLabel label = new JLabel("LUIGGI'S PIZZA");
 //        frame.getContentPane().add(label);
         frame.add(topPanel, BorderLayout.NORTH);
         // --------------------- top ---------------------
         ImageLabel backgroundImage = new ImageLabel("testbild2.jpg");
-        backgroundImage.setSize(new Dimension(150, 150));
+        backgroundImage.setSize(new Dimension(150, 100));
         topPanel.add(backgroundImage);
 
         // --------------------- center and bottom  ---------------------
