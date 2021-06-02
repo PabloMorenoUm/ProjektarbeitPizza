@@ -41,7 +41,7 @@ public class GUI {
 
     public GUI() {
         JFrame frame = new JFrame("Luigi's Pizza");
-        frame.setSize(1300, 1300);
+        frame.setPreferredSize(new Dimension(1700, 1300));
         frame.setLayout(new BorderLayout());
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -57,10 +57,14 @@ public class GUI {
 
         // --------------------- center and bottom  ---------------------
         ZutatenButtonListener zutatenButtonListener = new ZutatenButtonListener();
-        CenterPanel centerPanel = new CenterPanel(zutatenButtonListener);
-        frame.add(centerPanel, BorderLayout.CENTER);
-        BottomPanel bottomPanel = new BottomPanel(zutatenButtonListener);
-        frame.add(bottomPanel, BorderLayout.EAST);
+        AktuellePizzaPanel aktuellePizzaPanel = new AktuellePizzaPanel(zutatenButtonListener);
+        frame.add(aktuellePizzaPanel, BorderLayout.CENTER);
+        zutatenButtonListener.setAktuellePizzaPanel(aktuellePizzaPanel);
+        BelaegePanel belaegePanel = new BelaegePanel(zutatenButtonListener);
+        frame.add(belaegePanel, BorderLayout.SOUTH);
+        WarenkorbPanel warenkorbPanel = new WarenkorbPanel(zutatenButtonListener);
+        frame.add(warenkorbPanel, BorderLayout.EAST);
+        zutatenButtonListener.setWarenkorbPanel(warenkorbPanel);
 
         // ---------------- Show ! --------------------------
         frame.pack();

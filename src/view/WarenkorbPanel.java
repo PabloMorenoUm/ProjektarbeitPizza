@@ -5,18 +5,18 @@ import control.ZutatenButtonListener;
 import javax.swing.*;
 import java.awt.*;
 
-public class BottomPanel extends JPanel {
+public class WarenkorbPanel extends JPanel {
 
     private StatusScreen currentStatus;
     private final JTextArea currentStatusTextArea;
 
-    public BottomPanel(ZutatenButtonListener zutatenButtonListener) {
+    public WarenkorbPanel(ZutatenButtonListener zutatenButtonListener) {
 
         GridBagLayout bottomLayout = new GridBagLayout();
         this.setLayout(bottomLayout);
         GridBagConstraints b = new GridBagConstraints();
         b.fill = GridBagConstraints.HORIZONTAL; //Horizontale Anordnung der Elemente
-        b.insets = new Insets(5, 5, 5, 5); //Padding Elemente 5px alle
+        b.insets = new Insets(5, 1, 5, 1); //Padding Elemente 5px alle
         b.ipady = 8;      //Buttonpadding 8px * 5px
         b.ipadx = 5;
 
@@ -84,26 +84,28 @@ public class BottomPanel extends JPanel {
         b.gridy = 1;
         this.add(bestellListe, b);
 
-        currentStatusTextArea = new JTextArea(30, 20);
+        currentStatusTextArea = new JTextArea(10, 10);
+        JScrollPane scrollCurrentPizza = new JScrollPane(currentStatusTextArea);
+        scrollCurrentPizza.setPreferredSize(new Dimension(10, 10));
         //b.fill = GridBagConstraints.HORIZONTAL;
         b.gridx = 1;
         b.gridy = 2;
-        b.gridwidth = 2;
-        this.add(currentStatusTextArea, b);
+        b.gridwidth = 6;
+        this.add(scrollCurrentPizza, b);
 
 
-        JButton pizzaAbschlussButton = new JButton("Pizza abschließen");
+        /*JButton pizzaAbschlussButton = new JButton("Pizza abschließen");
 
         b.gridx = 1;
         b.gridy = 5;
         b.gridwidth = 2;
         this.add(pizzaAbschlussButton, b);
-        pizzaAbschlussButton.addActionListener(zutatenButtonListener);
+        pizzaAbschlussButton.addActionListener(zutatenButtonListener);*/
 
         JButton finishButton = new JButton("Bestellung abschicken");
         //b.fill = GridBagConstraints.HORIZONTAL;
         b.gridx = 1;
-        b.gridy = 6;
+        b.gridy = 9;
         b.gridwidth = 2;
         this.add(finishButton, b);
         finishButton.addActionListener(zutatenButtonListener);

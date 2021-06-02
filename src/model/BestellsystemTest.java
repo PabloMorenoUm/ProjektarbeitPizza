@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,7 +10,7 @@ class BestellsystemTest {
     @org.junit.jupiter.api.Test
     void checkPreis(){
         Pizza pizza = new Pizza();
-        HashSet<Zutat> zutaten = new HashSet<>();
+        ArrayList<Zutat> zutaten = new ArrayList<>();
         zutaten.add((Zutat) alleZutaten.getListe().get(0));
         zutaten.add((Zutat) alleZutaten.getListe().get(1));
         pizza.setZutaten(zutaten);
@@ -23,13 +22,13 @@ class BestellsystemTest {
         ArrayList<Pizza> pizzen = new ArrayList<>();
 
         Pizza pizza1 = new Pizza();
-        HashSet<Zutat> zutaten1 = new HashSet<>();
+        ArrayList<Zutat> zutaten1 = new ArrayList<>();
         zutaten1.add((Zutat) alleZutaten.getListe().get(1));
         zutaten1.add((Zutat) alleZutaten.getListe().get(2));
         pizza1.setZutaten(zutaten1);
 
         Pizza pizza2 = new Pizza();
-        HashSet<Zutat> zutaten2 = new HashSet<>();
+        ArrayList<Zutat> zutaten2 = new ArrayList<>();
         zutaten2.add((Zutat) alleZutaten.getListe().get(3));
         zutaten2.add((Zutat) alleZutaten.getListe().get(5));
         zutaten2.add((Zutat) alleZutaten.getListe().get(6));

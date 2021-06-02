@@ -7,12 +7,11 @@ import java.awt.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class CenterPanel extends JPanel {
+public class BelaegePanel extends JPanel {
 
-    private final JTextArea currentPizzaTextArea;
     private final ZutatenButtonListener zutatenButtonListener;
 
-    public CenterPanel(ZutatenButtonListener zutatenButtonListener) {
+    public BelaegePanel(ZutatenButtonListener zutatenButtonListener) {
         this.zutatenButtonListener = zutatenButtonListener;
         GridBagLayout centerLayout = new GridBagLayout();
         this.setLayout(centerLayout);
@@ -24,47 +23,7 @@ public class CenterPanel extends JPanel {
         c.weighty = 0.5;
         c.weightx = 0.5;
 
-        JLabel pizzaNameLabel = new JLabel("Pizzaname");
-        //c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 0;
-        c.gridy = 0;
-        this.add(pizzaNameLabel, c);
 
-        currentPizzaTextArea = new JTextArea();
-        currentPizzaTextArea.setPreferredSize(new Dimension(100, 2000));
-        JScrollPane scrollCurrentPizza = new JScrollPane(currentPizzaTextArea);
-        scrollCurrentPizza.setPreferredSize(new Dimension(100, 1000));
-        c.gridx = 0;
-        c.gridy = 1;
-        this.add(scrollCurrentPizza, c);
-
-        JTextField pizzaNameText = new JTextField();
-        pizzaNameText.setPreferredSize(new Dimension(100, 2000));
-        //c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 1;
-        c.gridy = 1;
-        c.weightx = 4;
-        this.add(pizzaNameText, c);
-
-
-        JButton neuePizzaButton = new JButton("Neue Pizza");
-        //c.fill = GridBagConstraints.HORIZONTAL;
-        //b.anchor = GridBagConstraints.FIRST_LINE_END;
-        c.gridx = 3;
-        c.gridy = 1;
-        this.add(neuePizzaButton, c);
-        neuePizzaButton.addActionListener(zutatenButtonListener);
-
-        /*
-
-
-        JButton pizzaAbschlussButton = new JButton("Pizza abschließen");
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 4;
-        c.gridy = 0;
-        this.add(pizzaAbschlussButton,c);
-        pizzaAbschlussButton.addActionListener(new ZutatenButtonListener());
- */
         NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
         String preis000 = currency.format(0.0);
         String preis099 = currency.format(0.99);
@@ -97,9 +56,5 @@ public class CenterPanel extends JPanel {
         c.gridx = xPos;
         c.gridy = yPos;
         this.add(zutat, c);
-    }
-
-    public JTextArea getCurrentPizzaTextArea() {
-        return currentPizzaTextArea;
     }
 }

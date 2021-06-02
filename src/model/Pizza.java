@@ -1,7 +1,8 @@
 package model;
 
+import javax.swing.*;
 import java.text.NumberFormat;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -14,7 +15,7 @@ public class Pizza {
     private double preis = 4.99;
     private Sauce sauce;
     //private HashSet<Zutat> zutaten;
-    private HashSet<Zutat> meineZutaten = new HashSet<>();
+    private ArrayList<Zutat> meineZutaten = new ArrayList<>();
     private static final int maxbelag = 8;
 
     // Daten von allen Saucen:
@@ -42,11 +43,11 @@ public class Pizza {
         this.sauce = sauce;
     }
 
-    public HashSet<Zutat> getZutaten() {
+    public ArrayList<Zutat> getZutaten() {
         return meineZutaten;
     }
 
-    public void setZutaten(HashSet<Zutat> meineZutaten) {
+    public void setZutaten(ArrayList<Zutat> meineZutaten) {
         this.meineZutaten = meineZutaten;
         for (Zutat zutat : meineZutaten) {
             this.preis += zutat.getPreis();
@@ -73,27 +74,27 @@ public class Pizza {
         return gesamtString.toString();
     }
 
-    public void belegen(String ZutatenName) {
+    public void belegen(String ZutatenName, JLabel feld) {
         if (ZutatenName.toLowerCase(Locale.ROOT).contains("sauce")) {
             if (Objects.isNull(this.getSauce())) {
                 for (Belag sauce : alleSaucen.getListe()) {
                     if (sauce.getName().equals(ZutatenName)) {
                         this.setSauce((Sauce) sauce);
-                        System.out.println(sauce.getName() + " hinzugefügt");
+                        feld.setText(sauce.getName() + " hinzugefügt");
                         break;
                     }
                 }
             } else {
-                System.out.println("Sauce ist schon vorhanden.");
+                feld.setText("Sauce ist schon vorhanden.");
             }
         } else {
             if (meineZutaten.size() < maxbelag) {
                 for (Belag zutat : alleZutaten.getListe()) {
                     if (zutat.getName().equals(ZutatenName)) {
                         if (meineZutaten.contains((Zutat) zutat)) {
-                            System.out.println(zutat.getName() + " ist schon drauf. Andere Zutat?");
+                            feld.setText(zutat.getName() + " ist schon drauf. Andere Zutat?");
                         } else {
-                            System.out.println(zutat.getName() + " hinzugefügt");
+                            feld.setText(zutat.getName() + " hinzugefügt");
                             meineZutaten.add((Zutat) zutat);
                             this.setZutaten(meineZutaten);
                         }
@@ -101,31 +102,31 @@ public class Pizza {
                     }
                 }
             } else {
-                System.out.println("Nicht mehr als " + maxbelag + " Zutaten");
+                feld.setText("Nicht mehr als " + maxbelag + " Zutaten");
             }
         }
     }
 
 
-    public void entfernen(String ZutatenName) {
+    public void entfernen(String ZutatenName, JLabel feld) {
         if (ZutatenName.toLowerCase(Locale.ROOT).contains("sauce")) {
             if (Objects.isNull(this.getSauce())) {
-                System.out.println("Es ist eh keine Sauce drauf.");
+                feld.setText("Es ist eh keine Sauce drauf.");
             } else {
                 if (this.getSauce().getName().equals(ZutatenName)) {
-                    System.out.println(this.getSauce().getName() + " entfernt.");
+                    feld.setText(this.getSauce().getName() + " entfernt.");
                     this.setSauce(null);
                 } else {
-                    System.out.println("Es ist " + this.getSauce().getName() + " drauf.");
+                    feld.setText("Es ist " + this.getSauce().getName() + " drauf.");
                 }
             }
         } else {
             if (meineZutaten.size() == 0) {
-                System.out.println("Es wurden bisher keine Zutaten ausgewählt.");
+                feld.setText("Es wurden bisher keine Zutaten ausgewählt.");
             } else {
                 for (Belag belagBisher : meineZutaten) {
                     if (belagBisher.getName().equals(ZutatenName)) {
-                        System.out.println(belagBisher.getName() + " entfernt.");
+                        feld.setText(belagBisher.getName() + " entfernt.");
                         meineZutaten.remove(belagBisher);
                         this.setZutaten(meineZutaten);
                         break;
