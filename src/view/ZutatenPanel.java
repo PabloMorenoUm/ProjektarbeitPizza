@@ -25,7 +25,7 @@ public class ZutatenPanel extends JPanel {
         this.zutatenName = zutatenName;
         this.preisName = preisName;
 
-        this.setPreferredSize(new Dimension(140, 100));
+        this.setPreferredSize(new Dimension(180, 100));
         this.setLayout(new GridBagLayout());
 
 
