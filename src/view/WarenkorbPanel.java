@@ -84,14 +84,16 @@ public class WarenkorbPanel extends JPanel {
         b.gridy = 1;
         this.add(bestellListe, b);
 
+
         currentStatusTextArea = new JTextArea(10, 10);
-        JScrollPane scrollCurrentPizza = new JScrollPane(currentStatusTextArea);
-        scrollCurrentPizza.setPreferredSize(new Dimension(10, 10));
+        JScrollPane scrollCurrentStatus = new JScrollPane(currentStatusTextArea,ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
+                ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollCurrentStatus.setPreferredSize(new Dimension(100, 100));
         //b.fill = GridBagConstraints.HORIZONTAL;
         b.gridx = 1;
         b.gridy = 2;
         b.gridwidth = 6;
-        this.add(scrollCurrentPizza, b);
+        this.add(scrollCurrentStatus, b);
 
 
         /*JButton pizzaAbschlussButton = new JButton("Pizza abschließen");

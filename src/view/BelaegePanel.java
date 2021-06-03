@@ -53,6 +53,7 @@ public class BelaegePanel extends JPanel {
     public void addZutat(String zutatenName, String preis, GridBagConstraints c, int xPos, int yPos) {
         ZutatenPanel zutat = new ZutatenPanel(zutatenName, preis, zutatenButtonListener);
         c.fill = GridBagConstraints.HORIZONTAL;
+        c.anchor = GridBagConstraints.PAGE_START;
         c.gridx = xPos;
         c.gridy = yPos;
         this.add(zutat, c);

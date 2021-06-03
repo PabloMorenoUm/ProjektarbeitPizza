@@ -11,7 +11,7 @@ public class Pizza {
     Pizzaklasse. Zutaten bitte niemals über pizza.getZutaten().add(), sondern über setZutaten() hinzufügen!
      */
     private final NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
-    private String name = "unbenannt";
+    private String name = "";
     private double preis = 4.99;
     private Sauce sauce;
     //private HashSet<Zutat> zutaten;

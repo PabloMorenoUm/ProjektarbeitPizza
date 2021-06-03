@@ -4,13 +4,13 @@ import control.ZutatenButtonListener;
 
 import javax.swing.*;
 import java.awt.*;
-import java.security.DigestException;
 
 public class AktuellePizzaPanel extends JPanel {
 
     private final JTextArea currentPizzaTextArea;
-    private final JTextField pizzaNameText;
+    private final JTextField pizzaNameTextField;
     private final JLabel ausgabefeld;
+    private JLabel pizzaNameTextLabel;
 
     public AktuellePizzaPanel(ZutatenButtonListener zutatenButtonListener){
         GridBagLayout centerLayout = new GridBagLayout();
@@ -21,7 +21,7 @@ public class AktuellePizzaPanel extends JPanel {
         c.ipadx = 5; // Button Padding
         c.ipady = 8;
 
-        JLabel pizzaNameLabel = new JLabel("Pizzaname");
+        JLabel pizzaNameLabel = new JLabel("Ihre aktuelle Pizza");
         //c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
@@ -36,13 +36,21 @@ public class AktuellePizzaPanel extends JPanel {
         c.gridy = 1;
         this.add(scrollCurrentPizza, c);
 
-        pizzaNameText = new JTextField("Hier Pizzaname eingeben", 1);
+        pizzaNameTextLabel = new JLabel("Hier Pizzanamen eingeben");
+        //pizzaNameText.setPreferredSize(new Dimension(50, 15));
+        //c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 1;
+        c.gridy = 0;
+        c.weightx = 4;
+        this.add(pizzaNameTextLabel, c);
+
+        pizzaNameTextField = new JTextField("", 1);
         //pizzaNameText.setPreferredSize(new Dimension(50, 15));
         //c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
         c.gridy = 1;
-        c.weightx = 4;
-        this.add(pizzaNameText, c);
+        c.weightx = 6;
+        this.add(pizzaNameTextField, c);
 
 
         JButton neuePizzaButton = new JButton("Neue Pizza");
@@ -74,8 +82,8 @@ public class AktuellePizzaPanel extends JPanel {
         return currentPizzaTextArea;
     }
 
-    public JTextField getPizzaNameText() {
-        return pizzaNameText;
+    public JTextField getPizzaNameTextField() {
+        return pizzaNameTextField;
     }
 
     public JLabel getAusgabefeld() {

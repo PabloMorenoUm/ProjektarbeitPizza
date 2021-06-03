@@ -51,6 +51,17 @@ public class ZutatenButtonListener implements ActionListener {
 
         JButton button = (JButton) e.getSource();
 
+        String pizzaNametext = aktuellePizzaPanel
+                .getPizzaNameTextField()
+                .getText();
+        if (pizzaNametext == "")
+        {
+            meinePizza.setName("Pizza " + pizzaNummer);
+        }  else {
+            meinePizza.setName(pizzaNametext);
+        }
+
+
         // Bestellsystem als großer switch-Ausdruck:
         String zutatenName;
         switch (e.getActionCommand()) {
@@ -100,10 +111,12 @@ public class ZutatenButtonListener implements ActionListener {
                 //meineZutaten = new HashSet<>();
                 pizzaindex++;
                 pizzaNummer++;
-                meinePizza.setName("Pizza " + pizzaNummer);
+
 
                 //JButton button = (JButton) e.getSource();
                 //CenterPanel centerpanel = (CenterPanel) button.getParent();
+
+                //meinePizza.setName(pizzaname);
                 aktuellePizzaPanel.getCurrentPizzaTextArea().setText(meinePizza.getName());
 
                 break;
@@ -116,11 +129,11 @@ public class ZutatenButtonListener implements ActionListener {
                         //CenterPanel centerPanel = (CenterPanel) abschlussButton.getParent();
                         //meinePizza.setName(centerPanel.getPizzaNameText().getText());
                         String pizzaname = aktuellePizzaPanel
-                                .getPizzaNameText()
-                                .getText()
-                                .equals("Hier Pizzaname eingeben") ?
+                                .getPizzaNameTextField()
+                                .getText().equals("") ?
+                                //.equals("Hier Pizzaname eingeben")
                                 meinePizza.getName() :
-                                aktuellePizzaPanel.getPizzaNameText().getText();
+                                aktuellePizzaPanel.getPizzaNameTextField().getText();
                         meinePizza.setName(pizzaname);
 
                         pizzen.add(meinePizza);

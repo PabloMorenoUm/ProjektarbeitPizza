@@ -42,29 +42,55 @@ public class GUI {
     public GUI() {
         JFrame frame = new JFrame("Luigi's Pizza");
         frame.setPreferredSize(new Dimension(1700, 1300));
-        frame.setLayout(new BorderLayout());
+        //frame.setLayout(new BorderLayout());
+
+        GridBagLayout gLayout = new GridBagLayout();
+        GridBagConstraints c = new GridBagConstraints();
+        frame.setLayout(gLayout);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel topPanel = new JPanel();
         topPanel.setPreferredSize(new Dimension(200, 150));
-//        final JLabel label = new JLabel("LUIGGI'S PIZZA");
+
+
+//       final JLabel label = new JLabel("LUIGGI'S PIZZA");
 //        frame.getContentPane().add(label);
-        frame.add(topPanel, BorderLayout.NORTH);
+        //frame.add(topPanel, BorderLayout.NORTH);
         // --------------------- top ---------------------
         ImageLabel backgroundImage = new ImageLabel("testbild2.jpg");
         backgroundImage.setSize(new Dimension(150, 100));
         topPanel.add(backgroundImage);
 
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0;
+        c.gridx = 0;
+        c.gridy = 0;
+        frame.add(topPanel,c);
+
         // --------------------- center and bottom  ---------------------
         ZutatenButtonListener zutatenButtonListener = new ZutatenButtonListener();
         AktuellePizzaPanel aktuellePizzaPanel = new AktuellePizzaPanel(zutatenButtonListener);
-        frame.add(aktuellePizzaPanel, BorderLayout.CENTER);
+        //frame.add(aktuellePizzaPanel, BorderLayout.CENTER);
         zutatenButtonListener.setAktuellePizzaPanel(aktuellePizzaPanel);
+        c.weightx = 0;
+        c.gridx = 0;
+        c.gridy = 1;
+        frame.add(aktuellePizzaPanel,c);
+        // ------------------------------------------------------------------------
         BelaegePanel belaegePanel = new BelaegePanel(zutatenButtonListener);
-        frame.add(belaegePanel, BorderLayout.SOUTH);
+        //frame.add(belaegePanel, BorderLayout.SOUTH);
+        c.weightx = 0;
+        c.gridx = 0;
+        c.gridy = 2;
+        frame.add(belaegePanel,c);
+        // --------------------------------------------------------------
         WarenkorbPanel warenkorbPanel = new WarenkorbPanel(zutatenButtonListener);
-        frame.add(warenkorbPanel, BorderLayout.EAST);
+        //frame.add(warenkorbPanel, BorderLayout.EAST);
         zutatenButtonListener.setWarenkorbPanel(warenkorbPanel);
+        c.weightx = 0;
+        c.gridx = 2;
+        c.gridy = 2;
+        frame.add(warenkorbPanel,c);
 
         // ---------------- Show ! --------------------------
         frame.pack();
