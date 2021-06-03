@@ -49,6 +49,7 @@ public class Pizza {
 
     public void setZutaten(ArrayList<Zutat> meineZutaten) {
         this.meineZutaten = meineZutaten;
+        this.preis = 4.99;
         for (Zutat zutat : meineZutaten) {
             this.preis += zutat.getPreis();
         }
@@ -65,8 +66,7 @@ public class Pizza {
             //gesamtString = String.format("%s%n%s", gesamtString, sauce.getName());
         }
         // Füge nun die Zutaten dazu
-        for (int i = 0; i < meineZutaten.size(); i++) {
-            Zutat zutat = (Zutat) meineZutaten.toArray()[i];
+        for (Zutat zutat : meineZutaten) {
             String zutatenName = zutat.getName();
             //gesamtString = String.format("%s%n%s", gesamtString, zutat.getName());
             gesamtString.append(" \r\n ").append(zutatenName).append(" ").append(currency.format(zutat.getPreis()));
