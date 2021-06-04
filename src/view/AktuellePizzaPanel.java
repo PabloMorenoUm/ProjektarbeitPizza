@@ -49,16 +49,19 @@ public class AktuellePizzaPanel extends JPanel {
         //c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
         c.gridy = 1;
-        c.weightx = 6;
+        c.weightx = 2;
+        c.anchor = GridBagConstraints.NORTHWEST;
         this.add(pizzaNameTextField, c);
 
 
         JButton neuePizzaButton = new JButton("Neue Pizza");
         neuePizzaButton.setPreferredSize(new Dimension(4, 20));
         //c.fill = GridBagConstraints.HORIZONTAL;
-        //b.anchor = GridBagConstraints.FIRST_LINE_END;
+        //c.anchor = GridBagConstraints.FIRST_LINE_START;
         c.gridx = 3;
         c.gridy = 1;
+        //c.weightx = 1;
+        //c.anchor = GridBagConstraints.NORTHWEST;
         this.add(neuePizzaButton, c);
         neuePizzaButton.addActionListener(zutatenButtonListener);
 
@@ -67,6 +70,7 @@ public class AktuellePizzaPanel extends JPanel {
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 4;
         c.gridy = 1;
+        c.weightx = 10;
         this.add(pizzaAbschlussButton,c);
         pizzaAbschlussButton.addActionListener(zutatenButtonListener);
 

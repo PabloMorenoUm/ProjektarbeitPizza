@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class WarenkorbPanel extends JPanel {
 
-    private StatusScreen currentStatus;
+    //private StatusScreen currentStatus;
     private final JTextArea currentStatusTextArea;
 
     public WarenkorbPanel(ZutatenButtonListener zutatenButtonListener) {
@@ -73,26 +73,28 @@ public class WarenkorbPanel extends JPanel {
 
         JButton deleteButton = new JButton("Löschen"); // Bestellung löschen Button
         //b.fill = GridBagConstraints.HORIZONTAL;
-        b.gridx = 2;
-        b.gridy = 0;
+        b.gridx = 0;
+        b.gridy = 2;
+        //b.anchor = GridBagConstraints.EAST;
         this.add(deleteButton, b);
         deleteButton.addActionListener(zutatenButtonListener);
 
-        JLabel bestellListe = new JLabel("Bestellung"); // Label für bestellliste
+        JLabel bestellListe = new JLabel("Warenkorb"); // Label für bestellliste
         //c.fill = GridBagConstraints.HORIZONTAL;
-        b.gridx = 1;
-        b.gridy = 1;
+        b.gridx = 0;
+        b.gridy = 0;
         this.add(bestellListe, b);
 
 
-        currentStatusTextArea = new JTextArea(10, 10);
+        currentStatusTextArea = new JTextArea(20, 20);
         JScrollPane scrollCurrentStatus = new JScrollPane(currentStatusTextArea,ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollCurrentStatus.setPreferredSize(new Dimension(100, 100));
+        //scrollCurrentStatus.setPreferredSize(new Dimension(100, 100));
         //b.fill = GridBagConstraints.HORIZONTAL;
-        b.gridx = 1;
-        b.gridy = 2;
+        b.gridx = 0;
+        b.gridy = 1;
         b.gridwidth = 6;
+        b.weightx = 10;
         this.add(scrollCurrentStatus, b);
 
 
@@ -107,7 +109,7 @@ public class WarenkorbPanel extends JPanel {
         JButton finishButton = new JButton("Bestellung abschicken");
         //b.fill = GridBagConstraints.HORIZONTAL;
         b.gridx = 1;
-        b.gridy = 9;
+        b.gridy = 2;
         b.gridwidth = 2;
         this.add(finishButton, b);
         finishButton.addActionListener(zutatenButtonListener);
@@ -115,9 +117,6 @@ public class WarenkorbPanel extends JPanel {
 
     }
 
-    public StatusScreen getCurrentStatus() {
-        return currentStatus;
-    }
 
     public JTextArea getCurrentStatusTextArea() {
         return currentStatusTextArea;
