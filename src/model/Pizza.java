@@ -60,7 +60,7 @@ public class Pizza {
         StringBuilder gesamtString = new StringBuilder();
         // Name der Pizza
         gesamtString.append(name).append(" \r\n");
-        gesamtString.append("Grundpreis ").append(currency.format(grundpreis));
+        gesamtString.append(" Grundpreis ").append(currency.format(grundpreis));
 
         // Füge zuerst die Sauce hinzu
         if (sauce != null) {
