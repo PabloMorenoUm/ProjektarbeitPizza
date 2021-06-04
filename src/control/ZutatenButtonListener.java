@@ -8,11 +8,7 @@ import view.ZutatenPanel;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.NumberFormat;
-import java.util.ArrayList;
-
-import java.util.Locale;
-
+import java.util.Objects;
 
 /**
  * ActionListener für die JButtons der GUI
@@ -24,19 +20,10 @@ public class ZutatenButtonListener implements ActionListener {
     Diese Klasse behandelt die Funktionalitäten aller GUI-Knöpfe.
      */
 
-    // Währungsformat:
-    private static final NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
-
     // Warenkorb:
-    private PizzenList<Pizza> pizzen = new PizzenList<>();
+    private PizzenList pizzen = new PizzenList();
     // Einzelne Pizza:
-    private Pizza meinePizza = new Pizza();
-    /*
-    Index für eine Pizza im jeweiligen Bestellvorgang.
-    Eigentlich ist nur entscheidend, ob dieser Index negativ ist oder nicht.
-    Ein negativer Index bedeutet, dass es noch keine Pizza im Warenkorb gibt.
-     */
-    private int pizzaindex = -1;
+    private Pizza meinePizza;
     private int pizzaNummer = 0;
     private AktuellePizzaPanel aktuellePizzaPanel;
     private WarenkorbPanel warenkorbPanel;
@@ -51,127 +38,80 @@ public class ZutatenButtonListener implements ActionListener {
 
         JButton button = (JButton) e.getSource();
 
-        String pizzaNametext = aktuellePizzaPanel
-                .getPizzaNameTextField()
-                .getText();
-        if (pizzaNametext.equals(""))
-        {
-            meinePizza.setName("Pizza " + pizzaNummer);
-        }  else {
-            meinePizza.setName(pizzaNametext);
-        }
-
-
         // Bestellsystem als großer switch-Ausdruck:
-        String zutatenName;
         switch (e.getActionCommand()) {
             case "+":
-                if (pizzaindex < 0) {
-                    aktuellePizzaPanel.getAusgabefeld().setText("Erst eine neue Pizza auswählen!");
-                } else {
-                    //JButton button = (JButton) e.getSource();
-                    ZutatenPanel zutatenPanel = (ZutatenPanel) button.getParent();
-                    zutatenName = zutatenPanel.getZutatenName();
-
-                    meinePizza.belegen(zutatenName, aktuellePizzaPanel.getAusgabefeld());
-                    //CenterPanel centerpanel = (CenterPanel) zutatenPanel.getParent();
-                    aktuellePizzaPanel.getCurrentPizzaTextArea()
-                            .setText(meinePizza.toString() +
-                                    "\n" +
-                                    "-------------------- \n" +
-                                    "Preis:" +
-                                    currency.format(meinePizza.getPreis()));
-                }/**/
-                break;
-
             case "-":
-                if (pizzaindex < 0) {
-                    aktuellePizzaPanel.getAusgabefeld().setText("Erst eine neue Pizza auswählen!");
-                } else {
-                    //JButton button = (JButton) e.getSource();
-                    ZutatenPanel zutatenPanel = (ZutatenPanel) button.getParent();
-                    zutatenName = zutatenPanel.getZutatenName();
-
-                    meinePizza.entfernen(zutatenName, aktuellePizzaPanel.getAusgabefeld());
-                    //CenterPanel centerpanel = (CenterPanel) zutatenPanel.getParent();
-                    aktuellePizzaPanel
-                            .getCurrentPizzaTextArea()
-                            .setText(meinePizza.toString() +
-                                    "\n" +
-                                    "-------------------- \n" +
-                                    "Preis:" +
-                                    currency.format(meinePizza.getPreis()));
-                }
+                clickPlusMinus(button, e.getActionCommand());
                 break;
-
             case "Neue Pizza":
                 aktuellePizzaPanel.getAusgabefeld().setText("Neue Pizza wird erstellt.");
                 meinePizza = new Pizza();
-                pizzaindex++;
                 pizzaNummer++;
-                aktuellePizzaPanel.getCurrentPizzaTextArea().setText(meinePizza.getName());
+                pizzaname(meinePizza);
+                aktuellePizzaPanel.getCurrentPizzaTextArea().setText(meinePizza.toString());
                 break;
             case "Pizza abschließen":
-                if (pizzaindex >= 0) {
+                if(Objects.isNull(meinePizza)){
+                    aktuellePizzaPanel.getAusgabefeld().setText("Erst 'Neue Pizza' auswählen!");
+                } else {
                     if (meinePizza.getZutaten().size() > Pizza.getMaxbelag()) {
                         aktuellePizzaPanel.getAusgabefeld().setText("Diese Pizza hat mehr als acht Zutaten!!!");
                     } else {
-                        String pizzaname = aktuellePizzaPanel
-                                .getPizzaNameTextField()
-                                .getText().equals("") ?
-                                meinePizza.getName() :
-                                aktuellePizzaPanel.getPizzaNameTextField().getText();
-                        meinePizza.setName(pizzaname);
+                        pizzaname(meinePizza);
                         pizzen.add(meinePizza);
-                        aktuellePizzaPanel.
-                                getAusgabefeld().
-                                setText(meinePizza.getName() + " kostet " + currency.format(meinePizza.getPreis()));
                         warenkorbPanel.getCurrentStatusTextArea().setText(pizzen.toString());
-                        initialisieren();
+                        meinePizza = null;
+                        aktuellePizzaPanel.getCurrentPizzaTextArea().setText("");
                         aktuellePizzaPanel.getAusgabefeld().setText("'Neue Pizza' oder 'Bestellung abschicken'?");
                     }
-                } else {
-                    aktuellePizzaPanel.getAusgabefeld().setText("Erst 'Neue Pizza' auswählen!");
                 }
                 break;
             case "Bestellung abschicken":
                 if (pizzen.size() > 0) {
                     aktuellePizzaPanel
                             .getAusgabefeld()
-                            .setText("Das kostet insgesamt " + currency.format(zahlen(pizzen)));
+                            .setText("Das kostet insgesamt " + pizzen.zahlen());
                     // Evtl exportieren in Datei ???
                 } else {
                     aktuellePizzaPanel.getAusgabefeld().setText("Es wurde noch nichts bestellt.");
                 }
-
                 break;
             case "Löschen":
                 aktuellePizzaPanel.getAusgabefeld().setText("Verlauf gelöscht!");
-
-                pizzen = new PizzenList<>();
-                initialisieren();
-                JButton loeschButton = (JButton) e.getSource();
-                WarenkorbPanel panel = (WarenkorbPanel) loeschButton.getParent();
-                panel.getCurrentStatusTextArea().setText("");
+                pizzen = new PizzenList();
+                warenkorbPanel.getCurrentStatusTextArea().setText("");
                 break;
             default:
                 aktuellePizzaPanel.getAusgabefeld().setText("Keine gültige Eingabe.");
-
         }
     }
 
-    // Pizzainstanz, Zutatenkorb und Indizes resetten:
-    private void initialisieren() {
-        this.meinePizza = new Pizza();
-        this.pizzaindex = -1;
+    private void clickPlusMinus(JButton button, String vorzeichen){
+        if (Objects.isNull(meinePizza)) {
+            aktuellePizzaPanel.getAusgabefeld().setText("Erst 'Neue Pizza' auswählen!");
+        } else {
+            //JButton button = (JButton) e.getSource();
+            ZutatenPanel zutatenPanel = (ZutatenPanel) button.getParent();
+            String zutatenName = zutatenPanel.getZutatenName();
+
+            if(vorzeichen.equals("+")){
+                meinePizza.belegen(zutatenName, aktuellePizzaPanel.getAusgabefeld());
+            } else if(vorzeichen.equals("-")){
+                meinePizza.entfernen(zutatenName, aktuellePizzaPanel.getAusgabefeld());
+            }
+            aktuellePizzaPanel.getCurrentPizzaTextArea()
+                    .setText(meinePizza.toString());
+        }
     }
 
-    protected double zahlen(ArrayList<Pizza> pizzaliste) {
-        double gesamtpreis = 0.0;
-        for (Pizza pizza : pizzaliste) {
-            gesamtpreis += pizza.getPreis();
-        }
-        return gesamtpreis;
+    private void pizzaname(Pizza pizza){
+        String name = aktuellePizzaPanel
+                .getPizzaNameTextField()
+                .getText().equals("") ?
+                "Pizza " + pizzaNummer :
+                aktuellePizzaPanel.getPizzaNameTextField().getText();
+        pizza.setName(name);
     }
 
     public void setAktuellePizzaPanel(AktuellePizzaPanel aktuellePizzaPanel) {

@@ -6,8 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class WarenkorbPanel extends JPanel {
-
-    //private StatusScreen currentStatus;
     private final JTextArea currentStatusTextArea;
 
     public WarenkorbPanel(ZutatenButtonListener zutatenButtonListener) {
