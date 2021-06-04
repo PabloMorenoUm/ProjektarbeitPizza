@@ -10,7 +10,6 @@ public class AktuellePizzaPanel extends JPanel {
     private final JTextArea currentPizzaTextArea;
     private final JTextField pizzaNameTextField;
     private final JLabel ausgabefeld;
-    private JLabel pizzaNameTextLabel;
 
     public AktuellePizzaPanel(ZutatenButtonListener zutatenButtonListener){
         GridBagLayout centerLayout = new GridBagLayout();
@@ -36,17 +35,13 @@ public class AktuellePizzaPanel extends JPanel {
         c.gridy = 1;
         this.add(scrollCurrentPizza, c);
 
-        pizzaNameTextLabel = new JLabel("Hier Pizzanamen eingeben");
-        //pizzaNameText.setPreferredSize(new Dimension(50, 15));
-        //c.fill = GridBagConstraints.HORIZONTAL;
+        JLabel pizzaNameTextLabel = new JLabel("Hier Pizzanamen eingeben");
         c.gridx = 1;
         c.gridy = 0;
         c.weightx = 4;
         this.add(pizzaNameTextLabel, c);
 
         pizzaNameTextField = new JTextField("", 1);
-        //pizzaNameText.setPreferredSize(new Dimension(50, 15));
-        //c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
         c.gridy = 1;
         c.weightx = 2;
@@ -56,12 +51,8 @@ public class AktuellePizzaPanel extends JPanel {
 
         JButton neuePizzaButton = new JButton("Neue Pizza");
         neuePizzaButton.setPreferredSize(new Dimension(4, 20));
-        //c.fill = GridBagConstraints.HORIZONTAL;
-        //c.anchor = GridBagConstraints.FIRST_LINE_START;
         c.gridx = 3;
         c.gridy = 1;
-        //c.weightx = 1;
-        //c.anchor = GridBagConstraints.NORTHWEST;
         this.add(neuePizzaButton, c);
         neuePizzaButton.addActionListener(zutatenButtonListener);
 

@@ -28,7 +28,7 @@ public class PizzenList<T> extends ArrayList<T> {
                     .append("-------------------- \n");
         }
         gesamtString
-                .append(" Gesamtpreis: ")
+                .append("Gesamtpreis: ")
                 .append(currency.format(gesamtPreis));
         return gesamtString.toString();
     }

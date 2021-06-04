@@ -104,56 +104,32 @@ public class ZutatenButtonListener implements ActionListener {
                 }
                 break;
 
-
             case "Neue Pizza":
                 aktuellePizzaPanel.getAusgabefeld().setText("Neue Pizza wird erstellt.");
                 meinePizza = new Pizza();
-                //meineZutaten = new HashSet<>();
                 pizzaindex++;
                 pizzaNummer++;
-
-
-                //JButton button = (JButton) e.getSource();
-                //CenterPanel centerpanel = (CenterPanel) button.getParent();
-
-                //meinePizza.setName(pizzaname);
-
                 aktuellePizzaPanel.getCurrentPizzaTextArea().setText(meinePizza.getName());
-
                 break;
             case "Pizza abschließen":
                 if (pizzaindex >= 0) {
                     if (meinePizza.getZutaten().size() > Pizza.getMaxbelag()) {
                         aktuellePizzaPanel.getAusgabefeld().setText("Diese Pizza hat mehr als acht Zutaten!!!");
                     } else {
-                        //JButton abschlussButton = (JButton) e.getSource();
-                        //CenterPanel centerPanel = (CenterPanel) abschlussButton.getParent();
-                        //meinePizza.setName(centerPanel.getPizzaNameText().getText());
                         String pizzaname = aktuellePizzaPanel
                                 .getPizzaNameTextField()
                                 .getText().equals("") ?
-                                //.equals("Hier Pizzaname eingeben")
                                 meinePizza.getName() :
                                 aktuellePizzaPanel.getPizzaNameTextField().getText();
                         meinePizza.setName(pizzaname);
-
                         pizzen.add(meinePizza);
                         aktuellePizzaPanel.
                                 getAusgabefeld().
                                 setText(meinePizza.getName() + " kostet " + currency.format(meinePizza.getPreis()));
-
-                        /*JButton abschlussButton = (JButton) e.getSource();
-                        CenterPanel panel = (CenterPanel) abschlussButton.getParent();*/
-                        //JFrame frame = (JFrame)  panel.getParent();
-                        //panel.getCurrentStatus().setText(pizzen.toString());
-
                         warenkorbPanel.getCurrentStatusTextArea().setText(pizzen.toString());
-
-                        // Static ? sinnvoll?
                         initialisieren();
                         aktuellePizzaPanel.getAusgabefeld().setText("'Neue Pizza' oder 'Bestellung abschicken'?");
                     }
-
                 } else {
                     aktuellePizzaPanel.getAusgabefeld().setText("Erst 'Neue Pizza' auswählen!");
                 }
@@ -176,7 +152,6 @@ public class ZutatenButtonListener implements ActionListener {
                 initialisieren();
                 JButton loeschButton = (JButton) e.getSource();
                 WarenkorbPanel panel = (WarenkorbPanel) loeschButton.getParent();
-                //panel.getCurrentStatus().setText(pizzen.toString());
                 panel.getCurrentStatusTextArea().setText("");
                 break;
             default:
@@ -188,7 +163,6 @@ public class ZutatenButtonListener implements ActionListener {
     // Pizzainstanz, Zutatenkorb und Indizes resetten:
     private void initialisieren() {
         this.meinePizza = new Pizza();
-        //this.meineZutaten = new HashSet<>();
         this.pizzaindex = -1;
     }
 

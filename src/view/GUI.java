@@ -10,39 +10,9 @@ import java.awt.*;
  */
 public class GUI {
 
-    private JButton finishButton;
-    private JButton neuePizzaButton;
-
-    public JButton getFinishButton() {
-        return finishButton;
-    }
-
-    public JButton getNeuePizzaButton() {
-        return neuePizzaButton;
-    }
-
-    // später von woanders her?
-    //private String[] saucenListe= {"Tomatensauce","BBQ-Sauce"};
-    //private String[] zutatenListe= {"Gouda","Mozzarella","Salami","Schinken","Thunfisch","Peperoni","Ananas"};
-
-    /*
-
-
-    private final String preis000 = " 0,00 €";
-    private final String preis059 = " 0,59 €";
-    private final String preis099 = " 0,99 €";
-    private final String preis139 = " 1,39 €";
- */
-
-    private ZutatenPanel zutat;
-    private StatusScreen currentStatus;
-    //private ImageLabel backgroundImage1;
-    //private ImageLabel backgroundImage2;
-
     public GUI() {
         JFrame frame = new JFrame("Luigi's Pizza");
         frame.setPreferredSize(new Dimension(1700, 1300));
-        //frame.setLayout(new BorderLayout());
 
         GridBagLayout gLayout = new GridBagLayout();
         GridBagConstraints c = new GridBagConstraints();
@@ -52,10 +22,6 @@ public class GUI {
         JPanel topPanel = new JPanel();
         topPanel.setPreferredSize(new Dimension(200, 150));
 
-
-//       final JLabel label = new JLabel("LUIGGI'S PIZZA");
-//        frame.getContentPane().add(label);
-        //frame.add(topPanel, BorderLayout.NORTH);
         // --------------------- top ---------------------
         ImageLabel backgroundImage = new ImageLabel("testbild2.jpg");
         backgroundImage.setSize(new Dimension(150, 100));
