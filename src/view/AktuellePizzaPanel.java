@@ -53,6 +53,7 @@ public class AktuellePizzaPanel extends JPanel {
         neuePizzaButton.setPreferredSize(new Dimension(4, 20));
         c.gridx = 3;
         c.gridy = 1;
+        c.weightx = 5;
         this.add(neuePizzaButton, c);
         neuePizzaButton.addActionListener(zutatenButtonListener);
 
@@ -61,15 +62,17 @@ public class AktuellePizzaPanel extends JPanel {
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 4;
         c.gridy = 1;
-        c.weightx = 10;
+        c.weightx = 5;
         this.add(pizzaAbschlussButton,c);
         pizzaAbschlussButton.addActionListener(zutatenButtonListener);
 
         ausgabefeld = new JLabel("Herzlich Willkommen bei Luigis Pizza!");
         ausgabefeld.setPreferredSize(new Dimension(50, 20));
+        ausgabefeld.setFont(new Font("Serif", Font.BOLD, 20));
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 3;
         c.gridy = 0;
+        c.gridwidth = 2;
         this.add(ausgabefeld,c);
     }
 

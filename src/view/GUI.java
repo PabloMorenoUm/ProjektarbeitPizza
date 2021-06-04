@@ -11,7 +11,7 @@ import java.awt.*;
 public class GUI {
 
     public GUI() {
-        JFrame frame = new JFrame("Luigi's Pizza");
+        JFrame frame = new JFrame("Luigis Pizza");
         frame.setPreferredSize(new Dimension(1700, 1300));
 
         GridBagLayout gLayout = new GridBagLayout();
