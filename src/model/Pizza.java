@@ -13,6 +13,7 @@ public class Pizza {
     private final NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
     private String name = "";
     private double preis = 4.99;
+    private double grundpreis = 4.99;
     private Sauce sauce;
     //private HashSet<Zutat> zutaten;
     private ArrayList<Zutat> meineZutaten = new ArrayList<>();
@@ -59,6 +60,7 @@ public class Pizza {
         StringBuilder gesamtString = new StringBuilder();
         // Name der Pizza
         gesamtString.append(name).append(" \r\n");
+        gesamtString.append("Grundpreis ").append(currency.format(grundpreis)).append("\r\n");
 
         // Füge zuerst die Sauce hinzu
         if (sauce != null) {
