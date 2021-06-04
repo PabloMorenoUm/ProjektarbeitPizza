@@ -54,7 +54,7 @@ public class ZutatenButtonListener implements ActionListener {
         String pizzaNametext = aktuellePizzaPanel
                 .getPizzaNameTextField()
                 .getText();
-        if (pizzaNametext == "")
+        if (pizzaNametext.equals(""))
         {
             meinePizza.setName("Pizza " + pizzaNummer);
         }  else {
@@ -117,6 +117,7 @@ public class ZutatenButtonListener implements ActionListener {
                 //CenterPanel centerpanel = (CenterPanel) button.getParent();
 
                 //meinePizza.setName(pizzaname);
+
                 aktuellePizzaPanel.getCurrentPizzaTextArea().setText(meinePizza.getName());
 
                 break;
