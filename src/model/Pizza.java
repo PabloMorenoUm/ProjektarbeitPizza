@@ -13,7 +13,6 @@ public class Pizza {
     private final NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
     private String name = "";
     private double preis = 4.99;
-    private double grundpreis = 4.99;
     private Sauce sauce;
     //private HashSet<Zutat> zutaten;
     private ArrayList<Zutat> meineZutaten = new ArrayList<>();
@@ -57,21 +56,22 @@ public class Pizza {
     }
 
     public String toString() {
+        double grundpreis = 4.99;
         StringBuilder gesamtString = new StringBuilder();
         // Name der Pizza
         gesamtString.append(name).append(" \r\n");
-        gesamtString.append("Grundpreis ").append(currency.format(grundpreis)).append("\r\n");
+        gesamtString.append("Grundpreis ").append(currency.format(grundpreis));
 
         // Füge zuerst die Sauce hinzu
         if (sauce != null) {
-            gesamtString.append(sauce.getName()).append(" ").append(currency.format(sauce.getPreis()));
+            gesamtString.append("\r\n ").append(sauce.getName()).append(" ").append(currency.format(sauce.getPreis()));
             //gesamtString = String.format("%s%n%s", gesamtString, sauce.getName());
         }
         // Füge nun die Zutaten dazu
         for (Zutat zutat : meineZutaten) {
             String zutatenName = zutat.getName();
             //gesamtString = String.format("%s%n%s", gesamtString, zutat.getName());
-            gesamtString.append(" \r\n ").append(zutatenName).append(" ").append(currency.format(zutat.getPreis()));
+            gesamtString.append("\r\n ").append(zutatenName).append(" ").append(currency.format(zutat.getPreis()));
         }
         return gesamtString.toString();
     }
