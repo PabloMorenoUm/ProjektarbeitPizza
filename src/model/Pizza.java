@@ -59,7 +59,7 @@ public class Pizza {
         double grundpreis = 4.99;
         StringBuilder gesamtString = new StringBuilder();
         // Name der Pizza
-        gesamtString.append(name).append(" \r\n");
+        gesamtString.append(name).append("\r\n");
         gesamtString.append(" Grundpreis ").append(currency.format(grundpreis));
 
         // Füge zuerst die Sauce hinzu

@@ -168,7 +168,7 @@ public class Bestellsystem {
         }
     }
 
-    protected static double zahlen(ArrayList<Pizza> pizzaliste){
+    protected double zahlen(ArrayList<Pizza> pizzaliste){
         double gesamtpreis = 0.0;
         for(Pizza pizza: pizzaliste){
             gesamtpreis += pizza.getPreis();
