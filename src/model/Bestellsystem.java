@@ -16,7 +16,7 @@ public class Bestellsystem {
     // Einzelne Pizza:
     private Pizza meinePizza = new Pizza();
     // Zutaten für eine einzelne Pizza:
-    private HashSet<Zutat> meineZutaten = new HashSet<>();
+    private ArrayList<Zutat> meineZutaten = new ArrayList<>();
 
     // Daten von allen Saucen:
     private final AlleSaucen alleSaucen = new AlleSaucen();
@@ -61,7 +61,7 @@ public class Bestellsystem {
                 case "2":
                     System.out.println("Neue Pizza wird erstellt.");
                     meinePizza = new Pizza();
-                    meineZutaten = new HashSet<>();
+                    meineZutaten = new ArrayList<>();
                     pizzaindex++;
                     break;
                 case "zutat":
@@ -133,7 +133,7 @@ public class Bestellsystem {
 
     private void initialisieren(){
         meinePizza = new Pizza();
-        meineZutaten = new HashSet<>();
+        meineZutaten = new ArrayList<>();
         belagindex = -1;
         pizzaindex = -1;
     }
@@ -157,9 +157,9 @@ public class Bestellsystem {
                     System.out.println(belag.getName() + " ist schon drauf. Andere Zutat?");
                 } else{
                     System.out.println(belag.getName() + " hinzugefügt");
+                    meineZutaten.add((Zutat) belag);
+                    meinePizza.setZutaten(meineZutaten);
                 }
-                meineZutaten.add((Zutat) belag);
-                meinePizza.setZutaten(meineZutaten);
             } else{
                 System.out.println("Nicht mehr als " + maxbelag + " Zutaten");
             }
@@ -168,7 +168,7 @@ public class Bestellsystem {
         }
     }
 
-    protected static double zahlen(ArrayList<Pizza> pizzaliste){
+    protected double zahlen(ArrayList<Pizza> pizzaliste){
         double gesamtpreis = 0.0;
         for(Pizza pizza: pizzaliste){
             gesamtpreis += pizza.getPreis();

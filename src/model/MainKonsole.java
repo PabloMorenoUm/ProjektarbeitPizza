@@ -1,9 +1,6 @@
 package model;
 
-
-
 public class MainKonsole {
-    //private String selection;
     public static void main(String[] args) {
 
         /*
@@ -27,7 +24,4 @@ public class MainKonsole {
         Bestellsystem bestellsystem = new Bestellsystem();
         bestellsystem.nutzeBestellsystem();
     }
-
-
-
 }
