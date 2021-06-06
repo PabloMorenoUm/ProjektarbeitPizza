@@ -5,6 +5,10 @@ import control.ZutatenButtonListener;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Bereich unter dem Titelbild mit Textfeld für die gerade erstellte Pizza (mit Belag), mit Namenstextfeld und
+ * mit den Knöpfen "Neue Pizza" und "Pizza abschließen".
+ */
 public class AktuellePizzaPanel extends JPanel {
 
     private final JTextArea currentPizzaTextArea;

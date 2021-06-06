@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/** Daten aller vorhandenen Zutaten **/
 public class AlleZutaten extends AlleBelaege {
-    // Daten aller vorhandenen Zutaten:
     public AlleZutaten() {
         try {
             Scanner datei = new Scanner(new File("Zutaten.csv"));

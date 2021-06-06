@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/** Daten aller Saucen **/
 public class AlleSaucen extends AlleBelaege {
-    // Daten aller Saucen (werden als "Belag" abgespeichert!!!):
     public AlleSaucen() {
         try {
             Scanner datei = new Scanner(new File("Saucen.csv"));

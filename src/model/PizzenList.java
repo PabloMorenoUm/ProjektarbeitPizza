@@ -4,6 +4,9 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
+/**
+ * Abwandlung einer Arraylist für den Warenkorb mit eigener Textausgabe und Preiskalkulation.
+ */
 public class PizzenList extends ArrayList<Pizza> {
     private final NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
 

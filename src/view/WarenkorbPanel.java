@@ -5,6 +5,9 @@ import control.ZutatenButtonListener;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Bereich ganz rechts mit Warenkorbanzeige, Löschfunktion und Bezahlknopf
+ */
 public class WarenkorbPanel extends JPanel {
     private final JTextArea currentStatusTextArea;
 

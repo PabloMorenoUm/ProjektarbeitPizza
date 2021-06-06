@@ -7,6 +7,9 @@ import java.awt.*;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+/**
+ * Bereich mit Plus-Minus-Knöpfen für alle Saucen und Zutaten.
+ */
 public class BelaegePanel extends JPanel {
 
     private final ZutatenButtonListener zutatenButtonListener;
