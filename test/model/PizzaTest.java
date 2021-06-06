@@ -1,6 +1,7 @@
 package model;
 
 import control.ZutatenButtonListener;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import view.AktuellePizzaPanel;
@@ -21,6 +22,7 @@ public class PizzaTest {
 
     @Before
     public void setUp() {
+        System.out.println("Setting it up!");
         aktuellePizzaPanel = new AktuellePizzaPanel(new ZutatenButtonListener());
         pizza = new Pizza();
         zutaten = new ArrayList<>();
@@ -28,9 +30,10 @@ public class PizzaTest {
 
     @Test
     public void setZutaten() {
+        System.out.println("Running: setZutaten");
         // Alle Zutaten auf die Pizza:
         double gesamtpreis = 4.99;
-        for(Belag belag: alleZutaten.getListe()){
+        for (Belag belag : alleZutaten.getListe()) {
             zutaten.add((Zutat) belag);
             gesamtpreis += belag.getPreis();
         }
@@ -42,6 +45,7 @@ public class PizzaTest {
 
     @Test
     public void testToString() {
+        System.out.println("Running: toString");
         String preis = currency.format(4.99);
         pizza.setName("Beispielpizza");
         assertEquals("Beispielpizza\r\n Grundpreis " + preis + "\n--------------------\nPreis:" + preis,
@@ -55,6 +59,7 @@ public class PizzaTest {
 
     @Test
     public void belegen() {
+        System.out.println("Running: belegen");
         pizza.belegen("Unsinn", aktuellePizzaPanel.getAusgabefeld());
         assertEquals(0, pizza.getZutaten().size());
 
@@ -70,8 +75,9 @@ public class PizzaTest {
 
     @Test
     public void entfernen() {
+        System.out.println("Running: entfernen");
         // Alle Zutaten drauf:
-        for(Belag belag: alleZutaten.getListe()){
+        for (Belag belag : alleZutaten.getListe()) {
             zutaten.add((Zutat) belag);
         }
         pizza.setZutaten(zutaten);
@@ -87,5 +93,16 @@ public class PizzaTest {
 
         pizza.entfernen("Ei", aktuellePizzaPanel.getAusgabefeld());
         assertEquals(alleZutaten.getListe().size() - 2, pizza.getZutaten().size());
+    }
+
+    @After
+    public void tearDown() {
+        System.out.println("Tearing it down!");
+        aktuellePizzaPanel = null;
+        pizza = null;
+        zutaten = null;
+        assertNull(aktuellePizzaPanel);
+        assertNull(pizza);
+        assertNull(zutaten);
     }
 }
