@@ -1,6 +1,6 @@
 package view;
 
-import control.ZutatenButtonListener;
+import control.ButtonListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,25 +34,25 @@ public class GUI {
         frame.add(topPanel,c);
 
         // --------------------- center and bottom  ---------------------
-        ZutatenButtonListener zutatenButtonListener = new ZutatenButtonListener();
-        AktuellePizzaPanel aktuellePizzaPanel = new AktuellePizzaPanel(zutatenButtonListener);
+        ButtonListener buttonListener = new ButtonListener();
+        AktuellePizzaPanel aktuellePizzaPanel = new AktuellePizzaPanel(buttonListener);
         //frame.add(aktuellePizzaPanel, BorderLayout.CENTER);
-        zutatenButtonListener.setAktuellePizzaPanel(aktuellePizzaPanel);
+        buttonListener.setAktuellePizzaPanel(aktuellePizzaPanel);
         c.weightx = 0;
         c.gridx = 0;
         c.gridy = 1;
         frame.add(aktuellePizzaPanel,c);
         // ------------------------------------------------------------------------
-        BelaegePanel belaegePanel = new BelaegePanel(zutatenButtonListener);
+        BelaegePanel belaegePanel = new BelaegePanel(buttonListener);
         //frame.add(belaegePanel, BorderLayout.SOUTH);
         c.weightx = 0;
         c.gridx = 0;
         c.gridy = 2;
         frame.add(belaegePanel,c);
         // --------------------------------------------------------------
-        WarenkorbPanel warenkorbPanel = new WarenkorbPanel(zutatenButtonListener);
+        WarenkorbPanel warenkorbPanel = new WarenkorbPanel(buttonListener);
         //frame.add(warenkorbPanel, BorderLayout.EAST);
-        zutatenButtonListener.setWarenkorbPanel(warenkorbPanel);
+        buttonListener.setWarenkorbPanel(warenkorbPanel);
         c.weightx = 0;
         c.gridx = 2;
         c.gridy = 2;

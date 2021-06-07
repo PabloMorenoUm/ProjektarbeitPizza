@@ -1,6 +1,6 @@
 package view;
 
-import control.ZutatenButtonListener;
+import control.ButtonListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +11,7 @@ import java.awt.*;
 public class WarenkorbPanel extends JPanel {
     private final JTextArea currentStatusTextArea;
 
-    public WarenkorbPanel(ZutatenButtonListener zutatenButtonListener) {
+    public WarenkorbPanel(ButtonListener buttonListener) {
 
         GridBagLayout bottomLayout = new GridBagLayout();
         this.setLayout(bottomLayout);
@@ -27,7 +27,7 @@ public class WarenkorbPanel extends JPanel {
         b.gridy = 2;
         //b.anchor = GridBagConstraints.EAST;
         this.add(deleteButton, b);
-        deleteButton.addActionListener(zutatenButtonListener);
+        deleteButton.addActionListener(buttonListener);
 
         JLabel bestellListe = new JLabel("Warenkorb"); // Label für bestellliste
         //c.fill = GridBagConstraints.HORIZONTAL;
@@ -51,7 +51,7 @@ public class WarenkorbPanel extends JPanel {
         b.gridy = 2;
         b.gridwidth = 2;
         this.add(finishButton, b);
-        finishButton.addActionListener(zutatenButtonListener);
+        finishButton.addActionListener(buttonListener);
 
 
     }

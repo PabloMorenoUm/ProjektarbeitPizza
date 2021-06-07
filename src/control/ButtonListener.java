@@ -13,7 +13,7 @@ import java.util.Objects;
 /**
  * ActionListener für die JButtons der GUI
  */
-public class ZutatenButtonListener implements ActionListener {
+public class ButtonListener implements ActionListener {
     /*
     Diese Klasse enthält das GUI-basierte Pizzabestellsystem.
     Hierfür notwendig ist eine Pizzainstanz, die nach Wunsch der Nutzer belegt wird.
@@ -28,7 +28,7 @@ public class ZutatenButtonListener implements ActionListener {
     private AktuellePizzaPanel aktuellePizzaPanel;
     private WarenkorbPanel warenkorbPanel;
 
-    public ZutatenButtonListener() {
+    public ButtonListener() {
         //this.meinePizza = meinePizza;
     }
 

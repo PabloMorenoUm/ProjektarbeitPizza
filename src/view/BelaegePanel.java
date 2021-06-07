@@ -1,6 +1,6 @@
 package view;
 
-import control.ZutatenButtonListener;
+import control.ButtonListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,10 +12,10 @@ import java.util.Locale;
  */
 public class BelaegePanel extends JPanel {
 
-    private final ZutatenButtonListener zutatenButtonListener;
+    private final ButtonListener buttonListener;
 
-    public BelaegePanel(ZutatenButtonListener zutatenButtonListener) {
-        this.zutatenButtonListener = zutatenButtonListener;
+    public BelaegePanel(ButtonListener buttonListener) {
+        this.buttonListener = buttonListener;
         GridBagLayout centerLayout = new GridBagLayout();
         this.setLayout(centerLayout);
         GridBagConstraints c = new GridBagConstraints();
@@ -54,7 +54,7 @@ public class BelaegePanel extends JPanel {
     }
 
     public void addZutat(String zutatenName, String preis, GridBagConstraints c, int xPos, int yPos) {
-        ZutatenPanel zutat = new ZutatenPanel(zutatenName, preis, zutatenButtonListener);
+        ZutatenPanel zutat = new ZutatenPanel(zutatenName, preis, buttonListener);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.anchor = GridBagConstraints.PAGE_START;
         c.gridx = xPos;

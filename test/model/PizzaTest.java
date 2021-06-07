@@ -1,6 +1,6 @@
 package model;
 
-import control.ZutatenButtonListener;
+import control.ButtonListener;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +23,7 @@ public class PizzaTest {
     @Before
     public void setUp() {
         System.out.println("Setting it up!");
-        aktuellePizzaPanel = new AktuellePizzaPanel(new ZutatenButtonListener());
+        aktuellePizzaPanel = new AktuellePizzaPanel(new ButtonListener());
         pizza = new Pizza();
         zutaten = new ArrayList<>();
     }

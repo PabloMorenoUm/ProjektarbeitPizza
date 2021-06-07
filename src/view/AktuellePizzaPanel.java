@@ -1,6 +1,6 @@
 package view;
 
-import control.ZutatenButtonListener;
+import control.ButtonListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +15,7 @@ public class AktuellePizzaPanel extends JPanel {
     private final JTextField pizzaNameTextField;
     private final JLabel ausgabefeld;
 
-    public AktuellePizzaPanel(ZutatenButtonListener zutatenButtonListener){
+    public AktuellePizzaPanel(ButtonListener buttonListener){
         GridBagLayout centerLayout = new GridBagLayout();
         this.setLayout(centerLayout);
         GridBagConstraints c = new GridBagConstraints();
@@ -59,7 +59,7 @@ public class AktuellePizzaPanel extends JPanel {
         c.gridy = 1;
         c.weightx = 5;
         this.add(neuePizzaButton, c);
-        neuePizzaButton.addActionListener(zutatenButtonListener);
+        neuePizzaButton.addActionListener(buttonListener);
 
         JButton pizzaAbschlussButton = new JButton("Pizza abschließen");
         pizzaAbschlussButton.setPreferredSize(new Dimension(4, 20));
@@ -68,7 +68,7 @@ public class AktuellePizzaPanel extends JPanel {
         c.gridy = 1;
         c.weightx = 5;
         this.add(pizzaAbschlussButton,c);
-        pizzaAbschlussButton.addActionListener(zutatenButtonListener);
+        pizzaAbschlussButton.addActionListener(buttonListener);
 
         ausgabefeld = new JLabel("Herzlich Willkommen bei Luigis Pizza!");
         ausgabefeld.setPreferredSize(new Dimension(50, 20));

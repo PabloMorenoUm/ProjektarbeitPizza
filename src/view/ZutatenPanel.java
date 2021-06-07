@@ -1,6 +1,6 @@
 package view;
 
-import control.ZutatenButtonListener;
+import control.ButtonListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +17,7 @@ public class ZutatenPanel extends JPanel {
     private final String zutatenName;
 
 
-    public ZutatenPanel(String zutatenName, String preisName, ZutatenButtonListener zutatenButtonListener) {
+    public ZutatenPanel(String zutatenName, String preisName, ButtonListener buttonListener) {
         this.zutatenName = zutatenName;
 
         this.setPreferredSize(new Dimension(180, 100));
@@ -46,7 +46,7 @@ public class ZutatenPanel extends JPanel {
         c.gridx = 0;
         c.gridy = 1;
         this.add(plusButton, c);
-        plusButton.addActionListener(zutatenButtonListener);
+        plusButton.addActionListener(buttonListener);
 
         JButton minusButton = new JButton("-");
         c.weightx = 1;
@@ -54,7 +54,7 @@ public class ZutatenPanel extends JPanel {
         c.gridx = 1;
         c.gridy = 1;
         this.add(minusButton, c);
-        minusButton.addActionListener(zutatenButtonListener);
+        minusButton.addActionListener(buttonListener);
 
         this.revalidate();
 
