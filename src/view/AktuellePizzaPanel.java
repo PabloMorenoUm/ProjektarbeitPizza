@@ -70,9 +70,10 @@ public class AktuellePizzaPanel extends JPanel {
         ausgabefeld.setPreferredSize(new Dimension(50, 20));
         ausgabefeld.setFont(new Font("Serif", Font.BOLD, 20));
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 3;
-        c.gridy = 0;
-        c.gridwidth = 2;
+        //c.anchor = GridBagConstraints.PAGE_END;
+        c.gridx = 1;
+        c.gridy = 2;
+        c.gridwidth = 4;
         this.add(ausgabefeld,c);
     }
 
