@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-/** Daten aller Saucen **/
+/**
+ * Daten aller Saucen, eingelesen aus einer .csv-Datei
+ */
 public class AlleSaucen extends AlleBelaege {
     public AlleSaucen() {
         try {

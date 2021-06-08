@@ -1,9 +1,9 @@
 package model;
 
 /**
- Elternklasse für die Klassen "Sauce" und "Zutat".
- Setter sind nicht nötig, weil Attributzuweisungen durch den Konstruktor erzwungen werden.
- **/
+ * Elternklasse für die Klassen "Sauce" und "Zutat".
+ * Setter sind nicht nötig, weil Attributzuweisungen durch den Konstruktor erzwungen werden.
+ */
 public class Belag {
     private final int id;
     private final String name;

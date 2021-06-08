@@ -19,9 +19,9 @@ public class MainKonsole {
                 '5) BESTELLUNG INFO' - Zeigt den aktuellen Warenkorb an.
                 '6) BESTELLEN' - Schickt die Bestellung ab.
                 '7) ENDE' - Löscht aktuelle Zusammensetzung.
+                '8) Q' - Beendet das Programm.
                 +++++++++++ LUIGI'S PIZZA +++++++++++\s""");
 
-        Bestellsystem bestellsystem = new Bestellsystem();
-        bestellsystem.nutzeBestellsystem();
+        new Bestellsystem().nutzeBestellsystem();
     }
 }

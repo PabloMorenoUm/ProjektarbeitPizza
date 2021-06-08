@@ -1,21 +1,20 @@
 package model;
 
-import javax.swing.*;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Objects;
 
+/**
+ * Pizzaklasse. Zutaten bitte niemals über pizza.getZutaten().add(), sondern über setZutaten() hinzufügen!
+ */
 @SuppressWarnings("SuspiciousMethodCalls")
 public class Pizza {
-    /*
-    Pizzaklasse. Zutaten bitte niemals über pizza.getZutaten().add(), sondern über setZutaten() hinzufügen!
-     */
     private final NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
     private String name = "";
     private double preis = 4.99;
     private Sauce sauce;
-    private ArrayList<Zutat> meineZutaten = new ArrayList<>();
+    private ArrayList<Zutat> zutaten = new ArrayList<>();
     private static final int maxbelag = 8;
 
     // Daten von allen Saucen:
@@ -44,103 +43,129 @@ public class Pizza {
     }
 
     public ArrayList<Zutat> getZutaten() {
-        return meineZutaten;
+        return zutaten;
+    }
+
+    public void setZutaten(ArrayList<Zutat> zutaten) {
+        this.zutaten = zutaten;
     }
 
     public void updateZutaten(ArrayList<Zutat> meineZutaten) {
-        this.setMeineZutaten(meineZutaten);
+        setZutaten(meineZutaten);
         this.preis = 4.99;
         for (Zutat zutat : meineZutaten) {
             this.preis += zutat.getPreis();
         }
     }
 
-    private void setMeineZutaten(ArrayList<Zutat> meineZutaten) {
-        this.meineZutaten = meineZutaten;
-    }
-
+    /**
+     * Auflistung, womit die Pizza belegt ist samt Preisübersicht.
+     * @return String. Textanzeige
+     */
     public String toString() {
         double grundpreis = 4.99;
         StringBuilder gesamtString = new StringBuilder();
         // Name der Pizza
-        gesamtString.append(name).append("\r\n");
-        gesamtString.append(" Grundpreis ").append(currency.format(grundpreis));
+        gesamtString
+                .append(name)
+                .append("\r\n");
+        gesamtString
+                .append(" Grundpreis ")
+                .append(currency.format(grundpreis));
 
         // Füge zuerst die Sauce hinzu
         if (sauce != null) {
-            gesamtString.append("\r\n ").append(sauce.getName()).append(" ").append(currency.format(sauce.getPreis()));
+            gesamtString
+                    .append("\r\n ")
+                    .append(sauce.getName())
+                    .append(" ")
+                    .append(currency.format(sauce.getPreis()));
             //gesamtString = String.format("%s%n%s", gesamtString, sauce.getName());
         }
         // Füge nun die Zutaten dazu
-        for (Zutat zutat : meineZutaten) {
+        for (Zutat zutat : zutaten) {
             String zutatenName = zutat.getName();
             //gesamtString = String.format("%s%n%s", gesamtString, zutat.getName());
-            gesamtString.append("\r\n ").append(zutatenName).append(" ").append(currency.format(zutat.getPreis()));
+            gesamtString
+                    .append("\r\n ")
+                    .append(zutatenName)
+                    .append(" ")
+                    .append(currency.format(zutat.getPreis()));
         }
-        gesamtString.append("\n--------------------\nPreis:").append(currency.format(preis));
+        gesamtString
+                .append("\n--------------------\nPreis: ")
+                .append(currency.format(preis));
         return gesamtString.toString();
     }
 
-    public void belegen(String ZutatenName, JLabel feld) {
-        if (ZutatenName.toLowerCase(Locale.ROOT).contains("sauce")) {
-            if (Objects.isNull(this.getSauce())) {
-                for (Belag sauce : alleSaucen.getListe()) {
-                    if (sauce.getName().equals(ZutatenName)) {
-                        this.setSauce((Sauce) sauce);
-                        feld.setText(sauce.getName() + " hinzugefügt");
-                        break;
+    /**
+     * Füge Belag (egal ob Sauce oder Zutat) auf die Pizza hinzu.
+     * @param zutatenName String. Name der Sauce oder der Zutat.
+     * @return String. Information, ob das Belegen geklappt hat und, wenn nein, warum nicht.
+     */
+    public String belegen(String zutatenName) {
+        if (zutatenName.toLowerCase(Locale.ROOT).contains("sauce")) {
+            if (Objects.isNull(sauce)) {
+                for (Belag meineSauce : alleSaucen.getListe()) {
+                    if (meineSauce.getName().equals(zutatenName)) {
+                        this.setSauce((Sauce) meineSauce);
+                        return meineSauce.getName() + " hinzugefügt";
                     }
                 }
             } else {
-                feld.setText("Sauce ist schon vorhanden.");
+                return "Sauce ist schon vorhanden.";
             }
         } else {
-            if (meineZutaten.size() < maxbelag) {
+            if (zutaten.size() < maxbelag) {
                 for (Belag zutat : alleZutaten.getListe()) {
-                    if (zutat.getName().equals(ZutatenName)) {
-                        if (meineZutaten.contains((Zutat) zutat)) {
-                            feld.setText(zutat.getName() + " ist schon drauf. Andere Zutat?");
+                    if (zutat.getName().equals(zutatenName)) {
+                        if (zutaten.contains((Zutat) zutat)) {
+                            return zutat.getName() + " ist schon auf der Pizza. Andere Zutat?";
                         } else {
-                            feld.setText(zutat.getName() + " hinzugefügt");
-                            meineZutaten.add((Zutat) zutat);
-                            this.updateZutaten(meineZutaten);
+                            zutaten.add((Zutat) zutat);
+                            updateZutaten(zutaten);
+                            return zutat.getName() + " hinzugefügt";
                         }
-                        break;
                     }
                 }
             } else {
-                feld.setText("Nicht mehr als " + maxbelag + " Zutaten");
+                return "Nicht mehr als " + maxbelag + " Zutaten";
             }
         }
+        return "";
     }
 
-
-    public void entfernen(String ZutatenName, JLabel feld) {
-        if (ZutatenName.toLowerCase(Locale.ROOT).contains("sauce")) {
-            if (Objects.isNull(this.getSauce())) {
-                feld.setText("Es ist eh keine Sauce drauf.");
+    /**
+     * Entferne eine Sauce oder eine Zutat von der Pizza.
+     * @param zutatenName String. Name der Sauce oder der Zutat.
+     * @return String. Information, ob das Entfernen geklappt hat und, wenn nein, warum nicht.
+     */
+    public String entfernen(String zutatenName) {
+        if (zutatenName.toLowerCase(Locale.ROOT).contains("sauce")) {
+            if (Objects.isNull(sauce)) {
+                return "Es ist bisher keine Sauce auf der Pizza.";
             } else {
-                if (this.getSauce().getName().equals(ZutatenName)) {
-                    feld.setText(this.getSauce().getName() + " entfernt.");
-                    this.setSauce(null);
+                if (sauce.getName().equals(zutatenName)) {
+                    setSauce(null);
+                    return zutatenName + " entfernt.";
                 } else {
-                    feld.setText("Es ist " + this.getSauce().getName() + " drauf.");
+                    return "Es ist " + sauce.getName() + " auf der Pizza.";
                 }
             }
         } else {
-            if (meineZutaten.size() == 0) {
-                feld.setText("Es wurden bisher keine Zutaten ausgewählt.");
+            if (zutaten.size() == 0) {
+                return "Es wurden bisher keine Zutaten ausgewählt.";
             } else {
-                for (Belag belagBisher : meineZutaten) {
-                    if (belagBisher.getName().equals(ZutatenName)) {
-                        feld.setText(belagBisher.getName() + " entfernt.");
-                        meineZutaten.remove(belagBisher);
-                        this.updateZutaten(meineZutaten);
-                        break;
+                for (Belag belagBisher : zutaten) {
+                    if (belagBisher.getName().equals(zutatenName)) {
+                        zutaten.remove(belagBisher);
+                        updateZutaten(zutaten);
+                        return belagBisher.getName() + " entfernt.";
                     }
                 }
             }
         }
+        return zutatenName + " ist gar nicht auf der Pizza.";
     }
 
     public static int getMaxbelag() {

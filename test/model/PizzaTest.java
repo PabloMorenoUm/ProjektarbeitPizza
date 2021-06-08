@@ -1,10 +1,8 @@
 package model;
 
-import control.ButtonListener;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import view.AktuellePizzaPanel;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -14,7 +12,6 @@ import static org.junit.Assert.*;
 
 public class PizzaTest {
     // Daten von allen Zutaten:
-    private AktuellePizzaPanel aktuellePizzaPanel;
     private Pizza pizza;
     ArrayList<Zutat> zutaten;
     private static final AlleZutaten alleZutaten = new AlleZutaten();
@@ -23,7 +20,6 @@ public class PizzaTest {
     @Before
     public void setUp() {
         System.out.println("Setting it up!");
-        aktuellePizzaPanel = new AktuellePizzaPanel(new ButtonListener());
         pizza = new Pizza();
         zutaten = new ArrayList<>();
     }
@@ -51,7 +47,7 @@ public class PizzaTest {
         assertEquals("Beispielpizza\r\n Grundpreis " + preis + "\n--------------------\nPreis:" + preis,
                 pizza.toString());
 
-        pizza.belegen("Tomaten", aktuellePizzaPanel.getAusgabefeld());
+        pizza.belegen("Tomaten");
         assertEquals("Beispielpizza\r\n Grundpreis " + preis + "\r\n Tomaten " + currency.format(0.59) +
                         "\n--------------------\nPreis:" + currency.format(4.99 + 0.59),
                 pizza.toString());
@@ -60,16 +56,16 @@ public class PizzaTest {
     @Test
     public void belegen() {
         System.out.println("Running: belegen");
-        pizza.belegen("Unsinn", aktuellePizzaPanel.getAusgabefeld());
+        pizza.belegen("Unsinn");
         assertEquals(0, pizza.getZutaten().size());
 
-        pizza.belegen("Salami", aktuellePizzaPanel.getAusgabefeld());
+        pizza.belegen("Salami");
         assertEquals(1, pizza.getZutaten().size());
 
-        pizza.belegen("Salami", aktuellePizzaPanel.getAusgabefeld());
+        pizza.belegen("Salami");
         assertEquals(1, pizza.getZutaten().size());
 
-        pizza.belegen("Schinken", aktuellePizzaPanel.getAusgabefeld());
+        pizza.belegen("Schinken");
         assertEquals(2, pizza.getZutaten().size());
     }
 
@@ -82,26 +78,24 @@ public class PizzaTest {
         }
         pizza.updateZutaten(zutaten);
 
-        pizza.entfernen("Unsinn", aktuellePizzaPanel.getAusgabefeld());
+        pizza.entfernen("Unsinn");
         assertEquals(alleZutaten.getListe().size(), pizza.getZutaten().size());
 
-        pizza.entfernen("Gouda", aktuellePizzaPanel.getAusgabefeld());
+        pizza.entfernen("Gouda");
         assertEquals(alleZutaten.getListe().size() - 1, pizza.getZutaten().size());
 
-        pizza.entfernen("Gouda", aktuellePizzaPanel.getAusgabefeld());
+        pizza.entfernen("Gouda");
         assertEquals(alleZutaten.getListe().size() - 1, pizza.getZutaten().size());
 
-        pizza.entfernen("Ei", aktuellePizzaPanel.getAusgabefeld());
+        pizza.entfernen("Ei");
         assertEquals(alleZutaten.getListe().size() - 2, pizza.getZutaten().size());
     }
 
     @After
     public void tearDown() {
         System.out.println("Tearing it down!");
-        aktuellePizzaPanel = null;
         pizza = null;
         zutaten = null;
-        assertNull(aktuellePizzaPanel);
         assertNull(pizza);
         assertNull(zutaten);
     }

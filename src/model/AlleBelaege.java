@@ -6,11 +6,10 @@ import java.util.Locale;
 
 
 /**
- *
- *   Elternklasse für die Saucen- und Zutatenliste.
- *   Sinn dahinter sind die Methoden getListe() und print(),
- *   die ich nicht für jede Kindklasse einzeln implementieren wollte.
-     */
+ * Elternklasse für die Saucen- und Zutatenliste.
+ * Sinn dahinter sind die Methoden getListe() und toString(),
+ * die ich nicht für jede Kindklasse einzeln implementieren wollte.
+ */
 public class AlleBelaege {
 
     private final NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
@@ -20,13 +19,21 @@ public class AlleBelaege {
         return liste;
     }
 
-    public void print(){
-        for(Belag element: liste){
-            System.out.print(element.getId());
-            System.out.print(" ");
-            System.out.print(element.getName());
-            System.out.print(" ");
-            System.out.println(currency.format(element.getPreis()));
+    /**
+     * Alle Beläge sollen zeilenweise ausgegeben werden.
+     * @return String. Liste mit allen Saucen bzw. Zutaten
+     */
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Belag element : liste) {
+            stringBuilder.append(element.getId());
+            stringBuilder.append(" ");
+            stringBuilder.append(element.getName());
+            stringBuilder.append(" ");
+            stringBuilder.append(currency.format(element.getPreis()));
+            stringBuilder.append("\r\n");
         }
+        return stringBuilder.toString();
     }
 }

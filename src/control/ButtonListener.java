@@ -32,7 +32,10 @@ public class ButtonListener implements ActionListener {
         //this.meinePizza = meinePizza;
     }
 
-    // Eigentliches Bestellsystem:
+    /**
+     * Eigentliches Bestellsystem als große switch-case-Abfrage.
+     * @param e ActionEvent. Informationen zum angeklickten Knopf.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -87,24 +90,31 @@ public class ButtonListener implements ActionListener {
         }
     }
 
+    /**
+     * Hilfsmethode, um die Funktionalität der '+' und '-' Knöpfe zusammenzufassen und somit Redundanzen zu vermeiden.
+     * @param button JButton. Angeklickter Knopf.
+     * @param vorzeichen String. Schriftzug auf dem angeklicken Knopf (in diesem Falle '+' oder '-').
+     */
     private void clickPlusMinus(JButton button, String vorzeichen){
         if (Objects.isNull(meinePizza)) {
             aktuellePizzaPanel.getAusgabefeld().setText("Erst 'Neue Pizza' auswählen!");
         } else {
-            //JButton button = (JButton) e.getSource();
             ZutatenPanel zutatenPanel = (ZutatenPanel) button.getParent();
             String zutatenName = zutatenPanel.getZutatenName();
 
             if(vorzeichen.equals("+")){
-                meinePizza.belegen(zutatenName, aktuellePizzaPanel.getAusgabefeld());
+                aktuellePizzaPanel.getAusgabefeld().setText(meinePizza.belegen(zutatenName));
             } else if(vorzeichen.equals("-")){
-                meinePizza.entfernen(zutatenName, aktuellePizzaPanel.getAusgabefeld());
+                aktuellePizzaPanel.getAusgabefeld().setText(meinePizza.entfernen(zutatenName));
             }
-            aktuellePizzaPanel.getCurrentPizzaTextArea()
-                    .setText(meinePizza.toString());
+            aktuellePizzaPanel.getCurrentPizzaTextArea().setText(meinePizza.toString());
         }
     }
 
+    /**
+     * Übertragung des Schriftzugs im Textfeld auf die Pizza als Name.
+     * @param pizza Pizza. Aktuelle Pizza, die umzubenennen ist.
+     */
     private void pizzaname(Pizza pizza){
         String name = aktuellePizzaPanel
                 .getPizzaNameTextField()

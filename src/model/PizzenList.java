@@ -10,6 +10,10 @@ import java.util.Locale;
 public class PizzenList extends ArrayList<Pizza> {
     private final NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
 
+    /**
+     * Überschreibung der Textausgabe derart, dass alle Pizzen samt Belägen untereinander aufgelistet sind.
+     * @return String. Warenkorbbeschreibung
+     */
     @Override
     public String toString() {
         StringBuilder gesamtString = new StringBuilder();
@@ -24,6 +28,10 @@ public class PizzenList extends ArrayList<Pizza> {
         return gesamtString.toString();
     }
 
+    /**
+     * Berechnung des Gesamtpreises (d.h. alle Pizzen zusammenaddiert) für den Warenkorb.
+     * @return String. Preisangabe im Java-typischen Währungsformat umgewandelt.
+     */
     public String zahlen() {
         double gesamtpreis = 0.0;
         for (Pizza pizza : this) {
