@@ -6,7 +6,13 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Bereich ganz rechts mit Warenkorbanzeige, Löschfunktion und Bezahlknopf
+ * Kindklasse von
+ * @link JPanel
+ *
+ * Dieses Panel enthält
+ * @link JButton
+ * zum Hinzufügen einer Pizza in den Warenkorb, Löschen des Warenkorbs und einen Knopf zum Abschließen der Bestellung.
+ *
  */
 public class WarenkorbPanel extends JPanel {
     private final JTextArea currentStatusTextArea;

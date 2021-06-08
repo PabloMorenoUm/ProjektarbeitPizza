@@ -6,7 +6,16 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Jede Zutat wird in der Klasse GUI durch ein ZutatenPanel repräsentiert.
+ *
+ *  Kindklasse von @link JPanel. Enthält
+ *  @link JButtons, mit denen Objekte der Klasse
+ *  @link Sauce und
+ *  @link Zutat
+ *  zur Pizza hinzugefügt und entfernt werden können.
+ *
+ * Jede Zutat wird im Panel
+ * @link BelaegePanel
+ * durch ein ZutatenPanel repräsentiert.
  * Ein ZutatenPanel besteht stets aus den gleichen Unterkomponenten:
  * JLabel das den Namen der Zutat anzeigt, JLabel das den Preis anzeigt,
  * JButton mit der Aufschrift "+" mit dem sich die Zutat zur Pizza hinzufügen lässt,

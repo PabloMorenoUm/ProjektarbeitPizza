@@ -8,7 +8,21 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 /**
- * Bereich mit Plus-Minus-Knöpfen für alle Saucen und Zutaten.
+ * Kindklasse von
+ * @link JPanel .
+ * Enthält die
+ * @link ZutatenPanel,
+ * wobei jedes ZutatenPanel eine
+ * @link Zutat beziehungsweise
+ * @link Sauce
+ * repräsentiert.
+ *
+ * Mit der Methode
+ * @link addZutat
+ * wird der Instanz des BelaegePanel
+ * ein
+ * @link ZutatenPanel
+ * hinzugefügt.
  */
 public class BelaegePanel extends JPanel {
 
@@ -53,6 +67,20 @@ public class BelaegePanel extends JPanel {
 
     }
 
+    /**
+     * Fügt einen Button entsprechend einer Zutat mit dem Namen
+     * @param zutatenName
+     * und dem Preis
+     * @param preis
+     * hinzu.
+     * Der Button wird im Layout GridbagLayout an der durch die Koordinaten
+     * @param xPos
+     * und
+     * @param yPos
+     * definierten Position eingefügt
+     * mit den GridBagConstraints
+     * @param c .
+     */
     public void addZutat(String zutatenName, String preis, GridBagConstraints c, int xPos, int yPos) {
         ZutatenPanel zutat = new ZutatenPanel(zutatenName, preis, buttonListener);
         c.fill = GridBagConstraints.HORIZONTAL;

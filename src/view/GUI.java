@@ -5,14 +5,20 @@ import control.ButtonListener;
 import javax.swing.*;
 import java.awt.*;
 
+
+
 /**
  * Klasse der grafischen Benutzeroberfläche.
  */
 public class GUI {
 
+
+
     public GUI() {
+
         JFrame frame = new JFrame("Luigis Pizza");
         frame.setPreferredSize(new Dimension(1700, 1300));
+
 
         GridBagLayout gLayout = new GridBagLayout();
         GridBagConstraints c = new GridBagConstraints();
