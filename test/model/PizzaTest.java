@@ -25,7 +25,7 @@ public class PizzaTest {
     }
 
     @Test
-    public void setZutaten() {
+    public void updateZutaten() {
         System.out.println("Running: setZutaten");
         // Alle Zutaten auf die Pizza:
         double gesamtpreis = 4.99;
@@ -44,12 +44,12 @@ public class PizzaTest {
         System.out.println("Running: toString");
         String preis = currency.format(4.99);
         pizza.setName("Beispielpizza");
-        assertEquals("Beispielpizza\r\n Grundpreis " + preis + "\n--------------------\nPreis:" + preis,
+        assertEquals("Beispielpizza\r\n Grundpreis " + preis + "\r\n--------------------\r\nPreis: " + preis,
                 pizza.toString());
 
         pizza.belegen("Tomaten");
         assertEquals("Beispielpizza\r\n Grundpreis " + preis + "\r\n Tomaten " + currency.format(0.59) +
-                        "\n--------------------\nPreis:" + currency.format(4.99 + 0.59),
+                        "\r\n--------------------\r\nPreis: " + currency.format(4.99 + 0.59),
                 pizza.toString());
     }
 

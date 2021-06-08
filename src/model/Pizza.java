@@ -93,7 +93,7 @@ public class Pizza {
                     .append(currency.format(zutat.getPreis()));
         }
         gesamtString
-                .append("\n--------------------\nPreis: ")
+                .append("\r\n--------------------\r\nPreis: ")
                 .append(currency.format(preis));
         return gesamtString.toString();
     }

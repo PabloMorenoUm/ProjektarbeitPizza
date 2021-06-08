@@ -35,11 +35,11 @@ public class PizzenListTest {
     public void testToString() {
         System.out.println("Running: toString");
         String preis = currency.format(4.99);
-        assertEquals("Pizza1\r\n Grundpreis " + preis + "\n--------------------\nPreis:" + preis +
-                        "\n--------------------\n\n" + "Pizza2\r\n Grundpreis " + preis + "\r\n Gouda " +
+        assertEquals("Pizza1\r\n Grundpreis " + preis + "\r\n--------------------\r\nPreis: " + preis +
+                        "\r\n--------------------\r\n\r\n" + "Pizza2\r\n Grundpreis " + preis + "\r\n Gouda " +
                         currency.format(0.99) + "\r\n Mozzarella " + currency.format(0.99) +
-                        "\n--------------------\nPreis:" + currency.format(4.99 + 2 * .99) +
-                        "\n--------------------\n\nGesamtpreis: " + currency.format(2 * 4.99 + 2 * .99),
+                        "\r\n--------------------\r\nPreis: " + currency.format(4.99 + 2 * .99) +
+                        "\r\n--------------------\r\n\r\nGesamtpreis: " + currency.format(2 * 4.99 + 2 * .99),
                 pizzen.toString());
     }
 

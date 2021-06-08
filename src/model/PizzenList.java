@@ -20,7 +20,7 @@ public class PizzenList extends ArrayList<Pizza> {
         for (Pizza pizza : this) {
             gesamtString
                     .append(pizza.toString())
-                    .append("\n--------------------\n\n");
+                    .append("\r\n--------------------\r\n\r\n");
         }
         gesamtString
                 .append("Gesamtpreis: ")
