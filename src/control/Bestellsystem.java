@@ -161,7 +161,8 @@ public class Bestellsystem {
                 } else{
                     System.out.println(belag.getName() + " hinzugefügt");
                     meineZutaten.add((Zutat) belag);
-                    meinePizza.setZutaten(meineZutaten);
+                    //meineZutaten.update();
+                    meinePizza.updateZutaten(meineZutaten);
                 }
             } else{
                 System.out.println("Nicht mehr als " + maxbelag + " Zutaten");

@@ -26,7 +26,7 @@ public class PizzenListTest {
         ArrayList<Zutat> zutaten = new ArrayList<>();
         zutaten.add((Zutat) alleZutaten.getListe().get(0));
         zutaten.add((Zutat) alleZutaten.getListe().get(1));
-        pizza2.setZutaten(zutaten);
+        pizza2.updateZutaten(zutaten);
         pizzen.add(pizza1);
         pizzen.add(pizza2);
     }

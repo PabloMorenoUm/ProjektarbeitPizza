@@ -37,7 +37,7 @@ public class PizzaTest {
             zutaten.add((Zutat) belag);
             gesamtpreis += belag.getPreis();
         }
-        pizza.setZutaten(zutaten);
+        pizza.updateZutaten(zutaten);
         assertEquals(gesamtpreis, pizza.getPreis(), .001);
         assertArrayEquals(zutaten.toArray(), pizza.getZutaten().toArray());
         assertEquals(alleZutaten.getListe().size(), pizza.getZutaten().size());
@@ -80,7 +80,7 @@ public class PizzaTest {
         for (Belag belag : alleZutaten.getListe()) {
             zutaten.add((Zutat) belag);
         }
-        pizza.setZutaten(zutaten);
+        pizza.updateZutaten(zutaten);
 
         pizza.entfernen("Unsinn", aktuellePizzaPanel.getAusgabefeld());
         assertEquals(alleZutaten.getListe().size(), pizza.getZutaten().size());

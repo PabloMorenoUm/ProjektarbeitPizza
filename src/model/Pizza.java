@@ -47,12 +47,16 @@ public class Pizza {
         return meineZutaten;
     }
 
-    public void setZutaten(ArrayList<Zutat> meineZutaten) {
-        this.meineZutaten = meineZutaten;
+    public void updateZutaten(ArrayList<Zutat> meineZutaten) {
+        this.setMeineZutaten(meineZutaten);
         this.preis = 4.99;
         for (Zutat zutat : meineZutaten) {
             this.preis += zutat.getPreis();
         }
+    }
+
+    private void setMeineZutaten(ArrayList<Zutat> meineZutaten) {
+        this.meineZutaten = meineZutaten;
     }
 
     public String toString() {
@@ -99,7 +103,7 @@ public class Pizza {
                         } else {
                             feld.setText(zutat.getName() + " hinzugefügt");
                             meineZutaten.add((Zutat) zutat);
-                            this.setZutaten(meineZutaten);
+                            this.updateZutaten(meineZutaten);
                         }
                         break;
                     }
@@ -131,7 +135,7 @@ public class Pizza {
                     if (belagBisher.getName().equals(ZutatenName)) {
                         feld.setText(belagBisher.getName() + " entfernt.");
                         meineZutaten.remove(belagBisher);
-                        this.setZutaten(meineZutaten);
+                        this.updateZutaten(meineZutaten);
                         break;
                     }
                 }

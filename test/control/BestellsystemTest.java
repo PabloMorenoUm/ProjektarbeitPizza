@@ -52,7 +52,7 @@ public class BestellsystemTest {
         System.out.println("running checkPreis");
         zutaten1.add((Zutat) alleZutaten.getListe().get(0));
         zutaten1.add((Zutat) alleZutaten.getListe().get(1));
-        pizza1.setZutaten(zutaten1);
+        pizza1.updateZutaten(zutaten1);
         assertEquals(4.99 + 0.99 + 0.99, pizza1.getPreis(), .001);
 
     }
@@ -64,12 +64,12 @@ public class BestellsystemTest {
 
         zutaten1.add((Zutat) alleZutaten.getListe().get(1));
         zutaten1.add((Zutat) alleZutaten.getListe().get(2));
-        pizza1.setZutaten(zutaten1);
+        pizza1.updateZutaten(zutaten1);
 
         zutaten2.add((Zutat) alleZutaten.getListe().get(3));
         zutaten2.add((Zutat) alleZutaten.getListe().get(5));
         zutaten2.add((Zutat) alleZutaten.getListe().get(6));
-        pizza2.setZutaten(zutaten2);
+        pizza2.updateZutaten(zutaten2);
 
         pizzen.add(pizza1);
         pizzen.add(pizza2);
