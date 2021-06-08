@@ -1,4 +1,6 @@
-package model;
+package control;
+
+import model.*;
 
 import java.text.NumberFormat;
 import java.util.*;
@@ -7,6 +9,7 @@ public class Bestellsystem {
     /*
     Konsolenbasiertes Bestellsystem nach Vorlage der .docx-Datei.
      */
+
 
     // Währungsformat:
     private final NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
@@ -168,7 +171,7 @@ public class Bestellsystem {
         }
     }
 
-    protected double zahlen(ArrayList<Pizza> pizzaliste){
+    public double zahlen(ArrayList<Pizza> pizzaliste){
         double gesamtpreis = 0.0;
         for(Pizza pizza: pizzaliste){
             gesamtpreis += pizza.getPreis();
