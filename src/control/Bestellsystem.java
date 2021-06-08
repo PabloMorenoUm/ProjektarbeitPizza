@@ -5,7 +5,8 @@ import model.*;
 import java.util.*;
 
 /**
- * Konsolenbasiertes Bestellsystem nach Vorlage der .docx-Datei.
+ * Konsolenbasiertes Bestellsystem nach Vorlage der .docx-Datei in Form einer riesengroßen switch-case-Abfrage
+ * gepackt in einer do-while-Schleife.
  */
 public class Bestellsystem {
 
