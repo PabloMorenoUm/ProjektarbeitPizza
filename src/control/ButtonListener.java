@@ -28,6 +28,9 @@ public class ButtonListener implements ActionListener {
     private AktuellePizzaPanel aktuellePizzaPanel;
     private WarenkorbPanel warenkorbPanel;
 
+    /**
+     * Konstruktor von ButtonListener
+     */
     public ButtonListener() {
         //this.meinePizza = meinePizza;
     }

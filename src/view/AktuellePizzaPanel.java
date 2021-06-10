@@ -15,6 +15,13 @@ public class AktuellePizzaPanel extends JPanel {
     private final JTextField pizzaNameTextField;
     private final JLabel ausgabefeld;
 
+    /**
+     * Konstruktor von AktuellePizzaPanel
+     * @param buttonListener
+     *
+     * Der Layoutmanager der Instanz des AktuellePizzaPanel wird auf GridBagLayout gesetzt.
+     * Die JComponents werden dann auf definierte Plätze im Grid gesetzt.
+     */
     public AktuellePizzaPanel(ButtonListener buttonListener){
         GridBagLayout centerLayout = new GridBagLayout();
         this.setLayout(centerLayout);

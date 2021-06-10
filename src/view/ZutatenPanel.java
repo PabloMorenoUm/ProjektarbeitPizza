@@ -7,14 +7,14 @@ import java.awt.*;
 
 /**
  *
- *  Kindklasse von @link JPanel. Enthält
- *  @link JButtons, mit denen Objekte der Klasse
- *  @link Sauce und
- *  @link Zutat
+ *  Enthält
+ *  JButtons, mit denen Objekte der Klasse
+ *  Sauce und
+ *  Zutat
  *  zur Pizza hinzugefügt und entfernt werden können.
  *
  * Jede Zutat wird im Panel
- * @link BelaegePanel
+ * BelaegePanel
  * durch ein ZutatenPanel repräsentiert.
  * Ein ZutatenPanel besteht stets aus den gleichen Unterkomponenten:
  * JLabel das den Namen der Zutat anzeigt, JLabel das den Preis anzeigt,

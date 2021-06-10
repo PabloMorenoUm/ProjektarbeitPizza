@@ -10,6 +10,10 @@ import java.io.File;
  */
 public class ImageLabel extends JLabel{
 
+    /**
+     * Konstruktor von ImageLabel
+     * @param imageURL
+     */
     public ImageLabel(String imageURL) {
         super();
         File bild = new File(imageURL);

@@ -8,26 +8,26 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 /**
- * Kindklasse von
- * @link JPanel .
- * Enthält die
- * @link ZutatenPanel,
+ * Enthält die ZutatenPanel,
  * wobei jedes ZutatenPanel eine
- * @link Zutat beziehungsweise
- * @link Sauce
- * repräsentiert.
+ * Zutat beziehungsweise
+ * Sauce repräsentiert.
  *
  * Mit der Methode
- * @link addZutat
+ * addZutat
  * wird der Instanz des BelaegePanel
  * ein
- * @link ZutatenPanel
+ * ZutatenPanel
  * hinzugefügt.
  */
 public class BelaegePanel extends JPanel {
 
     private final ButtonListener buttonListener;
 
+    /**
+     * Konstruktor von BelaegePanel
+     * @param buttonListener
+     */
     public BelaegePanel(ButtonListener buttonListener) {
         this.buttonListener = buttonListener;
         GridBagLayout centerLayout = new GridBagLayout();
@@ -69,17 +69,17 @@ public class BelaegePanel extends JPanel {
 
     /**
      * Fügt einen Button entsprechend einer Zutat mit dem Namen
-     * @param zutatenName
+     * zutatenName
      * und dem Preis
-     * @param preis
+     * preis
      * hinzu.
      * Der Button wird im Layout GridbagLayout an der durch die Koordinaten
-     * @param xPos
+     * xPos
      * und
-     * @param yPos
+     * yPos
      * definierten Position eingefügt
      * mit den GridBagConstraints
-     * @param c .
+     * c .
      */
     public void addZutat(String zutatenName, String preis, GridBagConstraints c, int xPos, int yPos) {
         ZutatenPanel zutat = new ZutatenPanel(zutatenName, preis, buttonListener);

@@ -6,11 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Kindklasse von
- * @link JPanel
- *
- * Dieses Panel enthält
- * @link JButton
+ * Dieses Panel enthält JButtons
  * zum Hinzufügen einer Pizza in den Warenkorb, Löschen des Warenkorbs und einen Knopf zum Abschließen der Bestellung.
  *
  */
