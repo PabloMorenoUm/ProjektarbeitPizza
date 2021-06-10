@@ -7,96 +7,103 @@ import org.junit.Test;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 
 public class PizzaTest {
     // Daten von allen Zutaten:
-    private Pizza pizza;
-    ArrayList<Zutat> zutaten;
+    private Pizza actualPizza;
+    ArrayList<Zutat> expectedZutaten;
     private static final AlleZutaten alleZutaten = new AlleZutaten();
     NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
 
     @Before
     public void setUp() {
         System.out.println("Setting it up!");
-        pizza = new Pizza();
-        zutaten = new ArrayList<>();
+        actualPizza = new Pizza();
+        expectedZutaten = new ArrayList<>();
     }
 
     @Test
     public void updateZutaten() {
         System.out.println("Running: setZutaten");
         // Alle Zutaten auf die Pizza:
-        double gesamtpreis = 4.99;
-        for (Belag belag : alleZutaten.getListe()) {
-            zutaten.add((Zutat) belag);
-            gesamtpreis += belag.getPreis();
-        }
-        pizza.updateZutaten(zutaten);
-        assertEquals(gesamtpreis, pizza.getPreis(), .001);
-        assertArrayEquals(zutaten.toArray(), pizza.getZutaten().toArray());
-        assertEquals(alleZutaten.getListe().size(), pizza.getZutaten().size());
+        actualPizza.updateZutaten((ArrayList<Zutat>) alleZutaten
+                .getListe()
+                .stream()
+                .map(z -> (Zutat) z)
+                .collect(Collectors.toList()
+                ));
+        assertEquals(4.99 + alleZutaten.getListe().stream().mapToDouble(Belag::getPreis).sum(),
+                actualPizza.getPreis(), .001);
+        assertArrayEquals(alleZutaten.getListe().toArray(), actualPizza.getZutaten().toArray());
+        assertEquals(alleZutaten.getListe().size(), actualPizza.getZutaten().size());
     }
 
     @Test
     public void testToString() {
         System.out.println("Running: toString");
         String preis = currency.format(4.99);
-        pizza.setName("Beispielpizza");
+        actualPizza.setName("Beispielpizza");
         assertEquals("Beispielpizza\r\n Grundpreis " + preis + "\r\n--------------------\r\nPreis: " + preis,
-                pizza.toString());
+                actualPizza.toString());
 
-        pizza.belegen("Tomaten");
+        actualPizza.belegen("Tomaten");
         assertEquals("Beispielpizza\r\n Grundpreis " + preis + "\r\n Tomaten " + currency.format(0.59) +
                         "\r\n--------------------\r\nPreis: " + currency.format(4.99 + 0.59),
-                pizza.toString());
+                actualPizza.toString());
     }
 
     @Test
     public void belegen() {
         System.out.println("Running: belegen");
-        pizza.belegen("Unsinn");
-        assertEquals(0, pizza.getZutaten().size());
+        /*actualPizza.belegen("Unsinn");
+        assertEquals(0, actualPizza.getZutaten().size());*/
 
-        pizza.belegen("Salami");
-        assertEquals(1, pizza.getZutaten().size());
+        actualPizza.belegen("Salami");
+        assertEquals(1, actualPizza.getZutaten().size());
 
-        pizza.belegen("Salami");
-        assertEquals(1, pizza.getZutaten().size());
+        actualPizza.belegen("Salami");
+        assertEquals(1, actualPizza.getZutaten().size());
 
-        pizza.belegen("Schinken");
-        assertEquals(2, pizza.getZutaten().size());
+        actualPizza.belegen("Schinken");
+        assertEquals(2, actualPizza.getZutaten().size());
+
+        alleZutaten.getListe().forEach(z -> actualPizza.belegen(z.getName()));
+        assertEquals(8, actualPizza.getZutaten().size());
     }
 
     @Test
     public void entfernen() {
         System.out.println("Running: entfernen");
         // Alle Zutaten drauf:
-        for (Belag belag : alleZutaten.getListe()) {
-            zutaten.add((Zutat) belag);
-        }
-        pizza.updateZutaten(zutaten);
+        actualPizza.updateZutaten((ArrayList<Zutat>) alleZutaten
+                .getListe()
+                .stream()
+                .map(z -> (Zutat) z)
+                .collect(Collectors.toList())
+        );
 
-        pizza.entfernen("Unsinn");
-        assertEquals(alleZutaten.getListe().size(), pizza.getZutaten().size());
+        actualPizza.entfernen("Unsinn");
+        assertEquals(alleZutaten.getListe().size(), actualPizza.getZutaten().size());
 
-        pizza.entfernen("Gouda");
-        assertEquals(alleZutaten.getListe().size() - 1, pizza.getZutaten().size());
+        actualPizza.entfernen("Gouda");
+        assertEquals(alleZutaten.getListe().size() - 1, actualPizza.getZutaten().size());
 
-        pizza.entfernen("Gouda");
-        assertEquals(alleZutaten.getListe().size() - 1, pizza.getZutaten().size());
+        actualPizza.entfernen("Gouda");
+        assertEquals(alleZutaten.getListe().size() - 1, actualPizza.getZutaten().size());
 
-        pizza.entfernen("Ei");
-        assertEquals(alleZutaten.getListe().size() - 2, pizza.getZutaten().size());
+        actualPizza.entfernen("Ei");
+        assertEquals(alleZutaten.getListe().size() - 2, actualPizza.getZutaten().size());
     }
 
     @After
     public void tearDown() {
         System.out.println("Tearing it down!");
-        pizza = null;
-        zutaten = null;
-        assertNull(pizza);
-        assertNull(zutaten);
+        actualPizza = null;
+        expectedZutaten = null;
+        assertNull(actualPizza);
+        assertNull(expectedZutaten);
     }
 }

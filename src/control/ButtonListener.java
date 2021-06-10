@@ -28,6 +28,10 @@ public class ButtonListener implements ActionListener {
     private AktuellePizzaPanel aktuellePizzaPanel;
     private WarenkorbPanel warenkorbPanel;
 
+    /**
+     * Konstruktor. Erstellt eine Instanz dieses Listeners, das für die Funktionalität der Knöpfe und Textfelder
+     * dient und als Schnittstelle zwischen grafischer Oberfläche und Pizzabestellsystem dient.
+     */
     public ButtonListener() {
         //this.meinePizza = meinePizza;
     }
@@ -58,7 +62,7 @@ public class ButtonListener implements ActionListener {
                 if(Objects.isNull(meinePizza)){
                     aktuellePizzaPanel.getAusgabefeld().setText("Erst 'Neue Pizza' auswählen!");
                 } else {
-                    if (meinePizza.getZutaten().size() > Pizza.getMaxbelag()) {
+                    if (meinePizza.getZutaten().size() > Pizza.getMaxZutat()) {
                         aktuellePizzaPanel.getAusgabefeld().setText("Diese Pizza hat mehr als acht Zutaten!!!");
                     } else {
                         pizzaname(meinePizza);
@@ -100,7 +104,7 @@ public class ButtonListener implements ActionListener {
             aktuellePizzaPanel.getAusgabefeld().setText("Erst 'Neue Pizza' auswählen!");
         } else {
             ZutatenPanel zutatenPanel = (ZutatenPanel) button.getParent();
-            String zutatenName = zutatenPanel.getZutatenName();
+            String zutatenName = zutatenPanel.getBelagName();
 
             if(vorzeichen.equals("+")){
                 aktuellePizzaPanel.getAusgabefeld().setText(meinePizza.belegen(zutatenName));
@@ -124,10 +128,22 @@ public class ButtonListener implements ActionListener {
         pizza.setName(name);
     }
 
+    /**
+     * Setze den GUI-Bereich, in dem sich die Textfelder und Knöpfe,
+     * die die aktuell zu bearbeitende Pizza betreffen, befinden, in diese Listener-Klasse.
+     * @param aktuellePizzaPanel AktuellePizzaPanel. JPanel mit den Informationen und Funktionalitäten,
+     *                           die die aktuelle Pizza betreffen.
+     */
     public void setAktuellePizzaPanel(AktuellePizzaPanel aktuellePizzaPanel) {
         this.aktuellePizzaPanel = aktuellePizzaPanel;
     }
 
+    /**
+     * Setze den GUI-Bereich, in dem sich die textfelder und Knöpfe,
+     * die den Warenkorb betreffen, befinden, in diese Listener-Klasse.
+     * @param warenkorbPanel WarenkorbPanel. JPanel mit den Informationen und Funktionalitäten,
+     *                       die den Warenkorb betreffen.
+     */
     public void setWarenkorbPanel(WarenkorbPanel warenkorbPanel) {
         this.warenkorbPanel = warenkorbPanel;
     }

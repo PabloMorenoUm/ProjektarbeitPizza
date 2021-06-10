@@ -15,6 +15,11 @@ public class AktuellePizzaPanel extends JPanel {
     private final JTextField pizzaNameTextField;
     private final JLabel ausgabefeld;
 
+    /**
+     * Konstruktor. Erstellt ein JPanel mit allen Textfeldern und Knöpfen, die die zu bearbeitende Pizza betreffen.
+     * @param buttonListener ButtonListener. Dieser wird hier gebraucht, damit die Knöpfe nach Anklicken
+     *                       ihren gewünschten Zweck erfüllen.
+     */
     public AktuellePizzaPanel(ButtonListener buttonListener){
         GridBagLayout centerLayout = new GridBagLayout();
         this.setLayout(centerLayout);
@@ -81,14 +86,27 @@ public class AktuellePizzaPanel extends JPanel {
         this.add(ausgabefeld,c);
     }
 
+    /**
+     * Getter-Methode
+     * @return JTextArea. Textbereich, in dem die gegenwärtige Pizza samt Sauce, Zutaten und Preis aufgelistet ist.
+     */
     public JTextArea getCurrentPizzaTextArea() {
         return currentPizzaTextArea;
     }
 
+    /**
+     * Getter-Methode
+     * @return JTextField. Textfeld für den gewünschten Pizzanamen, den Benutzer*innen vor Erstellung einer
+     * neuen Pizza oder vor Abschluss der betreffenden Pizza eingeben können.
+     */
     public JTextField getPizzaNameTextField() {
         return pizzaNameTextField;
     }
 
+    /**
+     * Getter-Methode
+     * @return JLabel. Textausgabe, in dem das System mit den Benutzer*innen interagiert.
+     */
     public JLabel getAusgabefeld() {
         return ausgabefeld;
     }

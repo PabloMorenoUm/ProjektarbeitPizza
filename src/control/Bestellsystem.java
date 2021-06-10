@@ -9,8 +9,10 @@ import java.util.*;
  * gepackt in einer do-while-Schleife.
  */
 public class Bestellsystem {
-
-    public void nutzeBestellsystem() {
+    /**
+     * Konstruktor. Aufruf des konsolenbasierten Bestellsystems.
+     */
+    public Bestellsystem() {
         // Warenkorb:
         PizzenList pizzen = new PizzenList();
         // Einzelne Pizza:

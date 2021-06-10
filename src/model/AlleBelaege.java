@@ -15,6 +15,10 @@ public class AlleBelaege {
     private final NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.GERMANY);
     protected ArrayList<Belag> liste = new ArrayList<>();
 
+    /**
+     * Getter-Methode. Gibt den Datensatz als ArrayList zurück.
+     * @return ArrayList. Liste der vorhandenen Saucen/Zutaten.
+     */
     public ArrayList<Belag> getListe() {
         return liste;
     }

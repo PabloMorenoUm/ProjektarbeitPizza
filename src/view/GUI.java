@@ -10,6 +10,9 @@ import java.awt.*;
  */
 public class GUI {
 
+    /**
+     * Konstruktor. Erstellt ein eigenes Fenster, das die Benutzeroberfläche für das Bestellsystem ist.
+     */
     public GUI() {
 
         JFrame frame = new JFrame("Luigis Pizza");
@@ -63,6 +66,5 @@ public class GUI {
         frame.pack();
         frame.repaint();
         frame.setVisible(true);
-
     }
 }

@@ -5,9 +5,12 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * Daten aller Saucen, eingelesen aus einer .csv-Datei
+ * Daten aller Saucen, eingelesen aus einer .csv-Datei.
  */
 public class AlleSaucen extends AlleBelaege {
+    /**
+     * Konstruktor. Instanziert den Datensatz, der alle vorliegenden Saucen enthält.
+     */
     public AlleSaucen() {
         try {
             Scanner datei = new Scanner(new File("Saucen.csv"));
@@ -21,6 +24,4 @@ public class AlleSaucen extends AlleBelaege {
             fileNotFoundException.printStackTrace();
         }
     }
-
-
 }

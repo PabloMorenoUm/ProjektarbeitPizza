@@ -10,6 +10,11 @@ import java.io.File;
  */
 public class ImageLabel extends JLabel{
 
+    /**
+     * Konstruktor. Sucht nach einer Bilddatei, überprüft, ob sie existiert, und verpackt sie,
+     * sofern vorhanden, als Icon.
+     * @param imageURL String. Name der Bilddatei.
+     */
     public ImageLabel(String imageURL) {
         super();
         File bild = new File(imageURL);

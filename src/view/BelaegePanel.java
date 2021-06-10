@@ -8,26 +8,18 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 /**
- * Kindklasse von
- * @link JPanel .
- * Enthält die
- * @link ZutatenPanel,
- * wobei jedes ZutatenPanel eine
- * @link Zutat beziehungsweise
- * @link Sauce
- * repräsentiert.
- *
- * Mit der Methode
- * @link addZutat
- * wird der Instanz des BelaegePanel
- * ein
- * @link ZutatenPanel
- * hinzugefügt.
+ * Enthält die ZutatenPanel, wobei jedes ZutatenPanel eine Zutat beziehungsweise Sauce repräsentiert.
  */
 public class BelaegePanel extends JPanel {
 
     private final ButtonListener buttonListener;
 
+    /**
+     * Konstruktor. Erstellt ein JPanel, das alle Saucen und Zutaten umfasst.
+     * Mit den Knöpfen lassen sich wahlweise Saucen und Zutaten hinzufügen oder entfernen.
+     * @param buttonListener ButtonListener. Dieser wird hier gebraucht, damit die Knöpfe nach Anklicken
+     *                       ihren gewünschten Zweck erfüllen.
+     */
     public BelaegePanel(ButtonListener buttonListener) {
         this.buttonListener = buttonListener;
         GridBagLayout centerLayout = new GridBagLayout();
@@ -68,18 +60,12 @@ public class BelaegePanel extends JPanel {
     }
 
     /**
-     * Fügt einen Button entsprechend einer Zutat mit dem Namen
-     * @param zutatenName
-     * und dem Preis
-     * @param preis
-     * hinzu.
-     * Der Button wird im Layout GridbagLayout an der durch die Koordinaten
-     * @param xPos
-     * und
-     * @param yPos
-     * definierten Position eingefügt
-     * mit den GridBagConstraints
-     * @param c .
+     * Fügt ein ZutatenPanel hier in dieses Panel ein.
+     * @param zutatenName String. Name der jeweiligen Sauce oder Zutat.
+     * @param preis String. Preis für die jeweilige Sauce oder Zutat.
+     * @param xPos int. x-Koordinate für das Panel
+     * @param yPos int. y-Koordinate für das Panel
+     * @param c GridBagConstraints. Constraints für das ZutatenPanel.
      */
     public void addZutat(String zutatenName, String preis, GridBagConstraints c, int xPos, int yPos) {
         ZutatenPanel zutat = new ZutatenPanel(zutatenName, preis, buttonListener);

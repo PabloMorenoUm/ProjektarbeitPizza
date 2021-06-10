@@ -5,9 +5,12 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * Daten aller vorhandenen Zutaten, eingelesen aus einer .csv-Datei
+ * Daten aller vorhandenen Zutaten, eingelesen aus einer .csv-Datei.
  */
 public class AlleZutaten extends AlleBelaege {
+    /**
+     * Konstruktor. Instanziert den Datensatz, der alle vorliegenden zutaten enthält.
+     */
     public AlleZutaten() {
         try {
             Scanner datei = new Scanner(new File("Zutaten.csv"));

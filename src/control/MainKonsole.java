@@ -1,13 +1,17 @@
 package control;
 
+/**
+ * Klasse mit dem Hauptprogramm, die die Konsolenanwendung ausführt.
+ */
 public class MainKonsole {
+    /**
+     * main-Funktion. Führt die konsolenbasierte Applikation aus.
+     * Am Anfang steht eine Willkommensnachricht mit Menüübersicht und konsolenbasiertem Bestellsystem.
+     * Als Eingabe ist die Groß- und Kleinschreibung egal ebenso wie die Anzahl der Leerzeichen.
+     * Auch die Nummern anstelle der Wörter sind als Eingabe möglich.
+     * @param args String[]. Argumente - können hier ignoriert werden.
+     */
     public static void main(String[] args) {
-
-        /*
-        Willkommensnachricht mit Menüübersicht und konsolenbasiertem Bestellsystem.
-        Als Eingabe ist die Groß- und Kleinschreibung egal, ebenso wie die Anzahl der Leerzeichen.
-        Auch die Nummern anstelle der Wörter sind als Eingabe möglich.
-         */
 
         System.out.println("""
                  Willkommen in bei Luigis Pizza:
@@ -22,6 +26,6 @@ public class MainKonsole {
                 '8) Q' - Beendet das Programm.
                 +++++++++++ LUIGI'S PIZZA +++++++++++\s""");
 
-        new Bestellsystem().nutzeBestellsystem();
+        new Bestellsystem();
     }
 }

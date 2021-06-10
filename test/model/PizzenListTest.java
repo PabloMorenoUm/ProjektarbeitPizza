@@ -32,6 +32,11 @@ public class PizzenListTest {
     }
 
     @Test
+    public void checkPreis() {
+        assertTrue(pizzen.stream().mapToDouble(Pizza::getPreis).sum() > 0);
+    }
+
+    @Test
     public void testToString() {
         System.out.println("Running: toString");
         String preis = currency.format(4.99);

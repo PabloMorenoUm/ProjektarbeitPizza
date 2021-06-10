@@ -6,17 +6,17 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Kindklasse von
- * @link JPanel
- *
- * Dieses Panel enthält
- * @link JButton
- * zum Hinzufügen einer Pizza in den Warenkorb, Löschen des Warenkorbs und einen Knopf zum Abschließen der Bestellung.
- *
+ * Dieses Panel umfasst alles, was den Bestellwarenkorb betrifft.
  */
 public class WarenkorbPanel extends JPanel {
     private final JTextArea currentStatusTextArea;
 
+    /**
+     * Konstruktor. Erstellt ein JPanel, das den gegenwärtigen Stand des Warenkorbs beschreibt und das zwei Knöpfe
+     * enthält: Löschen des Warenkorbs und Bezahlen der Gesamtbestellung (Preisanzeige).
+     * @param buttonListener ButtonListener. Dieser wird hier gebraucht, damit die Knöpfe nach Anklicken
+     *                       ihren gewünschten Zweck erfüllen.
+     */
     public WarenkorbPanel(ButtonListener buttonListener) {
 
         GridBagLayout bottomLayout = new GridBagLayout();
@@ -62,10 +62,11 @@ public class WarenkorbPanel extends JPanel {
 
     }
 
-
+    /**
+     * Getter-Methode.
+     * @return JTextArea. Textbereich, in dem der Warenkorb angezeigt ist.
+     */
     public JTextArea getCurrentStatusTextArea() {
         return currentStatusTextArea;
     }
-
-
 }
