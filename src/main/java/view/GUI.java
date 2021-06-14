@@ -16,7 +16,11 @@ public class GUI {
     public GUI() {
 
         JFrame frame = new JFrame("Luigis Pizza");
-        frame.setPreferredSize(new Dimension(1700, 1300));
+        //frame.setPreferredSize(new Dimension(1700, 1300));
+        //frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        //frame.setSize(screenSize.width,screenSize.height);
 
         GridBagLayout gLayout = new GridBagLayout();
         GridBagConstraints c = new GridBagConstraints();
@@ -25,6 +29,7 @@ public class GUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel topPanel = new JPanel();
         topPanel.setPreferredSize(new Dimension(200, 150));
+
 
         // --------------------- top ---------------------
         ImageLabel backgroundImage = new ImageLabel("titel.jpg");
@@ -64,6 +69,7 @@ public class GUI {
 
         // ---------------- Show ! --------------------------
         frame.pack();
+        frame.setSize(screenSize.width,screenSize.height);
         frame.repaint();
         frame.setVisible(true);
     }
