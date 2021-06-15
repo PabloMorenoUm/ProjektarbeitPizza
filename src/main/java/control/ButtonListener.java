@@ -58,7 +58,7 @@ public class ButtonListener implements ActionListener {
                 meinePizza.setName("Pizza " + pizzaNummer);
                 aktuellePizzaPanel.getCurrentPizzaTextArea().setText(meinePizza.toString());
                 break;
-            case "Pizza abschließen":
+            case "In den Warenkorb":
                 if(Objects.isNull(meinePizza)){
                     aktuellePizzaPanel.getAusgabefeld().setText("Erst 'Neue Pizza' auswählen!");
                 } else {

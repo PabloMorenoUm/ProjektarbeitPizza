@@ -10,7 +10,7 @@ import java.util.Objects;
 
 /**
  * Bereich unter dem Titelbild mit Textfeld für die gerade erstellte Pizza (mit Belag), mit Namenstextfeld und
- * mit den Knöpfen "Neue Pizza" und "Pizza abschließen".
+ * mit den Knöpfen "Neue Pizza" und "In den Warenkorb".
  */
 public class AktuellePizzaPanel extends JPanel {
 
@@ -81,7 +81,7 @@ public class AktuellePizzaPanel extends JPanel {
         this.add(neuePizzaButton, c);
         neuePizzaButton.addActionListener(buttonListener);
 
-        JButton pizzaAbschlussButton = new JButton("Pizza abschließen");
+        JButton pizzaAbschlussButton = new JButton("In den Warenkorb");
         pizzaAbschlussButton.setPreferredSize(new Dimension(4, 20));
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 4;
