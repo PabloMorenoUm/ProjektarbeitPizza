@@ -55,7 +55,7 @@ public class ButtonListener implements ActionListener {
                 aktuellePizzaPanel.getAusgabefeld().setText("Neue Pizza wird erstellt.");
                 meinePizza = new Pizza();
                 pizzaNummer++;
-                pizzaname(meinePizza);
+                meinePizza.setName("Pizza " + pizzaNummer);
                 aktuellePizzaPanel.getCurrentPizzaTextArea().setText(meinePizza.toString());
                 break;
             case "Pizza abschließen":
@@ -65,7 +65,6 @@ public class ButtonListener implements ActionListener {
                     if (meinePizza.getZutaten().size() > Pizza.getMaxZutat()) {
                         aktuellePizzaPanel.getAusgabefeld().setText("Diese Pizza hat mehr als acht Zutaten!!!");
                     } else {
-                        pizzaname(meinePizza);
                         pizzen.add(meinePizza);
                         warenkorbPanel.getCurrentStatusTextArea().setText(pizzen.toString());
                         meinePizza = null;
@@ -116,19 +115,6 @@ public class ButtonListener implements ActionListener {
     }
 
     /**
-     * Übertragung des Schriftzugs im Textfeld auf die Pizza als Name.
-     * @param pizza Pizza. Aktuelle Pizza, die umzubenennen ist.
-     */
-    private void pizzaname(Pizza pizza){
-        String name = aktuellePizzaPanel
-                .getPizzaNameTextField()
-                .getText().equals("") ?
-                "Pizza " + pizzaNummer :
-                aktuellePizzaPanel.getPizzaNameTextField().getText();
-        pizza.setName(name);
-    }
-
-    /**
      * Setze den GUI-Bereich, in dem sich die Textfelder und Knöpfe,
      * die die aktuell zu bearbeitende Pizza betreffen, befinden, in diese Listener-Klasse.
      * @param aktuellePizzaPanel AktuellePizzaPanel. JPanel mit den Informationen und Funktionalitäten,
@@ -146,5 +132,9 @@ public class ButtonListener implements ActionListener {
      */
     public void setWarenkorbPanel(WarenkorbPanel warenkorbPanel) {
         this.warenkorbPanel = warenkorbPanel;
+    }
+
+    public Pizza getMeinePizza() {
+        return meinePizza;
     }
 }

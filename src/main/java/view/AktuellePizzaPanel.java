@@ -1,9 +1,12 @@
 package view;
 
 import control.ButtonListener;
+import model.Pizza;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.util.Objects;
 
 /**
  * Bereich unter dem Titelbild mit Textfeld für die gerade erstellte Pizza (mit Belag), mit Namenstextfeld und
@@ -44,10 +47,10 @@ public class AktuellePizzaPanel extends JPanel {
         c.gridy = 1;
         this.add(scrollCurrentPizza, c);
 
-        JLabel pizzaNameTextLabel = new JLabel("Hier Pizzanamen eingeben");
+        JLabel pizzaNameTextLabel = new JLabel("Hier Pizzanamen eingeben und danach Enter drücken");
         c.gridx = 1;
         c.gridy = 0;
-        c.weightx = 4;
+        c.weightx = 2;
         this.add(pizzaNameTextLabel, c);
 
         pizzaNameTextField = new JTextField("", 1);
@@ -55,6 +58,18 @@ public class AktuellePizzaPanel extends JPanel {
         c.gridy = 1;
         c.weightx = 2;
         c.anchor = GridBagConstraints.NORTHWEST;
+        pizzaNameTextField.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Pizza pizza = buttonListener.getMeinePizza();
+                if(Objects.isNull(pizza)){
+                    ausgabefeld.setText("Erst 'Neue Pizza' auswählen!");
+                } else{
+                    pizza.setName(pizzaNameTextField.getText());
+                    currentPizzaTextArea.setText(pizza.toString());
+                }
+            }
+        });
         this.add(pizzaNameTextField, c);
 
 
@@ -92,15 +107,6 @@ public class AktuellePizzaPanel extends JPanel {
      */
     public JTextArea getCurrentPizzaTextArea() {
         return currentPizzaTextArea;
-    }
-
-    /**
-     * Getter-Methode
-     * @return JTextField. Textfeld für den gewünschten Pizzanamen, den Benutzer*innen vor Erstellung einer
-     * neuen Pizza oder vor Abschluss der betreffenden Pizza eingeben können.
-     */
-    public JTextField getPizzaNameTextField() {
-        return pizzaNameTextField;
     }
 
     /**
