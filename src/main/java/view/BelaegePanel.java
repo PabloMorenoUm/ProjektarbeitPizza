@@ -1,6 +1,7 @@
 package view;
 
 import control.ButtonListener;
+import control.MusicListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -57,6 +58,11 @@ public class BelaegePanel extends JPanel {
         this.addZutat("Tomaten", preis059, c, 2, 6);
         this.addZutat("Champignons", preis059, c, 3, 6);
 
+        JButton play = new JButton("Play/Stop");
+        play.addActionListener(new MusicListener());
+        //c.gridx = 3;
+        //c.gridy = 3;
+        this.add(play);
     }
 
     /**
