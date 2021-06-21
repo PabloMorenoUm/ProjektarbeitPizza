@@ -28,16 +28,21 @@ public class GUI {
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel topPanel = new JPanel();
-        topPanel.setPreferredSize(new Dimension(200, 150));
+        Dimension topPanelSize = new Dimension((int)(screenSize.width/1.2),(int)(screenSize.height/6));
+        System.out.println(topPanelSize.width);
+        System.out.println(topPanelSize.height);
+        topPanel.setPreferredSize(topPanelSize);
 
 
         // --------------------- top ---------------------
-        ImageLabel backgroundImage = new ImageLabel("titel.jpg");
-        backgroundImage.setSize(new Dimension(150, 100));
+        ImageLabel backgroundImage = new ImageLabel("pizzabanner.png");
+        //backgroundImage.setSize(new Dimension(150, 100));
         topPanel.add(backgroundImage);
 
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0;
+        c.weightx = 1;
+        c.weighty = 0;
+        c.gridwidth = 2;
         c.gridx = 0;
         c.gridy = 0;
         frame.add(topPanel,c);
@@ -47,14 +52,17 @@ public class GUI {
         AktuellePizzaPanel aktuellePizzaPanel = new AktuellePizzaPanel(buttonListener);
         //frame.add(aktuellePizzaPanel, BorderLayout.CENTER);
         buttonListener.setAktuellePizzaPanel(aktuellePizzaPanel);
-        c.weightx = 0;
+        c.weightx = 0.5;
+        c.weighty = 0.5;
+        //c.gridheight = 1;
         c.gridx = 0;
         c.gridy = 1;
         frame.add(aktuellePizzaPanel,c);
         // ------------------------------------------------------------------------
         BelaegePanel belaegePanel = new BelaegePanel(buttonListener);
         //frame.add(belaegePanel, BorderLayout.SOUTH);
-        c.weightx = 0;
+        c.weightx = 0.1;
+        c.weighty = 0.4;
         c.gridx = 0;
         c.gridy = 2;
         frame.add(belaegePanel,c);
@@ -62,7 +70,7 @@ public class GUI {
         WarenkorbPanel warenkorbPanel = new WarenkorbPanel(buttonListener);
         //frame.add(warenkorbPanel, BorderLayout.EAST);
         buttonListener.setWarenkorbPanel(warenkorbPanel);
-        c.weightx = 0;
+        c.weightx = 0.6;
         c.gridx = 2;
         c.gridy = 2;
         frame.add(warenkorbPanel,c);

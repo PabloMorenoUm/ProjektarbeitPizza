@@ -38,7 +38,7 @@ public class AktuellePizzaPanel extends JPanel {
         c.gridy = 0;
         this.add(pizzaNameLabel, c);
 
-        currentPizzaTextArea = new JTextArea(10, 1);
+        currentPizzaTextArea = new JTextArea(15, 1);
         JScrollPane scrollCurrentPizza = new JScrollPane(currentPizzaTextArea,
                 ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
