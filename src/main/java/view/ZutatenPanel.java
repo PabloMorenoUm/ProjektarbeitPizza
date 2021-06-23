@@ -51,7 +51,6 @@ public class ZutatenPanel extends JPanel {
         JButton plusButton = new JButton("+");
         c.gridwidth = GridBagConstraints.RELATIVE;
         c.weightx = 1;
-        //c.gridwidth = 1;
         c.gridx = 0;
         c.gridy = 1;
         this.add(plusButton, c);
@@ -59,7 +58,6 @@ public class ZutatenPanel extends JPanel {
 
         JButton minusButton = new JButton("-");
         c.weightx = 1;
-        //c.gridwidth = 1;
         c.gridx = 1;
         c.gridy = 1;
         this.add(minusButton, c);

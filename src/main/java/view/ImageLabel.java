@@ -26,7 +26,6 @@ public class ImageLabel extends JLabel{
 
         } catch (Exception e) {
             e.printStackTrace();
-            //throw e;
         }
     }
 }

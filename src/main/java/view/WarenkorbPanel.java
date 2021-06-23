@@ -49,6 +49,7 @@ public class WarenkorbPanel extends JPanel {
         b.gridy = 1;
         b.gridwidth = 6;
         b.weightx = 10;
+        scrollCurrentStatus.setMinimumSize(new Dimension(100,50));
         this.add(scrollCurrentStatus, b);
 
         JButton finishButton = new JButton("Bestellung abschicken");

@@ -33,7 +33,6 @@ public class AktuellePizzaPanel extends JPanel {
         c.ipady = 8;
 
         JLabel pizzaNameLabel = new JLabel("Ihre aktuelle Pizza");
-        //c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
         this.add(pizzaNameLabel, c);
@@ -45,6 +44,7 @@ public class AktuellePizzaPanel extends JPanel {
         scrollCurrentPizza.setPreferredSize(new Dimension(200, 100));
         c.gridx = 0;
         c.gridy = 1;
+        scrollCurrentPizza.setMinimumSize(new Dimension(100,30));
         this.add(scrollCurrentPizza, c);
 
         JLabel pizzaNameTextLabel = new JLabel("Hier Pizzanamen eingeben und danach Enter drücken");
@@ -74,7 +74,7 @@ public class AktuellePizzaPanel extends JPanel {
 
 
         JButton neuePizzaButton = new JButton("Neue Pizza");
-        neuePizzaButton.setPreferredSize(new Dimension(4, 20));
+        neuePizzaButton.setSize(new Dimension(4, 20));
         c.gridx = 3;
         c.gridy = 1;
         c.weightx = 5;
@@ -82,7 +82,7 @@ public class AktuellePizzaPanel extends JPanel {
         neuePizzaButton.addActionListener(buttonListener);
 
         JButton pizzaAbschlussButton = new JButton("In den Warenkorb");
-        pizzaAbschlussButton.setPreferredSize(new Dimension(4, 20));
+        pizzaAbschlussButton.setSize(new Dimension(4, 20));
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 4;
         c.gridy = 1;
@@ -94,7 +94,6 @@ public class AktuellePizzaPanel extends JPanel {
         ausgabefeld.setPreferredSize(new Dimension(50, 20));
         ausgabefeld.setFont(new Font("Serif", Font.BOLD, 20));
         c.fill = GridBagConstraints.HORIZONTAL;
-        //c.anchor = GridBagConstraints.PAGE_END;
         c.gridx = 1;
         c.gridy = 2;
         c.gridwidth = 4;

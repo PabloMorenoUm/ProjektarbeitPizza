@@ -11,14 +11,13 @@ import java.awt.event.ActionListener;
 import java.util.Objects;
 
 /**
- * ActionListener für die JButtons der GUI
+ * ActionListener für die JButtons der GUI.
+ * Diese Klasse enthält das GUI-basierte Pizzabestellsystem.
+ * Hierfür notwendig ist eine Pizzainstanz, die nach Wunsch der Nutzer belegt wird.
+ * Diese Klasse behandelt die Funktionalitäten aller GUI-Knöpfe.
  */
 public class ButtonListener implements ActionListener {
-    /*
-    Diese Klasse enthält das GUI-basierte Pizzabestellsystem.
-    Hierfür notwendig ist eine Pizzainstanz, die nach Wunsch der Nutzer belegt wird.
-    Diese Klasse behandelt die Funktionalitäten aller GUI-Knöpfe.
-     */
+
 
     // Warenkorb:
     private PizzenList pizzen = new PizzenList();

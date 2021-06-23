@@ -60,8 +60,6 @@ public class BelaegePanel extends JPanel {
 
         JButton play = new JButton("Play/Stop");
         play.addActionListener(new MusicListener());
-        //c.gridx = 3;
-        //c.gridy = 3;
         this.add(play);
     }
 
