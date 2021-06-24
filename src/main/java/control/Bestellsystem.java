@@ -8,10 +8,14 @@ import java.util.*;
  * Konsolenbasiertes Bestellsystem nach Vorlage der .docx-Datei in Form einer riesengroßen switch-case-Abfrage
  * gepackt in einer do-while-Schleife.
  */
+
+
 public class Bestellsystem {
+
     /**
      * Konstruktor. Aufruf des konsolenbasierten Bestellsystems.
      */
+
     public Bestellsystem() {
         // Warenkorb:
         PizzenList pizzen = new PizzenList();
@@ -121,4 +125,5 @@ public class Bestellsystem {
             }
         } while (!mystring.equals("q"));
     }
+
 }

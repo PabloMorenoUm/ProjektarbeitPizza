@@ -32,7 +32,6 @@ public class ButtonListener implements ActionListener {
      * dient und als Schnittstelle zwischen grafischer Oberfläche und Pizzabestellsystem dient.
      */
     public ButtonListener() {
-        //this.meinePizza = meinePizza;
     }
 
     /**

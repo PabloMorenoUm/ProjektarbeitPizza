@@ -16,7 +16,6 @@ public class GUI {
     public GUI() {
 
         JFrame frame = new JFrame("Luigis Pizza");
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
         GridBagLayout gLayout = new GridBagLayout();
         GridBagConstraints c = new GridBagConstraints();
@@ -29,8 +28,6 @@ public class GUI {
 
         // --------------------- top ---------------------
         ImageLabel backgroundImage = new ImageLabel("pizzabanner.png");
-        //backgroundImage.setSize(new Dimension(150, 80));
-        //backgroundImage.setMaximumSize(new Dimension(150,50));
         topPanel.add(backgroundImage);
 
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -63,7 +60,6 @@ public class GUI {
 
         // ---------------- Show ! --------------------------
         frame.pack();
-        //frame.setSize(screenSize.width,screenSize.height);
         frame.repaint();
         frame.setVisible(true);
     }

@@ -61,8 +61,6 @@ public class PizzaTest {
     @Test
     public void belegen() {
         System.out.println("Running: belegen");
-        /*actualPizza.belegen("Unsinn");
-        assertEquals(0, actualPizza.getZutaten().size());*/
 
         actualPizza.belegen("Salami");
         assertEquals(1, actualPizza.getZutaten().size());
