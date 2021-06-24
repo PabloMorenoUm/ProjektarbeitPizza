@@ -8,6 +8,9 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
+/**
+ * Testklasse, ob der Datensatz der Zutaten korrekt eingelesen ist.
+ */
 public class AlleZutatenTest {
     private AlleZutaten actualZutaten;
     private ArrayList<Zutat> expectedZutaten;

@@ -11,6 +11,9 @@ import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 
+/**
+ * Testklasse, ob die Methoden der Klasse Pizza ihren Sinn und Zweck erfüllen.
+ */
 public class PizzaTest {
     // Daten von allen Zutaten:
     private Pizza actualPizza;

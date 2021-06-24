@@ -8,6 +8,9 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
+/**
+ * Testklasse, ob der Datensatz der Saucen korrekt eingelesen ist.
+ */
 public class AlleSaucenTest {
     private AlleSaucen actualSaucen;
     private ArrayList<Sauce> expectedSaucen;

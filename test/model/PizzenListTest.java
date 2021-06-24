@@ -10,6 +10,9 @@ import java.util.Locale;
 
 import static org.junit.Assert.*;
 
+/**
+ * Testklasse, ob die Methoden der Hilfsklasse PizzenList ihren Sinn und Zweck erfüllen und ob die Preise plausibel sind.
+ */
 public class PizzenListTest {
     PizzenList pizzen = new PizzenList();
     private static final AlleZutaten alleZutaten = new AlleZutaten();

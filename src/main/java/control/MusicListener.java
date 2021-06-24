@@ -9,14 +9,24 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+/**
+ * Listener-Klasse, die eine .mp3-Datei in einem eigenen Thread abspielt und den 'Play/Stop'-Button funktionsfähig macht.
+ */
 public class MusicListener implements ActionListener {
     private Player player;
     private Thread thread;
 
+    /**
+     * Konstruktor
+     */
     public MusicListener() {
         thread = new Thread(runnable);
     }
 
+    /**
+     * Funktionalität des 'Play/Stop'-Buttons
+     * @param e ActionEvent.
+     */
     @Override
     public void actionPerformed(ActionEvent e){
         if(thread.isAlive()){
@@ -29,6 +39,9 @@ public class MusicListener implements ActionListener {
         }
     }
 
+    /**
+     * Eigene Schnittstelle, die die .mp3 abspielt.
+     */
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
